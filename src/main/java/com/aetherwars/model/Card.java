@@ -1,11 +1,13 @@
 package com.aetherwars.model;
 
+import com.aetherwars.model.type.*;
+
 public class Card {
   private int id;
   private String name;
   private String description;
   private String imagepath;
-  private TypeCard type;
+  private CardType type;
   private int mana;
 
   public Card() {
@@ -13,10 +15,10 @@ public class Card {
     this.name = "";
     this.description = "";
     this.imagepath = "";
-    this.type = TypeCard.CHARACTER;
+    this.type = CardType.CHARACTER;
   }
 
-  public Card(TypeCard type, int id, String name, String description, String imagepath) {
+  public Card(CardType type, int id, String name, String description, String imagepath) {
     this.id = id;
     this.name = name;
     this.description = description;
@@ -41,7 +43,7 @@ public class Card {
     return this.imagepath;
   }
 
-  public TypeCard getType(){
+  public CardType getType(){
     return this.type;
   }
 
@@ -66,7 +68,7 @@ public class Card {
     this.imagepath = imagepath;
   }
 
-  public void setType(TypeCard type){
+  public void setType(CardType type){
     this.type = type;
   }
 
@@ -76,6 +78,6 @@ public class Card {
 
   @Override
   public String toString() {
-    return "Name: " + this.name + "\nDescription: " + this.description + "\nType: " + this.type;
+    return "Name: " + this.getName() + "\nDescription: " + this.getDescription() + "\nType: " + this.getType();
   }
 }

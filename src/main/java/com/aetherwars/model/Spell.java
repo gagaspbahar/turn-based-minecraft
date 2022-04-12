@@ -1,36 +1,47 @@
-public interface Spell extends Card {
-  private TypeSpell spellType;
+package com.aetherwars.model;
 
-  public TypeSpell getSpellType();
-  public void setSpellType(TypeSpell t);
-  public void useSpell(Character c);
+import com.aetherwars.model.type.*;
 
+public abstract class Spell extends Card {
+  abstract SpellType getSpellType();
+  abstract void cast(Character c);
 }
 
-public class PotionSpell implements Spell {
-  private int duration;
-  private int attackChange;
-  private int healthChange;
+abstract class TempSpell extends Spell {
+  protected int duration;
 
+  abstract int getDuration();
+  abstract void setDuration(int d);
+}
+
+
+class PotionSpell extends TempSpell {
+  private final SpellType spellType = SpellType.POTION;
+  private int healthChange;
+  
+  private int attackChange;
   public PotionSpell(){
-    this.spellType = TypeSpell.POTION;
     this.duration = 0;
     this.attackChange = 0;
     this.healthChange = 0;
   }
 
-  public TypeSpell getSpellType(){
+  @Override
+  public SpellType getSpellType(){
     return this.spellType;
   }
+  
+  @Override
+  public void cast(Character c){
 
-  public void setSpellType(TypeSpell t){
-    this.spellType = t;
   }
 
+  @Override
   public int getDuration(){
     return this.duration;
   }
 
+  @Override
   public void setDuration(int d){
     this.duration = d;
   }
@@ -46,44 +57,47 @@ public class PotionSpell implements Spell {
 
 }
 
-public class LevelSpell implements Spell {
+class LevelSpell extends Spell {
+  private final SpellType spellType = SpellType.LEVEL;
   private int levelChange;
   
   public LevelSpell(){
-    this.spellType = TypeSpell.LEVEL;
     this.levelChange = 0;
   }
 
-  public TypeSpell getSpellType(){
+  public SpellType getSpellType(){
     return this.spellType;
   }
 
-  public void setSpellType(TypeSpell t){
-    this.spellType = t;
+  @Override
+  public void cast(Character c){
+    
   }
 
 }
 
-public class SwapSpell implements Spell {
-  private int duration;
+class SwapSpell extends TempSpell {
+  private final SpellType spellType = SpellType.SWAP;
 
   public SwapSpell(){
-    this.spellType = TypeSpell.SWAP;
     this.duration = 0;
   }
 
-  public TypeSpell getSpellType(){
+  public SpellType getSpellType(){
     return this.spellType;
   }
 
-  public void setSpellType(TypeSpell t){
-    this.spellType = t;
+  @Override
+  public void cast(Character c){
+    
   }
 
+  @Override
   public int getDuration(){
     return this.duration;
   }
 
+  @Override
   public void setDuration(int d){
     this.duration = d;
   }
@@ -91,11 +105,20 @@ public class SwapSpell implements Spell {
   //Pastiin mekanisme swap dan potion terlebih dahulu
 }
 
-public class MorphSpell implements Spell {
+class MorphSpell extends Spell {
+  private final SpellType spellType = SpellType.MORPH;
   private int targetid;
-
+  
   public MorphSpell(){
-    this.spellType = TypeSpell.MORPH;
     this.targetid = 0;
+  }
+
+  @Override
+  public void cast(Character c){
+    
+  }
+
+  public SpellType getSpellType(){
+    return this.spellType;
   }
 }

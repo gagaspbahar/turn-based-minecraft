@@ -1,27 +1,30 @@
 package com.aetherwars.model;
 
+import com.aetherwars.model.type.*;
+import java.util.ArrayList;
+
 public class Character extends Card {
-  private TypeChar charType;
+  private CharType charType;
   private int attack;
   private int health;
   private int attackup;
   private int healthup;
   private int level;
   private int exp;
-  private List<Spell> spellsEffect;
+  private ArrayList<TempSpell> spellsEffect;
 
   public Character() {
-    this.charType = TypeChar.OVERWORLD;
+    this.charType = CharType.OVERWORLD;
     this.attack = 0;
     this.health = 0;
     this.attackup = 0;
     this.healthup = 0;
     this.level = 1;
     this.exp = 0;
-    this.spellsEffect = new ArrayList<Spell>();
+    this.spellsEffect = new ArrayList<TempSpell>();
   }
 
-  public Character(TypeChar type, int attack, int health, int attackup, int healthup) {
+  public Character(CharType type, int attack, int health, int attackup, int healthup) {
     this.charType = type;
     this.attack = attack;
     this.health = health;
@@ -29,7 +32,7 @@ public class Character extends Card {
     this.healthup = healthup;
     this.level = 1;
     this.exp = 0;
-    this.spellsEffect = new ArrayList<Spell>();
+    this.spellsEffect = new ArrayList<TempSpell>();
   }
 
   // GETTER
@@ -41,7 +44,7 @@ public class Character extends Card {
     return this.attack;
   }
 
-  public String getCharType(){
+  public CharType getCharType(){
     return this.charType;
   }
 
@@ -61,7 +64,7 @@ public class Character extends Card {
     return this.exp;
   }
 
-  public List<Spell> getSpellsEffect(){
+  public ArrayList<TempSpell> getSpellsEffect(){
     return this.spellsEffect;
   }
 
@@ -74,7 +77,7 @@ public class Character extends Card {
     this.attack = attack;
   }
 
-  public void setType(TypeChar type){
+  public void setType(CharType type){
     this.charType = type;
   }
 
@@ -86,41 +89,41 @@ public class Character extends Card {
     this.exp = exp;
   }
 
-  public void addSpellsEffect(Spell spell){
+  public void addSpellsEffect(TempSpell spell){
     this.spellsEffect.add(spell);
   }
   
   public void attackChara(Character chara2) {
-    if(this.getCharType() == TypeChar.OVERWORLD) {
-      if(chara2.getCharType() == TypeChar.OVERWORLD) {
+    if(this.getCharType() == CharType.OVERWORLD) {
+      if(chara2.getCharType() == CharType.OVERWORLD) {
         chara2.setHealth(chara2.getHealth() - this.getAttack());
       }
-      if(chara2.getCharType() == TypeChar.NETHER) {
+      if(chara2.getCharType() == CharType.NETHER) {
         chara2.setHealth(chara2.getHealth() - this.getAttack()/2);
       }
-      if(chara2.getCharType() == TypeChar.END) {
+      if(chara2.getCharType() == CharType.END) {
         chara2.setHealth(chara2.getHealth() - this.getAttack()*2);
       }
     } 
-    else if(this.getCharType() == TypeChar.NETHER) {
-      if(chara2.getCharType() == TypeChar.OVERWORLD) {
+    else if(this.getCharType() == CharType.NETHER) {
+      if(chara2.getCharType() == CharType.OVERWORLD) {
         chara2.setHealth(chara2.getHealth() - this.getAttack()*2);
       }
-      if(chara2.getCharType() == TypeChar.NETHER) {
+      if(chara2.getCharType() == CharType.NETHER) {
         chara2.setHealth(chara2.getHealth() - this.getAttack());
       }
-      if(chara2.getCharType() == TypeChar.END) {
+      if(chara2.getCharType() == CharType.END) {
         chara2.setHealth(chara2.getHealth() - this.getAttack()/2);
       }
     } 
     else {
-      if(chara2.getCharType() == TypeChar.END) {
+      if(chara2.getCharType() == CharType.END) {
         chara2.setHealth(chara2.getHealth() - this.getAttack());
       }
-      if(chara2.getCharType() == TypeChar.OVERWORLD) {
+      if(chara2.getCharType() == CharType.OVERWORLD) {
         chara2.setHealth(chara2.getHealth() - this.getAttack()/2);
       }
-      if(chara2.getCharType() == TypeChar.NETHER) {
+      if(chara2.getCharType() == CharType.NETHER) {
         chara2.setHealth(chara2.getHealth() - this.getAttack()*2);
       }
     }
@@ -136,37 +139,40 @@ public class Character extends Card {
   }
 
   public void addExp(int exp) {
-    curExp = this.getExp();
-    curLevel = this.getLevel();
-    while(curExp + exp >= curLevel*2 -1){
+    int curExp = this.getEXP();
+    int curLevel = this.getLevel();
+    while (curExp + exp >= curLevel*2 -1) {
       exp -= (curLevel*2 - 1 - curExp);
       curExp = 0;
       curLevel++;
     } 
     updateStats(this.getLevel(), curLevel);
-    this.setExp(curExp + exp);
+    this.setEXP(curExp + exp);
     this.setLevel(curLevel);
   }
 
   public void updateStats(int prevLevel, int newLevel) {
-    newAttack = (newLevel - prevLevel)*this.getAttackup();
-    newHealth = (newLevel - prevLevel)*this.getHealthup();
+    int newAttack = (newLevel - prevLevel)*this.getAttackUp();
+    int newHealth = (newLevel - prevLevel)*this.getHealthUp();
     this.setAttack(this.getAttack() + newAttack);
     this.setHealth(this.getHealth() + newHealth);
   }
 
   public void updateSpellsEffect(){
     //Pastiin mekanisme swap dan potion terlebih dahulu
-    spells = this.getSpellsEffect();
+    ArrayList<TempSpell> spells = this.getSpellsEffect();
     int i = 0;
+    int newAttack;
+    int newHealth;
     while(i < spells.size()){
-      spells[i].setDuration(spells[i].getDuration() - 1);
-      if(spells[i].getDuration() == 0){
-        if(spells[i].getSpellType() == TypeSpell.POTION){
-          this.setHealth(this.getHealth() - spells[i].getHealthChange());
-          this.setAttack(this.getAttack() - spells[i].getAttackChange());
+      if(spells.get(i).getDuration() == 0){
+        spells.get(i).setDuration(spells.get(i).getDuration() - 1);
+        if(spells.get(i).getSpellType() == SpellType.POTION){
+          PotionSpell potion = (PotionSpell) spells.get(i);
+          this.setHealth(this.getHealth() - potion.getHealthChange());
+          this.setAttack(this.getAttack() - potion.getAttackChange());
         }
-        if(spells[i].getSpellType() == TypeSpell.SWAP){
+        if(spells.get(i).getSpellType() == SpellType.SWAP){
           newHealth = this.getAttack();
           newAttack = this.getHealth();
           this.setHealth(newHealth);
@@ -182,6 +188,6 @@ public class Character extends Card {
   
   @Override
   public String toString() {
-    return "Name: " + this.name + "\nDescription: " + this.description + "\nType: " + this.type;
+    return "Name: " + this.getName() + "\nDescription: " + this.getDescription() + "\nType: " + this.getType();
   }
 }
