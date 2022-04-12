@@ -7,26 +7,27 @@ public class Player{
     private int health;
     private String name;
     private int mana;
-    private ArrayList<Pair<Card,boolean>> field;
-    private ArrayList<Card> hand;
-    private ArrayList<Card> deck;
+    private List<Card> fieldCard;
+    private List<Boolean> fieldCardStatus;
+    private List<Card> hand;
+    private List<Card> deck;
 
     public Player(){
         this.name = "Epi";
         this.health = 80;
         this.mana = 1;
-        this.field = new ArrayList<Card>(5);
-        this.hand = new ArrayList<Card>(5);
-        this.deck = new ArrayList<Card>(40);
+        this.field = new List<Card>(5);
+        this.hand = new List<Card>(5);
+        this.deck = new List<Card>(40);
     }
     
     public Player(String name){
         this.name = name;
         this.health = 80;
         this.mana = 1;
-        this.field = new ArrayList<Card>(5);
-        this.hand = new ArrayList<Card>(5);
-        this.deck = new ArrayList<Card>(40);
+        this.field = new List<Card>(5);
+        this.hand = new List<Card>(5);
+        this.deck = new List<Card>(40);
     }
 
     public String getName(){
@@ -59,20 +60,24 @@ public class Player{
         }
     }
 
-    public void initializeDeck(){
-        
+    public void initializeDeck(List<String[]> chars){
+        // Inisialisasi deck pemain
+        Random rand = new Random();
+        for (int i = 0; i < 50; i++){
+            int j = rand.nextInt(18);
+            this.deck.add(new Card(CardType.CHARACTER, Integer.parseInt(chars.get(j)[0]), chars.get(j)[1], chars.get(j)[2], chars.get(j)[3]));
+        }
+        Collections.shuffle(this.deck);
     }
 
-    public void shuffleDeck(){
-        Collections.shuffle(this.deck);
-    }   
+    public Card[] drawNcard(){
+        Card[] cards = new Card[min(3,this.deck.size())];
 
-    public Card drawCard(){
-        if (this.deck.size() < 5 && this.deck.size() > 0){
-            Card card = this.deck.get(0);
+        for (int i = 0; i < min(3,this.deck.size()); i++){
+            cards[i] = this.deck.get(0);
             this.deck.remove(0);
-            return card;
         }
+        return cards;
     }
 
 

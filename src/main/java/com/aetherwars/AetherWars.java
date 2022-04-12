@@ -17,18 +17,22 @@ import com.aetherwars.util.CSVReader;
 
 public class AetherWars extends Application {
   private static final String CHARACTER_CSV_FILE_PATH = "card/data/character.csv";
+  private static final String SPELL_MORPH_CSV_FILE_PATH = "card/data/character.csv";
+  private static final String SPELL_PTN_CSV_FILE_PATH = "card/data/character.csv";
+  private static final String SPELL_CSV_FILE_PATH = "card/data/character.csv";
   public AetherWars() {
     super();
   }
-  public void loadCards() throws IOException, URISyntaxException {
-    File characterCSVFile = new File(getClass().getResource(CHARACTER_CSV_FILE_PATH).toURI());
+  public void loadData(String path) throws IOException, URISyntaxException {
+    File characterCSVFile = new File(getClass().getResource(path).toURI());
     CSVReader characterReader = new CSVReader(characterCSVFile, "\t");
     characterReader.setSkipHeader(true);
     List<String[]> characterRows = characterReader.read();
-    for (String[] row : characterRows) {
-      Character c = new Character(row[1], row[3], Type.valueOf(row[2]));
-      System.out.println(c);
-    }
+    return characterRows;
+    // for (String[] row : characterRows) {
+    //   Character c = new Character(row[1], row[3], Type.valueOf(row[2]));
+    //   System.out.println(c);
+    // }
   }
 
   @Override
