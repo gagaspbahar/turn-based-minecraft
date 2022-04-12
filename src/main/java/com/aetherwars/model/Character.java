@@ -143,13 +143,23 @@ public class Character extends Card {
       curExp = 0;
       curLevel++;
     } 
+    updateStats(this.getLevel(), curLevel);
     this.setExp(curExp + exp);
     this.setLevel(curLevel);
   }
 
+  public void updateStats(int prevLevel, int newLevel) {
+    newAttack = (newLevel - prevLevel)*this.getAttackup();
+    newHealth = (newLevel - prevLevel)*this.getHealthup();
+    this.setAttack(this.getAttack() + newAttack);
+    this.setHealth(this.getHealth() + newHealth);
+  }
+
   public void updateSpellsEffect(){
+    //Pastiin mekanisme swap dan potion terlebih dahulu
     spells = this.getSpellsEffect();
-    for(int i = 0; i < spells.size(); i++){
+    int i = 0;
+    while(i < spells.size()){
       spells[i].setDuration(spells[i].getDuration() - 1);
       if(spells[i].getDuration() == 0){
         if(spells[i].getSpellType() == TypeSpell.POTION){
@@ -157,9 +167,15 @@ public class Character extends Card {
           this.setAttack(this.getAttack() - spells[i].getAttackChange());
         }
         if(spells[i].getSpellType() == TypeSpell.SWAP){
-          //swap
+          newHealth = this.getAttack();
+          newAttack = this.getHealth();
+          this.setHealth(newHealth);
+          this.setAttack(newAttack);
         }
         spells.remove(i);
+      }
+      else{
+        i++;
       }
     }
   }

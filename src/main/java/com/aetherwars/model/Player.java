@@ -7,17 +7,11 @@ public class Player{
     private int health;
     private String name;
     private int mana;
-    private ArrayList<Card> field;
+    private ArrayList<Pair<Card,boolean>> field;
     private ArrayList<Card> hand;
     private ArrayList<Card> deck;
 
     public Player(){
-        // SPEK :
-        // Nama : Hardcode (c/: Player1, Steve, Alex)
-        // HP : 80
-        // Mana : bertambah setiap giliran
-        // Deck : 40 - 60 kartu
-        // Kartu hand = max 5 
         this.name = "Epi";
         this.health = 80;
         this.mana = 1;
@@ -65,16 +59,13 @@ public class Player{
         Collections.shuffle(this.deck);
     }   
 
-    public 
-}
-
-class Main{
-    public static void main(String[] args) {
-        Player player = new Player();
-        System.out.println(player.getName());
-        System.out.println(player.getHealth());
-        System.out.println(player.getMana());
-        player.setMana(1);
-        System.out.println(player.getMana());
+    public Card drawCard(){
+        if (this.deck.size() < 5 && this.deck.size() > 0){
+            Card card = this.deck.get(0);
+            this.deck.remove(0);
+            return card;
+        }
     }
+
+
 }

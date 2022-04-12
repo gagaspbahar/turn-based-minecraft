@@ -42,6 +42,7 @@ public class PotionSpell implements Spell {
   public int getHealthChange(){
     return this.healthChange;
   }
+  //Pastiin mekanisme swap dan potion terlebih dahulu
 
 }
 
@@ -86,6 +87,8 @@ public class SwapSpell implements Spell {
   public void setDuration(int d){
     this.duration = d;
   }
+
+  //Pastiin mekanisme swap dan potion terlebih dahulu
 }
 
 public class MorphSpell implements Spell {
