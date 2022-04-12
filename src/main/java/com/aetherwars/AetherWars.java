@@ -17,7 +17,9 @@ import com.aetherwars.util.CSVReader;
 
 public class AetherWars extends Application {
   private static final String CHARACTER_CSV_FILE_PATH = "card/data/character.csv";
-
+  public AetherWars() {
+    super();
+  }
   public void loadCards() throws IOException, URISyntaxException {
     File characterCSVFile = new File(getClass().getResource(CHARACTER_CSV_FILE_PATH).toURI());
     CSVReader characterReader = new CSVReader(characterCSVFile, "\t");
