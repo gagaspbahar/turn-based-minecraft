@@ -18,7 +18,7 @@ repositories {
 }
 
 javafx {
-    modules = ['javafx.controls']
+    modules = ['javafx.controls', 'javafx.fxml']
 }
 
 dependencies {

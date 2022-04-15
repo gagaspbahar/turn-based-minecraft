@@ -2,12 +2,17 @@ package com.aetherwars;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.List;
+import java.util.Objects;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -35,7 +40,12 @@ public class AetherWars extends Application {
   }
 
   @Override
-  public void start(Stage stage) {
+  public void start(Stage stage) throws IOException {
+//      URL url = new File("src/main/java/com/aetherwars/aetherwars.fxml").toURI().toURL();
+//      Pane mainPane = (Pane) FXMLLoader.load(Objects.requireNonNull(getClass().getResource(String.valueOf(url))));
+//      stage.setScene(new Scene(mainPane));
+//      stage.show();
+
     Text text = new Text();
     text.setText("Loading...");
     text.setX(50);
