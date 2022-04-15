@@ -38,34 +38,33 @@ public class AetherWars extends Application {
     //   System.out.println(c);
     // }
   }
-
+    //"src/main/java/com/aetherwars/aetherwars.fxml"
   @Override
-  public void start(Stage stage) throws IOException {
-//      URL url = new File("src/main/java/com/aetherwars/aetherwars.fxml").toURI().toURL();
-//      Pane mainPane = (Pane) FXMLLoader.load(Objects.requireNonNull(getClass().getResource(String.valueOf(url))));
-//      stage.setScene(new Scene(mainPane));
-//      stage.show();
+  public void start(Stage stage) throws Exception {
+      Pane mainPane = (Pane) FXMLLoader.load(AetherWars.class.getClassLoader().getResource("./Sample.fxml"));
+      stage.setScene(new Scene(mainPane));
+      stage.show();
 
-    Text text = new Text();
-    text.setText("Loading...");
-    text.setX(50);
-    text.setY(50);
-
-    Group root = new Group();
-    root.getChildren().add(text);
-
-    Scene scene = new Scene(root, 1280, 720);
-
-    stage.setTitle("Minecraft: Aether Wars");
-    stage.setScene(scene);
-    stage.show();
-
-    try {
-      List<String[]> chars = this.loadData(CHARACTER_CSV_FILE_PATH);
-      text.setText("Minecraft: Aether Wars!");
-    } catch (Exception e) {
-      text.setText("Failed to load cards: " + e);
-    }
+//    Text text = new Text();
+//    text.setText("Loading...");
+//    text.setX(50);
+//    text.setY(50);
+//
+//    Group root = new Group();
+//    root.getChildren().add(text);
+//
+//    Scene scene = new Scene(root, 1280, 720);
+//
+//    stage.setTitle("Minecraft: Aether Wars");
+//    stage.setScene(scene);
+//    stage.show();
+//
+//    try {
+//      List<String[]> chars = this.loadData(CHARACTER_CSV_FILE_PATH);
+//      text.setText("Minecraft: Aether Wars!");
+//    } catch (Exception e) {
+//      text.setText("Failed to load cards: " + e);
+//    }
   }
 
   public static void main(String[] args) {
