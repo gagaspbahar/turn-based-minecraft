@@ -11,7 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import com.aetherwars.model.Type;
+import com.aetherwars.model.type.*;
 import com.aetherwars.model.Character;
 import com.aetherwars.util.CSVReader;
 
@@ -23,12 +23,11 @@ public class AetherWars extends Application {
   public AetherWars() {
     super();
   }
-  public void loadData(String path) throws IOException, URISyntaxException {
+  public List<String[]> loadData(String path) throws IOException, URISyntaxException {
     File characterCSVFile = new File(getClass().getResource(path).toURI());
     CSVReader characterReader = new CSVReader(characterCSVFile, "\t");
     characterReader.setSkipHeader(true);
-    List<String[]> characterRows = characterReader.read();
-    return characterRows;
+    return characterReader.read();
     // for (String[] row : characterRows) {
     //   Character c = new Character(row[1], row[3], Type.valueOf(row[2]));
     //   System.out.println(c);
@@ -52,7 +51,7 @@ public class AetherWars extends Application {
     stage.show();
 
     try {
-      this.loadCards();
+      List<String[]> chars = this.loadData(CHARACTER_CSV_FILE_PATH);
       text.setText("Minecraft: Aether Wars!");
     } catch (Exception e) {
       text.setText("Failed to load cards: " + e);

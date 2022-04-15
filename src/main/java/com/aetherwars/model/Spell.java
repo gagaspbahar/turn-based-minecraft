@@ -26,6 +26,12 @@ class PotionSpell extends TempSpell {
     this.healthChange = 0;
   }
 
+  public PotionSpell(int duration, int attackChange, int healthChange){
+    this.duration = duration;
+    this.attackChange = attackChange;
+    this.healthChange = healthChange;
+  }
+
   @Override
   public SpellType getSpellType(){
     return this.spellType;
@@ -33,7 +39,9 @@ class PotionSpell extends TempSpell {
   
   @Override
   public void cast(Character c){
-
+    c.setHealth(c.getHealth() + this.getHealthChange());
+    c.setAttack(c.getAttack() + this.getAttackChange());
+    c.addSpellsEffect(this);
   }
 
   @Override
@@ -53,7 +61,7 @@ class PotionSpell extends TempSpell {
   public int getHealthChange(){
     return this.healthChange;
   }
-  //Pastiin mekanisme swap dan potion terlebih dahulu
+
 
 }
 
@@ -83,13 +91,24 @@ class SwapSpell extends TempSpell {
     this.duration = 0;
   }
 
+  public SwapSpell(int duration) { this.duration = duration; }
+
   public SpellType getSpellType(){
     return this.spellType;
   }
 
   @Override
   public void cast(Character c){
-    
+    if(c.getSwapDura() == 0){
+      int newHealth = c.getAttack();
+      int newAttack = c.getHealth();
+      c.setHealth(newHealth);
+      c.setAttack(newAttack);
+      c.setSwapDura(this.getDuration());
+    }
+    else{
+      c.setSwapDura(c.getSwapDura() + this.getDuration());
+    }
   }
 
   @Override
@@ -112,6 +131,8 @@ class MorphSpell extends Spell {
   public MorphSpell(){
     this.targetid = 0;
   }
+
+  public MorphSpell(int targetid) {this.targetid = targetid; }
 
   @Override
   public void cast(Character c){

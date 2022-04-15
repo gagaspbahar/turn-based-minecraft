@@ -11,6 +11,7 @@ public class Character extends Card {
   private int healthup;
   private int level;
   private int exp;
+  private int swapDura;
   private ArrayList<TempSpell> spellsEffect;
 
   public Character() {
@@ -21,6 +22,7 @@ public class Character extends Card {
     this.healthup = 0;
     this.level = 1;
     this.exp = 0;
+    this.swapDura = 0;
     this.spellsEffect = new ArrayList<TempSpell>();
   }
 
@@ -32,6 +34,7 @@ public class Character extends Card {
     this.healthup = healthup;
     this.level = 1;
     this.exp = 0;
+    this.swapDura = 0;
     this.spellsEffect = new ArrayList<TempSpell>();
   }
 
@@ -64,6 +67,8 @@ public class Character extends Card {
     return this.exp;
   }
 
+  public int getSwapDura() { return this.swapDura; }
+
   public ArrayList<TempSpell> getSpellsEffect(){
     return this.spellsEffect;
   }
@@ -88,6 +93,8 @@ public class Character extends Card {
   public void setEXP(int exp){
     this.exp = exp;
   }
+
+  public void setSwapDura(int dura) { this.swapDura = dura; }
 
   public void addSpellsEffect(TempSpell spell){
     this.spellsEffect.add(spell);
@@ -164,20 +171,21 @@ public class Character extends Card {
     int i = 0;
     int newAttack;
     int newHealth;
+    if(this.getSwapDura() != 0){
+      this.setSwapDura(getSwapDura() - 1);
+      if(this.getSwapDura() == 0){
+        newHealth = this.getAttack();
+        newAttack = this.getHealth();
+        this.setHealth(newHealth);
+        this.setAttack(newAttack);
+      }
+    }
     while(i < spells.size()){
-      if(spells.get(i).getDuration() == 0){
-        spells.get(i).setDuration(spells.get(i).getDuration() - 1);
-        if(spells.get(i).getSpellType() == SpellType.POTION){
-          PotionSpell potion = (PotionSpell) spells.get(i);
-          this.setHealth(this.getHealth() - potion.getHealthChange());
-          this.setAttack(this.getAttack() - potion.getAttackChange());
-        }
-        if(spells.get(i).getSpellType() == SpellType.SWAP){
-          newHealth = this.getAttack();
-          newAttack = this.getHealth();
-          this.setHealth(newHealth);
-          this.setAttack(newAttack);
-        }
+      spells.get(i).setDuration(spells.get(i).getDuration() - 1);
+      if(spells.get(i).getDuration() == 0) {
+        PotionSpell potion = (PotionSpell) spells.get(i);
+        this.setHealth(this.getHealth() - potion.getHealthChange());
+        this.setAttack(this.getAttack() - potion.getAttackChange());
         spells.remove(i);
       }
       else{

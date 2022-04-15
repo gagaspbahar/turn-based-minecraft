@@ -2,6 +2,8 @@ package com.aetherwars.model;
 
 import com.aetherwars.model.type.*;
 
+import java.awt.*;
+
 public class Card {
   private int id;
   private String name;

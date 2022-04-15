@@ -1,9 +1,11 @@
 package com.aetherwars.model;
 
 import java.util.*;
-// import com.aetherwars.AetherWars;
+import com.aetherwars.model.type.*;
 
-public class Player{
+import static java.lang.Math.min;
+
+class Player{
     private int health;
     private String name;
     private int mana;
@@ -16,18 +18,18 @@ public class Player{
         this.name = "Epi";
         this.health = 80;
         this.mana = 1;
-        this.field = new List<Card>(5);
-        this.hand = new List<Card>(5);
-        this.deck = new List<Card>(40);
+        this.fieldCard = new ArrayList<Card>(5);
+        this.hand = new ArrayList<Card>(5);
+        this.deck = new ArrayList<Card>(40);
     }
     
     public Player(String name){
         this.name = name;
         this.health = 80;
         this.mana = 1;
-        this.field = new List<Card>(5);
-        this.hand = new List<Card>(5);
-        this.deck = new List<Card>(40);
+        this.fieldCard = new ArrayList<Card>(5);
+        this.hand = new ArrayList<Card>(5);
+        this.deck = new ArrayList<Card>(40);
     }
 
     public String getName(){
@@ -80,5 +82,12 @@ public class Player{
         return cards;
     }
 
+    public boolean canDraw(){
+        return this.hand.size() < 5;
+    }
 
+    public void chooseCard(Card[] cards, int choice){
+        // Pemain memilih kartu yang akan ditambahkan ke field
+        this.hand.add(cards[choice]);
+    }
 }
