@@ -17,14 +17,14 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import com.aetherwars.model.type.*;
+import com.aetherwars.util.config.CSVReader;
 import com.aetherwars.model.Character;
-import com.aetherwars.util.CSVReader;
 
 public class AetherWars extends Application {
   private static final String CHARACTER_CSV_FILE_PATH = "card/data/character.csv";
-  private static final String SPELL_MORPH_CSV_FILE_PATH = "card/data/character.csv";
-  private static final String SPELL_PTN_CSV_FILE_PATH = "card/data/character.csv";
-  private static final String SPELL_CSV_FILE_PATH = "card/data/character.csv";
+  private static final String SPELL_MORPH_CSV_FILE_PATH = "card/data/spell_morph.csv";
+  private static final String SPELL_PTN_CSV_FILE_PATH = "card/data/spell_ptn.csv";
+  private static final String SPELL_SWAP_FILE_PATH = "card/data/spell_swap.csv";
   public AetherWars() {
     super();
   }

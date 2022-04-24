@@ -18,14 +18,16 @@ public class Card {
     this.description = "";
     this.imagepath = "";
     this.type = CardType.CHARACTER;
+    this.mana = 0;
   }
 
-  public Card(CardType type, int id, String name, String description, String imagepath) {
+  public Card(int id, String name, String description, String imagepath, CardType type, int mana) {
     this.id = id;
     this.name = name;
     this.description = description;
     this.imagepath = imagepath;
     this.type = type;
+    this.mana = mana;
   }
 
   // GETTER

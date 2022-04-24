@@ -12,7 +12,7 @@ public class Character extends Card {
   private int level;
   private int exp;
   private int swapDura;
-  private ArrayList<TempSpell> spellsEffect;
+  private ArrayList<PotionSpell> spellsEffect;
 
   public Character() {
     this.charType = CharType.OVERWORLD;
@@ -23,10 +23,11 @@ public class Character extends Card {
     this.level = 1;
     this.exp = 0;
     this.swapDura = -1;
-    this.spellsEffect = new ArrayList<TempSpell>();
+    this.spellsEffect = new ArrayList<PotionSpell>();
   }
 
-  public Character(CharType type, int attack, int health, int attackup, int healthup) {
+  public Character(Card card, CharType type, int attack, int health, int attackup, int healthup) {
+    super(card.getID(), card.getName(), card.getDescription(), card.getImagePath(), card.getType(), card.getMana());
     this.charType = type;
     this.attack = attack;
     this.health = health;
@@ -35,7 +36,7 @@ public class Character extends Card {
     this.level = 1;
     this.exp = 0;
     this.swapDura = -1;
-    this.spellsEffect = new ArrayList<TempSpell>();
+    this.spellsEffect = new ArrayList<PotionSpell>();
   }
 
   // GETTER
@@ -69,7 +70,7 @@ public class Character extends Card {
 
   public int getSwapDura() { return this.swapDura; }
 
-  public ArrayList<TempSpell> getSpellsEffect(){
+  public ArrayList<PotionSpell> getSpellsEffect(){
     return this.spellsEffect;
   }
 
@@ -96,7 +97,7 @@ public class Character extends Card {
 
   public void setSwapDura(int dura) { this.swapDura = dura; }
 
-  public void addSpellsEffect(TempSpell spell){
+  public void addSpellsEffect(PotionSpell spell){
     this.spellsEffect.add(spell);
   }
   
@@ -167,7 +168,7 @@ public class Character extends Card {
 
   public void updateSpellsEffect(){
     //Pastiin mekanisme swap dan potion terlebih dahulu
-    ArrayList<TempSpell> spells = this.getSpellsEffect();
+    ArrayList<PotionSpell> spells = this.getSpellsEffect();
     int i = 0;
     int newAttack;
     int newHealth;

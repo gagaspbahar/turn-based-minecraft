@@ -3,27 +3,50 @@ package com.aetherwars.model;
 import com.aetherwars.model.type.*;
 
 public abstract class Spell extends Card {
+  public Spell(){
+    super();
+  }
+  public Spell(Card card){
+    super(card.getID(), card.getName(), card.getDescription(), card.getImagePath(), card.getType(), card.getMana());
+  }
   abstract SpellType getSpellType();
   abstract void cast(Character c, Player p);
 }
 
-abstract class TempSpell extends Spell {
-  protected int duration;
+// abstract class TempSpell extends Spell {
+//   protected int duration;
 
-  abstract int getDuration();
-  abstract void setDuration(int d);
-}
+//   public TempSpell(){
+//     super();
+//   }
+
+//   public TempSpell(Card card){
+//     super(card);
+//   }
+
+//   abstract int getDuration();
+//   abstract void setDuration(int d);
+// }
 
 
-class PotionSpell extends TempSpell {
+class PotionSpell extends Spell {
   private final SpellType spellType = SpellType.POTION;
+  private int duration;
   private int healthChange;
-  
   private int attackChange;
+
   public PotionSpell(){
+    super();
     this.duration = 0;
     this.attackChange = 0;
     this.healthChange = 0;
+  }
+
+  public PotionSpell(Card card, int attackChange, int healthChange, int duration){
+    super(card);
+    this.duration = duration;
+    this.attackChange = attackChange;
+    this.healthChange = healthChange;
   }
 
   public PotionSpell(int duration, int attackChange, int healthChange){
@@ -32,7 +55,6 @@ class PotionSpell extends TempSpell {
     this.healthChange = healthChange;
   }
 
-  @Override
   public SpellType getSpellType(){
     return this.spellType;
   }
@@ -47,12 +69,10 @@ class PotionSpell extends TempSpell {
     }
   }
 
-  @Override
   public int getDuration(){
     return this.duration;
   }
 
-  @Override
   public void setDuration(int d){
     this.duration = d;
   }
@@ -72,6 +92,11 @@ class LevelSpell extends Spell {
   private final SpellType spellType = SpellType.LEVEL;
   
   public LevelSpell(){
+    super();
+  }
+
+  public LevelSpell(Card card){
+    super(card);
   }
 
   public SpellType getSpellType(){
@@ -89,11 +114,17 @@ class LevelSpell extends Spell {
 
 }
 
-class SwapSpell extends TempSpell {
+class SwapSpell extends Spell {
   private final SpellType spellType = SpellType.SWAP;
+  private int duration;
 
   public SwapSpell(){
-    this.duration = 0;
+    super();
+  }
+
+  public SwapSpell(Card card, int duration){
+    super(card);
+    this.duration = duration;
   }
 
   public SwapSpell(int duration) { this.duration = duration; }
@@ -119,12 +150,10 @@ class SwapSpell extends TempSpell {
     }
   }
 
-  @Override
   public int getDuration(){
     return this.duration;
   }
 
-  @Override
   public void setDuration(int d){
     this.duration = d;
   }
@@ -137,7 +166,12 @@ class MorphSpell extends Spell {
   private int targetid;
   
   public MorphSpell(){
-    this.targetid = 0;
+    super();
+  }
+
+  public MorphSpell(Card card, int targetid){
+    super(card);
+    this.targetid = targetid;
   }
 
   public MorphSpell(int targetid) {this.targetid = targetid; }

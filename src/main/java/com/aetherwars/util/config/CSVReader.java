@@ -1,4 +1,4 @@
-package com.aetherwars.util;
+package com.aetherwars.util.config;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -72,6 +72,7 @@ public class CSVReader {
             }
             firstLine = false;
         }
+        br.close();
         return list;
     }
 
