@@ -27,16 +27,13 @@ public class AetherWars extends Application {
   private static final String SPELL_MORPH_CSV_FILE_PATH = "card/data/spell_morph.csv";
   private static final String SPELL_PTN_CSV_FILE_PATH = "card/data/spell_ptn.csv";
   private static final String SPELL_SWAP_FILE_PATH = "card/data/spell_swap.csv";
-//  private static boolean playerTurn;
+  public static boolean playerTurn = true;
+  public static Player p1 = new Player("Player 1");
+  public static Player p2 = new Player("Player 2");
 
   public AetherWars() {
     super();
-//    playerTurn = true;
   }
-
-//  public static boolean getPlayerTurn() {
-//    return playerTurn;
-//  }
 
   public List<String[]> loadData(String path) throws IOException, URISyntaxException {
     File characterCSVFile = new File(getClass().getResource(path).toURI());
@@ -47,6 +44,8 @@ public class AetherWars extends Application {
 
   @Override
   public void start(Stage stage) throws Exception {
+    p1.initializeDeck();
+    p2.initializeDeck();
 
     Pane mainPane = FXMLLoader.load(AetherWars.class.getClassLoader().getResource("./Sample.fxml"));
       stage.setScene(new Scene(mainPane));

@@ -26,6 +26,7 @@ public class Player {
         this.hand = new Card[]{null, null, null, null, null};
         this.handStatus = new Boolean[]{false, false, false, false, false};
         this.deck = new ArrayList<Card>(50);
+        this.config = new Config();
     }
 
     public Player(String name) {
@@ -37,6 +38,7 @@ public class Player {
         this.hand = new Card[]{null, null, null, null, null};
         this.handStatus = new Boolean[]{false, false, false, false, false};
         this.deck = new ArrayList<Card>(50);
+        this.config = new Config();
     }
 
     public String getName() {
@@ -50,6 +52,8 @@ public class Player {
     public int getMana() { return this.mana; }
 
     public List<Card> getDeck() {return this.deck; }
+
+    public Card[] getHand() {return this.hand; }
 
     public void setName(String s) {
         this.name = s;
@@ -121,6 +125,7 @@ public class Player {
         for (int i = 0; i < 30; i++) {
             int id = rand.nextInt(18);
             id = id + 1;
+//            Card card = new Card(1,"aam","aa","asdasd",CardType.CHARACTER,5);
             Card card = new Card(id, this.config.getNameFromID(id), this.config.getDescriptionFromID(id),
                     this.config.getImagePathFromID(id), CardType.CHARACTER, this.config.getManaFromID(id));
             Character c = new Character(card, this.config.characters.getCharTypeFromID(id),

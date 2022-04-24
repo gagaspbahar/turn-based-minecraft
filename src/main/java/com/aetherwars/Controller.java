@@ -1,5 +1,6 @@
 package com.aetherwars;
 
+import com.aetherwars.model.Character;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,6 +19,19 @@ public class Controller {
 //
     @FXML
     void drawCard(MouseEvent event) {
+        if (AetherWars.playerTurn) {
+            Card c = AetherWars.p1.getDeck().remove(0);
+            AetherWars.p1.getHand()[AetherWars.p1.firstEmptyHand()] = c;
+            hand1.setText(String.valueOf(c.getName()));
+            mana1.setText(String.valueOf(c.getID()));
+
+            AetherWars.playerTurn = false;
+            deckSize.setText((AetherWars.p1.getDeck().size()) + " / 50");
+        } else{
+            Card c = AetherWars.p2.getDeck().remove(0);
+            AetherWars.playerTurn = true;
+            deckSize.setText((AetherWars.p2.getDeck().size()) + " / 50");
+        }
     }
 //asdasdsasda
 
