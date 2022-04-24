@@ -161,14 +161,14 @@ class Player {
         return cards;
     }
 
-    public boolean canDraw() {
-        for (int i = 0; i < this.handStatus.length; i++) {
-            if (this.handStatus[i] == false) {
-                return true;
-            }
-        }
-        return false;
-    }
+    // public boolean canDraw() {
+    //     for (int i = 0; i < this.handStatus.length; i++) {
+    //         if (this.handStatus[i] == false) {
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
 
     public int firstEmptyHand() {
         for (int i = 0; i < this.handStatus.length; i++) {
@@ -181,34 +181,44 @@ class Player {
 
     public void chooseCard(Card[] cards, int choice) {
         // Pemain memilih kartu yang akan ditambahkan ke field
-        // Card chosen = cards[choice];
-        // int id = chosen.getID();
-        // if (chosen.getType() == CardType.CHARACTER) {
-        //     Character c = new Character(chosen, this.config.characters.getCharTypeFromID(id),
-        //             this.config.characters.getAttackFromID(id), this.config.characters.getHealthFromID(id),
-        //             this.config.characters.getAttackUpFromID(id), this.config.characters.getHealthUpFromID(id));
-        //     this.hand.add(c);
-        //     this.handStatus.add(true);
-        // } else if (id >= 101 && id <= 118) {
-        //     PotionSpell p = new PotionSpell(chosen, this.config.potionSpells.getAttackFromID(id),
-        //             this.config.potionSpells.getHPFromID(id), this.config.potionSpells.getDurationFromID(id));
-        //     this.hand.add(p);
-        //     this.handStatus.add(true);
+        Card chosen = cards[choice];
+        int id = chosen.getID();
+        if (chosen.getType() == CardType.CHARACTER) {
+            Character c = new Character(chosen, this.config.characters.getCharTypeFromID(id),
+                    this.config.characters.getAttackFromID(id), this.config.characters.getHealthFromID(id),
+                    this.config.characters.getAttackUpFromID(id), this.config.characters.getHealthUpFromID(id));
+            if(this.firstEmptyHand() != -1) {
+                this.hand[this.firstEmptyHand()] = c;
+                this.handStatus[this.firstEmptyHand()] = true;
+            }
+        } else if (id >= 101 && id <= 118) {
+            PotionSpell p = new PotionSpell(chosen, this.config.potionSpells.getAttackFromID(id),
+                    this.config.potionSpells.getHPFromID(id), this.config.potionSpells.getDurationFromID(id));
+            if(this.firstEmptyHand() != -1) {
+                this.hand[this.firstEmptyHand()] = p;
+                this.handStatus[this.firstEmptyHand()] = true;
+            }
 
-        // } else if (id >= 201 && id <= 210) {
-        //     SwapSpell p = new SwapSpell(chosen, this.config.swapSpells.getDurationFromID(id));
-        //     this.hand.add(p);
-        //     this.handStatus.add(true);
+        } else if (id >= 201 && id <= 210) {
+            SwapSpell p = new SwapSpell(chosen, this.config.swapSpells.getDurationFromID(id));
+            if(this.firstEmptyHand() != -1) {
+                this.hand[this.firstEmptyHand()] = p;
+                this.handStatus[this.firstEmptyHand()] = true;
+            }
 
-        // } else if (id >= 301 && id <= 306) {
-        //     MorphSpell p = new MorphSpell(chosen, this.config.morphSpells.getTargetFromID(id));
-        //     this.hand.add(p);
-        //     this.handStatus.add(true);
+        } else if (id >= 301 && id <= 306) {
+            MorphSpell p = new MorphSpell(chosen, this.config.morphSpells.getTargetFromID(id));
+            if(this.firstEmptyHand() != -1) {
+                this.hand[this.firstEmptyHand()] = p;
+                this.handStatus[this.firstEmptyHand()] = true;
+            }
 
-        // } else if (id >= 401 && id <= 402) {
-        //     LevelSpell p = new LevelSpell(chosen);
-        //     this.hand.add(p);
-        //     this.handStatus.add(true);
-        // }
+        } else if (id >= 401 && id <= 402) {
+            LevelSpell p = new LevelSpell(chosen);
+            if(this.firstEmptyHand() != -1) {
+                this.hand[this.firstEmptyHand()] = p;
+                this.handStatus[this.firstEmptyHand()] = true;
+            }
+        }
     }
 }
