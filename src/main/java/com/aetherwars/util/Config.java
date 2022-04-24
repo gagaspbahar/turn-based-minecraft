@@ -36,29 +36,104 @@ public class Config implements BaseConfig {
   }
 
   public String getNameFromID(int id) {
-    if (id / 100 == 0) {
+    String ans = "";
 
+    if (id / 100 == 0) {  // Char
+      ans = this.characters.getNameFromID(id);
     }
-    else if (id / 100 == 1){
-
+    else if (id / 100 == 1){ // Potion
+      ans = this.potionSpells.getNameFromID(id);
     }
-    else if(id / 100 == 2){
-
+    else if (id / 100 == 2){ // Swap
+      ans = this.swapSpells.getNameFromID(id);
     }
-    else if(id / 100 == 3){
-
+    else if (id / 100 == 3){ // Morph
+      ans = this.morphSpells.getNameFromID(id);
     }
-    else if(id / 100 == 4){
-
+    else if (id / 100 == 4){ // Level
+      ans = this.levelSpells.getNameFromID(id);
     }
-    else{
-    }
-    return "";
+    return ans;
   }
-  public String getDescriptionFromID(int id) {return "";}
-  public String getImagePathFromID(int id) {return "";}
-  public CardType getCardTypeFromID(int id) {return CardType.CHARACTER;}
-  public int getManaFromID(int id) {return 0;}
+  public String getDescriptionFromID(int id) {
+    String ans = "";
 
+    if (id / 100 == 0) {  // Char
+      ans = this.characters.getDescriptionFromID(id);
+    }
+    else if (id / 100 == 1){ // Potion
+      ans = this.potionSpells.getDescriptionFromID(id);
+    }
+    else if (id / 100 == 2){ // Swap
+      ans = this.swapSpells.getDescriptionFromID(id);
+    }
+    else if (id / 100 == 3){ // Morph
+      ans = this.morphSpells.getDescriptionFromID(id);
+    }
+    else if (id / 100 == 4){ // Level
+      ans = this.levelSpells.getDescriptionFromID(id);
+    }
+    return ans;
+  }
 
+  public String getImagePathFromID(int id) {
+    String ans = "";
+
+    if (id / 100 == 0) {  // Char
+      ans = this.characters.getImagePathFromID(id);
+    }
+    else if (id / 100 == 1){ // Potion
+      ans = this.potionSpells.getImagePathFromID(id);
+    }
+    else if (id / 100 == 2){ // Swap
+      ans = this.swapSpells.getImagePathFromID(id);
+    }
+    else if (id / 100 == 3){ // Morph
+      ans = this.morphSpells.getImagePathFromID(id);
+    }
+    else if (id / 100 == 4){ // Level
+      ans = this.levelSpells.getImagePathFromID(id);
+    }
+    return ans;
+  }
+  public CardType getCardTypeFromID(int id) {
+    CardType ans = CardType.CHARACTER;
+
+    if (id / 100 == 0) {  // Char
+      ans = this.characters.getCardTypeFromID(id);
+    }
+    else if (id / 100 == 1){ // Potion
+      ans = this.potionSpells.getCardTypeFromID(id);
+    }
+    else if (id / 100 == 2){ // Swap
+      ans = this.swapSpells.getCardTypeFromID(id);
+    }
+    else if (id / 100 == 3){ // Morph
+      ans = this.morphSpells.getCardTypeFromID(id);
+    }
+    else if (id / 100 == 4){ // Level
+      ans = this.levelSpells.getCardTypeFromID(id);
+    }
+    return ans;
+  }
+  public int getManaFromID(int id) {
+    int ans = 0;
+
+    if (id / 100 == 0) {  // Char
+      ans = this.characters.getManaFromID(id);
+    }
+    else if (id / 100 == 1){ // Potion
+      ans = this.potionSpells.getManaFromID(id);
+    }
+    else if (id / 100 == 2){ // Swap
+      ans = this.swapSpells.getManaFromID(id);
+    }
+    else if (id / 100 == 3){ // Morph
+      ans = this.morphSpells.getManaFromID(id);
+    }
+    else if (id / 100 == 4){ // Level (Cant be cast)
+      ans = 0;
+    }
+    return ans;
+  }
 }
