@@ -132,11 +132,7 @@
       <Label fx:id="turn" layoutX="376.0" layoutY="37.0" text="Turn 0" />
       <Label fx:id="infoStat" layoutX="467.0" layoutY="309.0" text="(empty)" />
       <Label fx:id="infoDescription" layoutX="588.0" layoutY="310.0" text="(empty)" />
-      <ImageView fx:id="infoImage" fitHeight="80.0" fitWidth="80.0" layoutX="355.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@com/aetherwars/card/image/character/question_mark.png" />
-         </image>
-      </ImageView>
+      <ImageView fx:id="infoImage" fitHeight="100.0" fitWidth="62.0" layoutX="363.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="mana1" layoutX="38.0" layoutY="380.0" text="(empty)" />
       <Label fx:id="mana2" layoutX="101.0" layoutY="380.0" text="(empty)" />
       <Label fx:id="mana3" layoutX="160.0" layoutY="380.0" text="(empty)" />

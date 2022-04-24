@@ -22,16 +22,52 @@ public class Controller {
     void drawCard(MouseEvent event) {
         if (AetherWars.playerTurn) {
             Card c = AetherWars.p1.getDeck().remove(0);
-            AetherWars.p1.getHand()[AetherWars.p1.firstEmptyHand()] = c;
-            hand1.setText(String.valueOf(c.getName()));
-            mana1.setText(String.valueOf(c.getID()));
-
-            AetherWars.playerTurn = false;
-            deckSize.setText((AetherWars.p1.getDeck().size()) + " / 50");
+            int idx = AetherWars.p1.firstEmptyHand();
+            if (idx != -1) {
+                AetherWars.p1.getHand()[idx] = c;
+                if (idx == 0) {
+                    hand1.setText(c.getName());
+                    mana1.setText(Integer.toString(c.getMana()));
+                } else if (idx == 1) {
+                    hand2.setText(c.getName());
+                    mana2.setText(Integer.toString(c.getMana()));
+                } else if (idx == 2) {
+                    hand3.setText(c.getName());
+                    mana3.setText(Integer.toString(c.getMana()));
+                } else if (idx == 3) {
+                    hand4.setText(c.getName());
+                    mana4.setText(Integer.toString(c.getMana()));
+                } else if (idx == 4) {
+                    hand5.setText(c.getName());
+                    mana5.setText(Integer.toString(c.getMana()));
+                }
+                deckSize.setText((AetherWars.p2.getDeck().size()) + " / 50");
+                AetherWars.playerTurn = false;
+            }
         } else{
             Card c = AetherWars.p2.getDeck().remove(0);
-            AetherWars.playerTurn = true;
-            deckSize.setText((AetherWars.p2.getDeck().size()) + " / 50");
+            int idx = AetherWars.p2.firstEmptyHand();
+            if (idx != -1) {
+                AetherWars.p2.getHand()[idx] = c;
+                if (idx == 0) {
+                    hand1.setText(c.getName());
+                    mana1.setText(Integer.toString(c.getMana()));
+                } else if (idx == 1) {
+                    hand2.setText(c.getName());
+                    mana2.setText(Integer.toString(c.getMana()));
+                } else if (idx == 2) {
+                    hand3.setText(c.getName());
+                    mana3.setText(Integer.toString(c.getMana()));
+                } else if (idx == 3) {
+                    hand4.setText(c.getName());
+                    mana4.setText(Integer.toString(c.getMana()));
+                } else if (idx == 4) {
+                    hand5.setText(c.getName());
+                    mana5.setText(Integer.toString(c.getMana()));
+                }
+                deckSize.setText((AetherWars.p2.getDeck().size()) + " / 50");
+                AetherWars.playerTurn = true;
+            }
         }
     }
 //asdasdsasda
@@ -104,87 +140,108 @@ public class Controller {
 //     Hover Handler
     @FXML
     void card1HoverIn(MouseEvent event) {
-        infoStat.setText(hand1.getText() + "hello");
-        infoDescription.setText("BJIR DESKRIPSYEN");
-        infoImage.setImage(new Image("@card/image/character/Creeper.png"));
-//        card1.setFill(Color.GREEN);
+        if (!AetherWars.playerTurn) {
+            infoStat.setText(AetherWars.p1.getHand()[0].getName());
+            infoDescription.setText(AetherWars.p1.getHand()[0].getDescription());
+            infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[0].getImagePath()));
+        }else{
+            infoStat.setText(AetherWars.p2.getHand()[0].getName());
+            infoDescription.setText(AetherWars.p2.getHand()[0].getDescription());
+            infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getHand()[0].getImagePath()));
+        }
     }
 
     @FXML
     void card1HoverOut(MouseEvent event) {
         infoStat.setText("(empty)");
         infoDescription.setText("(empty)");
-        infoImage.setImage(new Image("@card/image/character/question_mark.png"));
-//        card1.setFill(Color.WHITE);
-
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
     }
 
     @FXML
     void card2HoverIn(MouseEvent event) {
-        infoStat.setText(hand1.getText() + "hello");
-        infoDescription.setText("BJIR DESKRIPSYEN");
-        infoImage.setImage(new Image("@card/image/character/Creeper.png"));
-//        card1.setFill(Color.GREEN);
-    }
+        if (!AetherWars.playerTurn) {
+            infoStat.setText(AetherWars.p1.getHand()[1].getName());
+            infoDescription.setText(AetherWars.p1.getHand()[1].getDescription());
+            infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[1].getImagePath()));
+        }else{
+            infoStat.setText(AetherWars.p2.getHand()[1].getName());
+            infoDescription.setText(AetherWars.p2.getHand()[1].getDescription());
+            infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getHand()[1].getImagePath()));
+        }
+}
 
-    @FXML
-    void card2HoverOut(MouseEvent event) {
-        infoStat.setText("(empty)");
+@FXML
+void card2HoverOut(MouseEvent event) {
+infoStat.setText("(empty)");
         infoDescription.setText("(empty)");
-        infoImage.setImage(new Image("@card/image/character/question_mark.png"));
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
 //        card1.setFill(Color.WHITE);
 
     }
 
     @FXML
     void card3HoverIn(MouseEvent event) {
-        infoStat.setText(hand1.getText() + "hello");
-        infoDescription.setText("BJIR DESKRIPSYEN");
-        infoImage.setImage(new Image("@card/image/character/Creeper.png"));
-//        card1.setFill(Color.GREEN);
+        if (!AetherWars.playerTurn) {
+            infoStat.setText(AetherWars.p1.getHand()[2].getName());
+            infoDescription.setText(AetherWars.p1.getHand()[2].getDescription());
+            infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[2].getImagePath()));
+        }else{
+            infoStat.setText(AetherWars.p2.getHand()[2].getName());
+            infoDescription.setText(AetherWars.p2.getHand()[2].getDescription());
+            infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getHand()[2].getImagePath()));
+        }
     }
 
     @FXML
     void card3HoverOut(MouseEvent event) {
         infoStat.setText("(empty)");
         infoDescription.setText("(empty)");
-        infoImage.setImage(new Image("@card/image/character/question_mark.png"));
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
 //        card1.setFill(Color.WHITE);
 
     }
 
     @FXML
     void card4HoverIn(MouseEvent event) {
-        infoStat.setText(hand1.getText() + "hello");
-        infoDescription.setText("BJIR DESKRIPSYEN");
-        infoImage.setImage(new Image("@card/image/character/Creeper.png"));
-//        card1.setFill(Color.GREEN);
+        if (!AetherWars.playerTurn) {
+            infoStat.setText(AetherWars.p1.getHand()[3].getName());
+            infoDescription.setText(AetherWars.p1.getHand()[3].getDescription());
+            infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[3].getImagePath()));
+        }else{
+            infoStat.setText(AetherWars.p2.getHand()[3].getName());
+            infoDescription.setText(AetherWars.p2.getHand()[3].getDescription());
+            infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getHand()[3].getImagePath()));
+        }
     }
 
     @FXML
     void card4HoverOut(MouseEvent event) {
         infoStat.setText("(empty)");
         infoDescription.setText("(empty)");
-        infoImage.setImage(new Image("@card/image/character/question_mark.png"));
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
 //        card1.setFill(Color.WHITE);
 
     }
 
     @FXML
     void card5HoverIn(MouseEvent event) {
-        infoStat.setText(hand1.getText() + "hello");
-        infoDescription.setText("BJIR DESKRIPSYEN");
-        infoImage.setImage(new Image("card/image/character/Creeper.png"));
-//        card1.setFill(Color.GREEN);
+        if (!AetherWars.playerTurn) {
+            infoStat.setText(AetherWars.p1.getHand()[4].getName());
+            infoDescription.setText(AetherWars.p1.getHand()[4].getDescription());
+            infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[4].getImagePath()));
+        }else{
+            infoStat.setText(AetherWars.p2.getHand()[4].getName());
+            infoDescription.setText(AetherWars.p2.getHand()[4].getDescription());
+            infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getHand()[4].getImagePath()));
+        }
     }
 
     @FXML
     void card5HoverOut(MouseEvent event) {
         infoStat.setText("(empty)");
         infoDescription.setText("(empty)");
-        infoImage.setImage(new Image("card/image/character/question_mark.png"));
-//        card1.setFill(Color.WHITE);
-
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
     }
 
 

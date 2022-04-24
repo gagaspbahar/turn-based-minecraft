@@ -238,6 +238,7 @@ public class Player {
     public int firstEmptyHand() {
         for (int i = 0; i < this.handStatus.length; i++) {
             if (this.handStatus[i] == false) {
+                this.handStatus[i] = true;
                 return i;
             }
         }
