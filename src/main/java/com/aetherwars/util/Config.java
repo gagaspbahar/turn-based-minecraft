@@ -43,6 +43,7 @@ public class Config implements BaseConfig {
   public void loadData() throws IOException, URISyntaxException {
     this.characters.loadData();
     this.morphSpells.loadData();
+    this.levelSpells.loadData();
     this.swapSpells.loadData();
     this.potionSpells.loadData();
   }

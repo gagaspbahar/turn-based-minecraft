@@ -27,7 +27,6 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="62.0" layoutX="557.0" layoutY="171.0" stroke="BLACK" strokeType="INSIDE" width="62.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="62.0" layoutX="630.0" layoutY="171.0" stroke="BLACK" strokeType="INSIDE" width="62.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="62.0" layoutX="481.0" layoutY="134.0" stroke="BLACK" strokeType="INSIDE" width="62.0" />
-      <Rectangle fx:id="card1" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="278.0" layoutY="296.0" onMouseEntered="#card1HoverIn" onMouseExited="#card1HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="140.0" layoutX="347.0" layoutY="278.0" stroke="BLACK" strokeType="INSIDE" width="95.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="120.0" layoutX="454.0" layoutY="296.0" stroke="BLACK" strokeType="INSIDE" width="120.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="120.0" layoutX="573.0" layoutY="296.0" stroke="BLACK" strokeType="INSIDE" width="120.0" />
@@ -145,5 +144,17 @@
       <Button fx:id="proceedButton" layoutX="367.0" layoutY="188.0" mnemonicParsing="false" onMouseClicked="#drawCard" text="Button" />
       <Label fx:id="deckSize" layoutX="720.0" layoutY="318.0" text="50 / 50" />
       <Label fx:id="manaSize" layoutX="725.0" layoutY="367.0" text="1 / 1" />
+      <Rectangle fx:id="card1" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="27.0" layoutY="301.0" onMouseEntered="#card1HoverIn" onMouseExited="#card1HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Label fx:id="hand41" layoutX="283.0" layoutY="358.0" text="(empty)" />
+      <ImageView fx:id="cardImage41" fitHeight="50.0" fitWidth="40.0" layoutX="283.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com/aetherwars/card/image/character/question_mark.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="mana41" layoutX="283.0" layoutY="378.0" text="(empty)" />
+      <Rectangle fx:id="card2" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="89.0" layoutY="301.0" onMouseEntered="#card2HoverIn" onMouseExited="#card2HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle fx:id="card3" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="151.0" layoutY="301.0" onMouseEntered="#card3HoverIn" onMouseExited="#card3HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle fx:id="card4" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="213.0" layoutY="301.0" onMouseEntered="#card4HoverIn" onMouseExited="#card4HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle fx:id="card5" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="275.0" layoutY="301.0" onMouseEntered="#card5HoverIn" onMouseExited="#card5HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
    </children>
 </AnchorPane>

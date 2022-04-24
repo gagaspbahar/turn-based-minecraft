@@ -4,6 +4,7 @@ import com.aetherwars.model.Character;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -105,14 +106,85 @@ public class Controller {
     void card1HoverIn(MouseEvent event) {
         infoStat.setText(hand1.getText() + "hello");
         infoDescription.setText("BJIR DESKRIPSYEN");
-        card1.setFill(Color.GREEN);
+        infoImage.setImage(new Image("@card/image/character/Creeper.png"));
+//        card1.setFill(Color.GREEN);
     }
 
     @FXML
     void card1HoverOut(MouseEvent event) {
         infoStat.setText("(empty)");
         infoDescription.setText("(empty)");
-        card1.setFill(Color.WHITE);
+        infoImage.setImage(new Image("@card/image/character/question_mark.png"));
+//        card1.setFill(Color.WHITE);
+
+    }
+
+    @FXML
+    void card2HoverIn(MouseEvent event) {
+        infoStat.setText(hand1.getText() + "hello");
+        infoDescription.setText("BJIR DESKRIPSYEN");
+        infoImage.setImage(new Image("@card/image/character/Creeper.png"));
+//        card1.setFill(Color.GREEN);
+    }
+
+    @FXML
+    void card2HoverOut(MouseEvent event) {
+        infoStat.setText("(empty)");
+        infoDescription.setText("(empty)");
+        infoImage.setImage(new Image("@card/image/character/question_mark.png"));
+//        card1.setFill(Color.WHITE);
+
+    }
+
+    @FXML
+    void card3HoverIn(MouseEvent event) {
+        infoStat.setText(hand1.getText() + "hello");
+        infoDescription.setText("BJIR DESKRIPSYEN");
+        infoImage.setImage(new Image("@card/image/character/Creeper.png"));
+//        card1.setFill(Color.GREEN);
+    }
+
+    @FXML
+    void card3HoverOut(MouseEvent event) {
+        infoStat.setText("(empty)");
+        infoDescription.setText("(empty)");
+        infoImage.setImage(new Image("@card/image/character/question_mark.png"));
+//        card1.setFill(Color.WHITE);
+
+    }
+
+    @FXML
+    void card4HoverIn(MouseEvent event) {
+        infoStat.setText(hand1.getText() + "hello");
+        infoDescription.setText("BJIR DESKRIPSYEN");
+        infoImage.setImage(new Image("@card/image/character/Creeper.png"));
+//        card1.setFill(Color.GREEN);
+    }
+
+    @FXML
+    void card4HoverOut(MouseEvent event) {
+        infoStat.setText("(empty)");
+        infoDescription.setText("(empty)");
+        infoImage.setImage(new Image("@card/image/character/question_mark.png"));
+//        card1.setFill(Color.WHITE);
+
+    }
+
+    @FXML
+    void card5HoverIn(MouseEvent event) {
+        infoStat.setText(hand1.getText() + "hello");
+        infoDescription.setText("BJIR DESKRIPSYEN");
+        infoImage.setImage(new Image("card/image/character/Creeper.png"));
+//        card1.setFill(Color.GREEN);
+    }
+
+    @FXML
+    void card5HoverOut(MouseEvent event) {
+        infoStat.setText("(empty)");
+        infoDescription.setText("(empty)");
+        infoImage.setImage(new Image("card/image/character/question_mark.png"));
+//        card1.setFill(Color.WHITE);
+
     }
 
 
