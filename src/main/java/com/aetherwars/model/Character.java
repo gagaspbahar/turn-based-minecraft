@@ -22,7 +22,7 @@ public class Character extends Card {
     this.healthup = 0;
     this.level = 1;
     this.exp = 0;
-    this.swapDura = 0;
+    this.swapDura = -1;
     this.spellsEffect = new ArrayList<TempSpell>();
   }
 
@@ -34,7 +34,7 @@ public class Character extends Card {
     this.healthup = healthup;
     this.level = 1;
     this.exp = 0;
-    this.swapDura = 0;
+    this.swapDura = -1;
     this.spellsEffect = new ArrayList<TempSpell>();
   }
 
@@ -171,13 +171,14 @@ public class Character extends Card {
     int i = 0;
     int newAttack;
     int newHealth;
-    if(this.getSwapDura() != 0){
+    if(this.getSwapDura() > 0){
       this.setSwapDura(getSwapDura() - 1);
       if(this.getSwapDura() == 0){
         newHealth = this.getAttack();
         newAttack = this.getHealth();
         this.setHealth(newHealth);
         this.setAttack(newAttack);
+        this.setSwapDura(-1);
       }
     }
     while(i < spells.size()){

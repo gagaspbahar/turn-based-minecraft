@@ -12,6 +12,7 @@ class Player{
     private List<Card> fieldCard;
     private List<Boolean> fieldCardStatus;
     private List<Card> hand;
+    private List<Boolean> handStatus;
     private List<Card> deck;
 
     public Player(){
@@ -19,7 +20,9 @@ class Player{
         this.health = 80;
         this.mana = 1;
         this.fieldCard = new ArrayList<Card>(5);
+        this.fieldCardStatus = new ArrayList<Boolean>(5);
         this.hand = new ArrayList<Card>(5);
+        this.handStatus = new ArrayList<Boolean>(5);
         this.deck = new ArrayList<Card>(40);
     }
     
@@ -28,7 +31,9 @@ class Player{
         this.health = 80;
         this.mana = 1;
         this.fieldCard = new ArrayList<Card>(5);
+        this.fieldCardStatus = new ArrayList<Boolean>(5);
         this.hand = new ArrayList<Card>(5);
+        this.handStatus = new ArrayList<Boolean>(5);
         this.deck = new ArrayList<Card>(40);
     }
 
@@ -55,7 +60,15 @@ class Player{
     public void setMana(int i){
         this.mana = i;
     }
-    
+
+    public void addCardToField(int i, int j){
+        if(this.fieldCardStatus.get(i) == false && this.handStatus.get(j) == true){
+            this.fieldCard.set(i, this.hand.get(j));
+            this.fieldCardStatus.set(i, true);
+            this.handStatus.set(j, false);
+        }
+    }
+
     public void resetMana(int giliran){
         // Di awal permainan (giliran 1), jumlah mana yang dimiliki pemain adalah 1. Mana akan
         // meningkat sebesar 1 setiap gilirannya dan terbatas pada 10. 
