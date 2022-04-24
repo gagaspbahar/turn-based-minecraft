@@ -6,6 +6,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.aetherwars.AetherWars;
 import com.aetherwars.model.type.CardType;
 import com.aetherwars.model.type.SpellType;
 
@@ -20,7 +21,7 @@ public class MorphSpellConfig {
   }
 
   public void loadData() throws URISyntaxException, IOException {
-    File morphSpellCSVFile = new File(getClass().getResource(this.path).toURI());
+    File morphSpellCSVFile = new File(AetherWars.class.getClassLoader().getResource(this.path).toURI());
     CSVReader morphSpellReader = new CSVReader(morphSpellCSVFile, "\t");
     morphSpellReader.setSkipHeader(true);
     this.morphSpells = morphSpellReader.read();
@@ -61,7 +62,7 @@ public class MorphSpellConfig {
   public int getManaFromID(int id){
     for(String[] morphSpell : this.morphSpells){
       if(Integer.parseInt(morphSpell[0]) == id){
-        return Integer.parseInt(morphSpell[7]);
+        return Integer.parseInt(morphSpell[5]);
       }
     }
     return 0;

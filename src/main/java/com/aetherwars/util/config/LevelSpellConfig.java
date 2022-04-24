@@ -6,6 +6,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.aetherwars.AetherWars;
 import com.aetherwars.model.type.CardType;
 import com.aetherwars.model.type.SpellType;
 
@@ -20,7 +21,7 @@ public class LevelSpellConfig {
   }
 
   public void loadData() throws URISyntaxException, IOException {
-    File levelSpellCSVFile = new File(getClass().getResource(this.path).toURI());
+    File levelSpellCSVFile = new File(AetherWars.class.getClassLoader().getResource(this.path).toURI());
     CSVReader levelSpellReader = new CSVReader(levelSpellCSVFile, "\t");
     levelSpellReader.setSkipHeader(true);
     this.levelSpells = levelSpellReader.read();

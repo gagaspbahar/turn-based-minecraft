@@ -23,7 +23,7 @@ import com.aetherwars.model.*;
 import com.aetherwars.model.Character;
 
 public class AetherWars extends Application {
-  private static final String CHARACTER_CSV_FILE_PATH = "card/data/character.csv";
+  private static final String CHARACTER_CSV_FILE_PATH = "./character.csv";
   private static final String SPELL_MORPH_CSV_FILE_PATH = "card/data/spell_morph.csv";
   private static final String SPELL_PTN_CSV_FILE_PATH = "card/data/spell_ptn.csv";
   private static final String SPELL_SWAP_FILE_PATH = "card/data/spell_swap.csv";

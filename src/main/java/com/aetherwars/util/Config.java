@@ -1,18 +1,19 @@
 package com.aetherwars.util;
-
+import java.net.*;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 
+import com.aetherwars.AetherWars;
 import com.aetherwars.model.type.CardType;
 import com.aetherwars.util.config.*;
 
 public class Config implements BaseConfig {
-  private static final String CHARACTER_CSV_FILE_PATH = "../../../../resource/com/aetherwars/card/data/character.csv";
-  private static final String SPELL_MORPH_CSV_FILE_PATH = "../card/data/spell_morph.csv";
-  private static final String SPELL_PTN_CSV_FILE_PATH = "../card/data/spell_ptn.csv";
-  private static final String SPELL_SWAP_FILE_PATH = "../card/data/spell_swap.csv";
-  private static final String SPELL_LEVEL_FILE_PATH = "../card/data/spell_level.csv";
+  private static final String CHARACTER_CSV_FILE_PATH = "./com/aetherwars/card/data/character.csv";
+  private static final String SPELL_MORPH_CSV_FILE_PATH = "./com/aetherwars/card/data/spell_morph.csv";
+  private static final String SPELL_PTN_CSV_FILE_PATH = "./com/aetherwars/card/data/spell_ptn.csv";
+  private static final String SPELL_SWAP_FILE_PATH = "./com/aetherwars/card/data/spell_swap.csv";
+  private static final String SPELL_LEVEL_FILE_PATH = "./com/aetherwars/card/data/spell_level.csv";
 
   public CharacterConfig characters;
   public MorphSpellConfig morphSpells;
@@ -26,6 +27,17 @@ public class Config implements BaseConfig {
     this.levelSpells = new LevelSpellConfig(SPELL_LEVEL_FILE_PATH);
     this.swapSpells = new SwapSpellConfig(SPELL_SWAP_FILE_PATH);
     this.potionSpells = new PotionSpellConfig(SPELL_PTN_CSV_FILE_PATH);
+    try {
+      this.loadData();
+    }
+    catch (URISyntaxException e) {
+      System.out.println("URL ERROR");
+      e.printStackTrace();
+    }
+    catch (IOException e) {
+      System.out.println("IO ERROR");
+      e.printStackTrace();
+    }
   }
   
   public void loadData() throws IOException, URISyntaxException {

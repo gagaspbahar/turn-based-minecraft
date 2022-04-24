@@ -6,6 +6,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.aetherwars.AetherWars;
 import com.aetherwars.model.type.CardType;
 import com.aetherwars.model.type.CharType;
 
@@ -20,7 +21,7 @@ public class CharacterConfig implements BaseConfig {
   }
 
   public void loadData() throws URISyntaxException, IOException {
-    File characterCSVFile = new File(getClass().getResource(this.path).toURI());
+    File characterCSVFile = new File(AetherWars.class.getClassLoader().getResource(this.path).toURI());
     CSVReader characterReader = new CSVReader(characterCSVFile, "\t");
     characterReader.setSkipHeader(true);
     this.characters = characterReader.read();

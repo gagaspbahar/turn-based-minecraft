@@ -6,6 +6,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.aetherwars.AetherWars;
 import com.aetherwars.model.type.CardType;
 import com.aetherwars.model.type.SpellType;
 
@@ -20,7 +21,7 @@ public class PotionSpellConfig {
   }
 
   public void loadData() throws URISyntaxException, IOException {
-    File potionSpellCSVFile = new File(getClass().getResource(this.path).toURI());
+    File potionSpellCSVFile = new File(AetherWars.class.getClassLoader().getResource(this.path).toURI());
     CSVReader potionSpellReader = new CSVReader(potionSpellCSVFile, "\t");
     potionSpellReader.setSkipHeader(true);
     this.potionSpells = potionSpellReader.read();
