@@ -1,5 +1,7 @@
 package com.aetherwars.model;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.*;
 import com.aetherwars.model.type.*;
 import com.aetherwars.util.Config;
@@ -27,6 +29,11 @@ public class Player {
         this.handStatus = new Boolean[]{false, false, false, false, false};
         this.deck = new ArrayList<Card>(50);
         this.config = new Config();
+//        try {
+//            this.config.loadData();
+//        } catch (IOException | URISyntaxException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public Player(String name) {
@@ -39,6 +46,11 @@ public class Player {
         this.handStatus = new Boolean[]{false, false, false, false, false};
         this.deck = new ArrayList<Card>(50);
         this.config = new Config();
+//        try {
+//            this.config.loadData();
+//        } catch (IOException | URISyntaxException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public String getName() {

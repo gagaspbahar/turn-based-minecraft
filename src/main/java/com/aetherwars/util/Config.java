@@ -8,7 +8,7 @@ import com.aetherwars.model.type.CardType;
 import com.aetherwars.util.config.*;
 
 public class Config implements BaseConfig {
-  private static final String CHARACTER_CSV_FILE_PATH = "../../../../resource/com/aetherwars/card/data/character.csv";
+  private static final String CHARACTER_CSV_FILE_PATH = "../card/data/character.csv";
   private static final String SPELL_MORPH_CSV_FILE_PATH = "../card/data/spell_morph.csv";
   private static final String SPELL_PTN_CSV_FILE_PATH = "../card/data/spell_ptn.csv";
   private static final String SPELL_SWAP_FILE_PATH = "../card/data/spell_swap.csv";
@@ -31,6 +31,7 @@ public class Config implements BaseConfig {
   public void loadData() throws IOException, URISyntaxException {
     this.characters.loadData();
     this.morphSpells.loadData();
+    this.levelSpells.loadData();
     this.swapSpells.loadData();
     this.potionSpells.loadData();
   }
