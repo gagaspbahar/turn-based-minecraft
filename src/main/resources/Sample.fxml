@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="450.0" prefWidth="787.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aetherwars.Sample">
+<AnchorPane prefHeight="450.0" prefWidth="787.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aetherwars.Controller">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="GREY" height="18.0" layoutX="30.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="302.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="GREY" height="18.0" layoutX="465.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="302.0" />
@@ -26,17 +27,13 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="62.0" layoutX="557.0" layoutY="171.0" stroke="BLACK" strokeType="INSIDE" width="62.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="62.0" layoutX="630.0" layoutY="171.0" stroke="BLACK" strokeType="INSIDE" width="62.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="62.0" layoutX="481.0" layoutY="134.0" stroke="BLACK" strokeType="INSIDE" width="62.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="25.0" layoutY="296.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="88.0" layoutY="296.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="151.0" layoutY="296.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="215.0" layoutY="296.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="278.0" layoutY="296.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle fx:id="card1" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="278.0" layoutY="296.0" onMouseEntered="#card1HoverIn" onMouseExited="#card1HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="140.0" layoutX="347.0" layoutY="278.0" stroke="BLACK" strokeType="INSIDE" width="95.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="120.0" layoutX="454.0" layoutY="296.0" stroke="BLACK" strokeType="INSIDE" width="120.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="120.0" layoutX="573.0" layoutY="296.0" stroke="BLACK" strokeType="INSIDE" width="120.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="706.0" layoutY="299.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="706.0" layoutY="348.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dfdfdf" height="18.0" layoutX="30.0" layoutY="242.0" stroke="BLACK" strokeType="INSIDE" width="160.0" />
+      <Rectangle fx:id="draw" arcHeight="5.0" arcWidth="5.0" fill="#dfdfdf" height="18.0" layoutX="30.0" layoutY="242.0" stroke="BLACK" strokeType="INSIDE" width="160.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dfdfdf" height="18.0" layoutX="188.0" layoutY="242.0" stroke="BLACK" strokeType="INSIDE" width="160.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dfdfdf" height="18.0" layoutX="345.0" layoutY="242.0" stroke="BLACK" strokeType="INSIDE" width="160.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dfdfdf" height="18.0" layoutX="503.0" layoutY="242.0" stroke="BLACK" strokeType="INSIDE" width="160.0" />
@@ -90,33 +87,9 @@
             <Font name="Agency FB" size="25.0" />
          </font>
       </Text>
-      <ImageView fitHeight="90.0" fitWidth="83.0" layoutX="352.0" layoutY="303.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cardImage1" fitHeight="50.0" fitWidth="40.0" layoutX="35.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@com/aetherwars/card/image/character/Sheep.png" />
-         </image></ImageView>
-      <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="35.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@com/aetherwars/card/image/character/Sheep.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="98.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@com/aetherwars/card/image/character/Sheep.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="161.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@com/aetherwars/card/image/character/Sheep.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="225.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@com/aetherwars/card/image/character/Sheep.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="288.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@com/aetherwars/card/image/character/Sheep.png" />
+            <Image url="@com/aetherwars/card/image/character/question_mark.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="62.0" fitWidth="62.0" layoutX="30.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
@@ -127,30 +100,50 @@
          <image>
             <Image url="@com/aetherwars/card/image/character/mascot2.png" />
          </image></ImageView>
-      <Text layoutX="35.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Epi" />
-      <Text layoutX="736.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Epi" />
+      <Text layoutX="35.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" />
+      <Text layoutX="736.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2" />
       <Text layoutX="287.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" />
       <Text layoutX="97.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DRAW" />
       <Text layoutX="254.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PLAN" />
       <Text layoutX="410.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATTACK" />
       <Text layoutX="562.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="END" />
-      <Button layoutX="692.0" layoutY="239.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="62.0" text="&gt;&gt;" />
+      <Button fx:id="submit" layoutX="692.0" layoutY="239.0" mnemonicParsing="false" onMouseClicked="#submitClicked" onMouseEntered="#submitHoverIn" onMouseExited="#submitHoverOut" prefHeight="26.0" prefWidth="62.0" text="&gt;&gt;" />
       <Text layoutX="724.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Deck" />
       <Text layoutX="722.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mana" />
-      <Text layoutX="725.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 / 0" />
-      <Text layoutX="725.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 / 0" />
-      <Text layoutX="464.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
       <Text layoutX="462.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <Text layoutX="462.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATK : -" />
-      <Text layoutX="462.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HP : -" />
-      <Text layoutX="463.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level : -" />
-      <Text layoutX="463.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EXP : 0 / 1" />
-      <Text layoutX="463.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type : -" />
-      <Text layoutX="576.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="               -" wrappingWidth="112.8453369140625" />
-      <Text layoutX="378.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Turn 0" />
+      <Label fx:id="hand1" layoutX="38.0" layoutY="360.0" text="(empty)" />
+      <Label fx:id="hand2" layoutX="101.0" layoutY="360.0" text="(empty)" />
+      <Label fx:id="hand3" layoutX="160.0" layoutY="360.0" text="(empty)" />
+      <Label fx:id="hand4" layoutX="224.0" layoutY="360.0" text="(empty)" />
+      <ImageView fx:id="cardImage2" fitHeight="50.0" fitWidth="40.0" layoutX="101.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com/aetherwars/card/image/character/question_mark.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="cardImage3" fitHeight="50.0" fitWidth="40.0" layoutX="162.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com/aetherwars/card/image/character/question_mark.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="cardImage4" fitHeight="50.0" fitWidth="40.0" layoutX="224.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com/aetherwars/card/image/character/question_mark.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="turn" layoutX="376.0" layoutY="37.0" text="Turn 0" />
+      <Label fx:id="infoStat" layoutX="467.0" layoutY="309.0" text="(empty)" />
+      <Label fx:id="infoDescription" layoutX="588.0" layoutY="310.0" text="(empty)" />
+      <ImageView fx:id="infoImage" fitHeight="80.0" fitWidth="80.0" layoutX="355.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com/aetherwars/card/image/character/question_mark.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="mana1" layoutX="38.0" layoutY="380.0" text="(empty)" />
+      <Label fx:id="mana2" layoutX="101.0" layoutY="380.0" text="(empty)" />
+      <Label fx:id="mana3" layoutX="160.0" layoutY="380.0" text="(empty)" />
+      <Label fx:id="mana4" layoutX="224.0" layoutY="380.0" text="(empty)" />
+      <Button fx:id="proceedButton" layoutX="367.0" layoutY="188.0" mnemonicParsing="false" onMouseClicked="#drawCard" text="Button" />
+      <Label fx:id="deckSize" layoutX="720.0" layoutY="318.0" text="50 / 50" />
+      <Label fx:id="manaSize" layoutX="725.0" layoutY="367.0" text="1 / 1" />
    </children>
 </AnchorPane>
