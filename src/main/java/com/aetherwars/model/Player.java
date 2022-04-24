@@ -52,7 +52,11 @@ class Player{
         this.health = i;
     }
 
-    public void setMana(int giliran){
+    public void setMana(int i){
+        this.mana = i;
+    }
+    
+    public void resetMana(int giliran){
         // Di awal permainan (giliran 1), jumlah mana yang dimiliki pemain adalah 1. Mana akan
         // meningkat sebesar 1 setiap gilirannya dan terbatas pada 10. 
         if (this.mana <= 10){

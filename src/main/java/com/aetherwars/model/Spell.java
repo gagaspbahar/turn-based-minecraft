@@ -4,7 +4,7 @@ import com.aetherwars.model.type.*;
 
 public abstract class Spell extends Card {
   abstract SpellType getSpellType();
-  abstract void cast(Character c);
+  abstract void cast(Character c, Player p);
 }
 
 abstract class TempSpell extends Spell {
@@ -38,10 +38,13 @@ class PotionSpell extends TempSpell {
   }
   
   @Override
-  public void cast(Character c){
-    c.setHealth(c.getHealth() + this.getHealthChange());
-    c.setAttack(c.getAttack() + this.getAttackChange());
-    c.addSpellsEffect(this);
+  public void cast(Character c, Player p){
+    if(p.getMana() >= this.getMana()){
+      c.setHealth(c.getHealth() + this.getHealthChange());
+      c.setAttack(c.getAttack() + this.getAttackChange());
+      c.addSpellsEffect(this);
+      p.setMana(p.getMana() - this.getMana());
+    }
   }
 
   @Override
@@ -67,10 +70,8 @@ class PotionSpell extends TempSpell {
 
 class LevelSpell extends Spell {
   private final SpellType spellType = SpellType.LEVEL;
-  private int levelChange;
   
   public LevelSpell(){
-    this.levelChange = 0;
   }
 
   public SpellType getSpellType(){
@@ -78,8 +79,12 @@ class LevelSpell extends Spell {
   }
 
   @Override
-  public void cast(Character c){
-    
+  public void cast(Character c, Player  p){
+    if(p.getMana() >= (c.getLevel()+1)/2){
+      c.setLevel(c.getLevel() + 1);
+      c.setEXP(0);
+      p.setMana(p.getMana() - (c.getLevel()+1)/2);
+    }
   }
 
 }
@@ -98,16 +103,19 @@ class SwapSpell extends TempSpell {
   }
 
   @Override
-  public void cast(Character c){
-    if(c.getSwapDura() == 0){
-      int newHealth = c.getAttack();
-      int newAttack = c.getHealth();
-      c.setHealth(newHealth);
-      c.setAttack(newAttack);
-      c.setSwapDura(this.getDuration());
-    }
-    else{
-      c.setSwapDura(c.getSwapDura() + this.getDuration());
+  public void cast(Character c, Player p){
+    if(p.getMana() >= this.getMana()){
+      if(c.getSwapDura() == 0){
+        int newHealth = c.getAttack();
+        int newAttack = c.getHealth();
+        c.setHealth(newHealth);
+        c.setAttack(newAttack);
+        c.setSwapDura(this.getDuration());
+      }
+      else{
+        c.setSwapDura(c.getSwapDura() + this.getDuration());
+      }
+      p.setMana(p.getMana() - this.getMana());
     }
   }
 
@@ -135,7 +143,7 @@ class MorphSpell extends Spell {
   public MorphSpell(int targetid) {this.targetid = targetid; }
 
   @Override
-  public void cast(Character c){
+  public void cast(Character c, Player p){
     
   }
 
