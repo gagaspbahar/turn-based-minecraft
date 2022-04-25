@@ -67,6 +67,10 @@ public class Player {
 
     public Card[] getHand() {return this.hand; }
 
+    public Boolean[] getHandStatus() {return this.handStatus; }
+
+    public Boolean[] getFieldCardStatus() {return this.fieldCardStatus; }
+
     public void setName(String s) {
         this.name = s;
     }

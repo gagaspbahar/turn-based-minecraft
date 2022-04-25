@@ -185,7 +185,7 @@
       <Rectangle fx:id="card5" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="275.0" layoutY="301.0" onMouseClicked="#card5Clicked" onMouseEntered="#card5HoverIn" onMouseExited="#card5HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
       <Button fx:id="addXPbutton" layoutX="120.0" layoutY="411.0" mnemonicParsing="false" onMouseClicked="#addFieldXP" text="Add XP" />
       <Button fx:id="removeButton" layoutX="50.0" layoutY="411.0" mnemonicParsing="false" onMouseClicked="#removeCard" text="Remove" />
-      <Button fx:id="resetCardButton" layoutX="182.0" layoutY="411.0" mnemonicParsing="false" onMouseClicked="#resetChosenCard" text="RESET" />
       <Label fx:id="chosenidx" layoutX="42.0" layoutY="270.0" text="chosen" />
+      <Label fx:id="utilityWarningText" layoutX="202.0" layoutY="416.0" text="Label" textFill="RED" />
    </children>
 </AnchorPane>
