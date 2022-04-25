@@ -82,4 +82,8 @@ public class Card {
   public String toString() {
     return "Name: " + this.getName() + "\nDescription: " + this.getDescription() + "\nType: " + this.getType();
   }
+
+  public String getStat(){
+    return "Nama: " + this.getName();
+  }
 }

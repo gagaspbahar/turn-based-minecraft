@@ -85,6 +85,14 @@ class PotionSpell extends Spell {
     return this.healthChange;
   }
 
+  @Override
+  public String toString() {
+    return "ATK +" + this.getAttackChange() + "/HP +" + this.getHealthChange();
+  }
+
+  public String getStat(){
+    return this.getName() + "\nDURATION: " + this.getDuration() + "\nATK UP: " + this.getAttackChange() +"\nHP UP: " + this.getHealthChange() + "\nTYPE: " + this.getSpellType();
+  }
 
 }
 
@@ -112,6 +120,13 @@ class LevelSpell extends Spell {
     }
   }
 
+  @Override
+  public String toString() {
+    return this.getName();
+  }
+  public String getStat(){
+    return this.getName() +"\nTYPE: " + this.getSpellType();
+  }
 }
 
 class SwapSpell extends Spell {
@@ -159,6 +174,13 @@ class SwapSpell extends Spell {
   }
 
   //Pastiin mekanisme swap dan potion terlebih dahulu
+  @Override
+  public String toString() {
+    return "ATK <-> HP";
+  }
+  public String getStat(){
+    return this.getName() + "\nDURATION: " + this.getDuration() + "\nTYPE: " + this.getSpellType();
+  }
 }
 
 class MorphSpell extends Spell {
@@ -183,5 +205,14 @@ class MorphSpell extends Spell {
 
   public SpellType getSpellType(){
     return this.spellType;
+  }
+
+  @Override
+  public String toString() {
+    return "MORPH";
+  }
+
+  public String getStat(){
+    return this.getName() + "\nTARGET ID: " + this.targetid + "\nTYPE: " + this.getSpellType();
   }
 }

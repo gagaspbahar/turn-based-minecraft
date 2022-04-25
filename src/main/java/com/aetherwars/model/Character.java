@@ -198,6 +198,10 @@ public class Character extends Card {
   
   @Override
   public String toString() {
-    return "Name: " + this.getName() + "\nDescription: " + this.getDescription() + "\nType: " + this.getType();
+    return "ATK " + this.getAttack() + "/HP " + this.getHealth();
+  }
+
+  public String getStat(){
+    return this.getName() + "\nATK: " + this.getAttack() + "\nHP: " + this.getHealth() +"\nLEVEL: " + this.getLevel() + "\nEXP: " + this.getEXP() + "\nTYPE: " + this.getCharType();
   }
 }

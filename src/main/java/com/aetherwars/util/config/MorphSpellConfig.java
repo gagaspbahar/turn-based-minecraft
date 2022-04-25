@@ -44,7 +44,7 @@ public class MorphSpellConfig {
   public String getDescriptionFromID(int id){
     for(String[] morphSpell : this.morphSpells){
       if(Integer.parseInt(morphSpell[0]) == id){
-        return morphSpell[3];
+        return morphSpell[2];
       }
     }
     return null;
@@ -53,7 +53,7 @@ public class MorphSpellConfig {
   public String getImagePathFromID(int id){
     for(String[] morphSpell : this.morphSpells){
       if(Integer.parseInt(morphSpell[0]) == id){
-        return morphSpell[4];
+        return morphSpell[3];
       }
     }
     return null;
