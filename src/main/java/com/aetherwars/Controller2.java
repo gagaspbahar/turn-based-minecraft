@@ -60,26 +60,38 @@ public class Controller2 implements Initializable {
 
     @FXML
     void card1Clicked(MouseEvent event) {
-        drawcard1.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
-        drawcardChosenField = 1;
-        drawcard2.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
-        drawcard3.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+        if (drawcardhand1.getText() != ""){
+            drawcard1.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
+            drawcardChosenField = 1;
+            if ((AetherWars.playerTurn && AetherWars.p1.getDeck().size() != 2) || (! AetherWars.playerTurn && AetherWars.p2.getDeck().size() != 2)){
+                drawcard2.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+            }
+            drawcard3.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+        }
     }
 
     @FXML
     void card2Clicked(MouseEvent event) {
-        drawcard2.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
-        drawcardChosenField = 2;
-        drawcard1.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
-        drawcard3.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+        if (drawcardhand2.getText() != ""){
+            drawcard2.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
+            drawcardChosenField = 2;
+            if ((AetherWars.playerTurn && AetherWars.p1.getDeck().size() != 1) || (! AetherWars.playerTurn && AetherWars.p2.getDeck().size() != 1)){
+                drawcard1.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                drawcard3.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+            }
+        }
     }
 
     @FXML
     void card3clicked(MouseEvent event) {
-        drawcard3.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
-        drawcardChosenField = 2;
-        drawcard1.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
-        drawcard2.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+        if (drawcardhand3.getText() != ""){
+            drawcard3.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
+            drawcardChosenField = 3;
+            drawcard1.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+            if ((AetherWars.playerTurn && AetherWars.p1.getDeck().size() != 2) || (! AetherWars.playerTurn && AetherWars.p2.getDeck().size() != 2)){
+                drawcard2.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+            }
+        }
     }
 
     @FXML
@@ -88,19 +100,62 @@ public class Controller2 implements Initializable {
             if (AetherWars.playerTurn){
                 int kosong = AetherWars.p1.firstEmptyHand();
                 if (kosong != -1){
-                    AetherWars.p1.getHand()[kosong] = AetherWars.p1.getDeck().get(drawcardChosenField - 1);
+                    if (AetherWars.p1.getDeck().size() >= 3){
+                        AetherWars.p1.getHand()[kosong] = AetherWars.p1.getDeck().get(drawcardChosenField - 1);
+                    }
+                    else if (AetherWars.p1.getDeck().size() == 2 && drawcardChosenField == 1){
+                        AetherWars.p1.getHand()[kosong] = AetherWars.p1.getDeck().get(drawcardChosenField - 1);
+                    }
+                    else if (AetherWars.p1.getDeck().size() == 2 && drawcardChosenField == 3){
+                        AetherWars.p1.getHand()[kosong] = AetherWars.p1.getDeck().get(drawcardChosenField - 2);
+                    }
+                    else if (AetherWars.p1.getDeck().size() == 1 && drawcardChosenField == 2){
+                        AetherWars.p1.getHand()[kosong] = AetherWars.p1.getDeck().get(drawcardChosenField - 2);
+                    }
     
                 }
-                AetherWars.p1.getDeck().remove(drawcardChosenField - 1);
+                if (AetherWars.p1.getDeck().size() >= 3){
+                    AetherWars.p1.getDeck().remove(drawcardChosenField - 1);
+                }
+                else if (AetherWars.p1.getDeck().size() == 2 && drawcardChosenField == 1){
+                    AetherWars.p1.getDeck().remove(drawcardChosenField - 1);
+                }
+                else if (AetherWars.p1.getDeck().size() == 2 && drawcardChosenField == 3){
+                    AetherWars.p1.getDeck().remove(drawcardChosenField - 2);
+                }
+                else if (AetherWars.p1.getDeck().size() == 1 && drawcardChosenField == 2){
+                    AetherWars.p1.getDeck().remove(drawcardChosenField - 2);
+                }
                 Collections.shuffle(AetherWars.p1.getDeck());
             }
             else{
                 int kosong = AetherWars.p2.firstEmptyHand();
                 if (kosong != -1){
-                    AetherWars.p2.getHand()[kosong] = AetherWars.p2.getDeck().get(drawcardChosenField - 1);
-    
+                    if (AetherWars.p2.getDeck().size() >= 3){
+                        AetherWars.p2.getHand()[kosong] = AetherWars.p2.getDeck().get(drawcardChosenField - 1);
+                    }
+                    else if (AetherWars.p2.getDeck().size() == 2 && drawcardChosenField == 1){
+                        AetherWars.p2.getHand()[kosong] = AetherWars.p2.getDeck().get(drawcardChosenField - 1);
+                    }
+                    else if (AetherWars.p2.getDeck().size() == 2 && drawcardChosenField == 3){
+                        AetherWars.p2.getHand()[kosong] = AetherWars.p2.getDeck().get(drawcardChosenField - 2);
+                    }
+                    else if (AetherWars.p2.getDeck().size() == 1 && drawcardChosenField == 2){
+                        AetherWars.p2.getHand()[kosong] = AetherWars.p2.getDeck().get(drawcardChosenField - 2);
+                    }
                 }
-                AetherWars.p2.getDeck().remove(drawcardChosenField - 1);
+                if (AetherWars.p2.getDeck().size() >= 3){
+                    AetherWars.p2.getDeck().remove(drawcardChosenField - 1);
+                }
+                else if (AetherWars.p2.getDeck().size() == 2 && drawcardChosenField == 1){
+                    AetherWars.p2.getDeck().remove(drawcardChosenField - 1);
+                }
+                else if (AetherWars.p2.getDeck().size() == 2 && drawcardChosenField == 3){
+                    AetherWars.p2.getDeck().remove(drawcardChosenField - 2);
+                }
+                else if (AetherWars.p2.getDeck().size() == 1 && drawcardChosenField == 2){
+                    AetherWars.p2.getDeck().remove(drawcardChosenField - 2);
+                }
                 Collections.shuffle(AetherWars.p2.getDeck());  
             }
             Stage popupwindow = (Stage) drawcard1.getScene().getWindow();
@@ -154,14 +209,14 @@ public class Controller2 implements Initializable {
             drawcardhand3.setText(c2.toString());
             drawcardmana3.setText("MANA " + String.valueOf(c2.getMana()));
             drawcardimage3.setImage(new Image("./com/aetherwars/" + c2.getImagePath()));
-            drawcard2.setStyle("-fx-stroke: white; -fx-stroke-width: 1;");
+            drawcard2.setStyle("-fx-stroke: white; -fx-stroke-width: 0;");
         }
         else if ((AetherWars.playerTurn && AetherWars.p1.getDeck().size() >= 1) || (! AetherWars.playerTurn && AetherWars.p2.getDeck().size() >= 1)){
             drawcardhand2.setText(c1.toString());
             drawcardmana2.setText("MANA " + String.valueOf(c1.getMana()));
             drawcardimage2.setImage(new Image("./com/aetherwars/" + c1.getImagePath())); 
-            drawcard1.setStyle("-fx-stroke: white; -fx-stroke-width: 1;");
-            drawcard3.setStyle("-fx-stroke: white; -fx-stroke-width: 1;");
+            drawcard1.setStyle("-fx-stroke: white; -fx-stroke-width: 0;");
+            drawcard3.setStyle("-fx-stroke: white; -fx-stroke-width: 0;");
         }
         
         
