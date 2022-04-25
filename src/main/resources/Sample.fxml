@@ -88,7 +88,7 @@
       </Text>
       <ImageView fx:id="cardImage1" fitHeight="50.0" fitWidth="40.0" layoutX="38.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@com/aetherwars/card/image/character/white.jpg" />
+            <Image url="@com/aetherwars/card/image/character/base.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="62.0" fitWidth="62.0" layoutX="30.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
@@ -127,17 +127,17 @@
          </font></Label>
       <ImageView fx:id="cardImage2" fitHeight="50.0" fitWidth="40.0" layoutX="104.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@com/aetherwars/card/image/character/white.jpg" />
+            <Image url="@com/aetherwars/card/image/character/base.png" />
          </image>
       </ImageView>
       <ImageView fx:id="cardImage3" fitHeight="50.0" fitWidth="40.0" layoutX="165.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@com/aetherwars/card/image/character/white.jpg" />
+            <Image url="@com/aetherwars/card/image/character/base.png" />
          </image>
       </ImageView>
       <ImageView fx:id="cardImage4" fitHeight="50.0" fitWidth="40.0" layoutX="227.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@com/aetherwars/card/image/character/white.jpg" />
+            <Image url="@com/aetherwars/card/image/character/base.png" />
          </image>
       </ImageView>
       <Label fx:id="turn" layoutX="376.0" layoutY="37.0" text="Turn 0" />
@@ -169,7 +169,7 @@
          </font></Label>
       <ImageView fx:id="cardImage41" fitHeight="50.0" fitWidth="40.0" layoutX="288.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@com/aetherwars/card/image/character/white.jpg" />
+            <Image url="@com/aetherwars/card/image/character/base.png" />
          </image>
       </ImageView>
       <Label fx:id="mana41" layoutX="289.0" layoutY="378.0">
@@ -177,11 +177,11 @@
             <Font size="8.0" />
          </font></Label>
       <Label fx:id="indextest" layoutX="203.0" layoutY="270.0" text="index" />
+      <Label fx:id="namatest" layoutX="125.0" layoutY="270.0" text="nama" />
       <Rectangle fx:id="card1" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="27.0" layoutY="301.0" onMouseEntered="#card1HoverIn" onMouseExited="#card1HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
       <Rectangle fx:id="card2" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="89.0" layoutY="301.0" onMouseEntered="#card2HoverIn" onMouseExited="#card2HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
       <Rectangle fx:id="card3" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="151.0" layoutY="301.0" onMouseEntered="#card3HoverIn" onMouseExited="#card3HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
       <Rectangle fx:id="card4" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="213.0" layoutY="301.0" onMouseEntered="#card4HoverIn" onMouseExited="#card4HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
       <Rectangle fx:id="card5" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="275.0" layoutY="301.0" onMouseEntered="#card5HoverIn" onMouseExited="#card5HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-      <Label fx:id="namatest" layoutX="125.0" layoutY="270.0" text="nama" />
    </children>
 </AnchorPane>

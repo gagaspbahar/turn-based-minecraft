@@ -45,27 +45,6 @@ public class Controller {
             }
             for(int i=0; i<5; i++){
                 if (AetherWars.p1.getHand()[i] != null){
-                    // if (i == 0) {
-                    //     hand1.setText(AetherWars.p1.getHand()[i].toString());
-                    //     mana1.setText(Integer.toString(AetherWars.p1.getHand()[i].getMana()));
-                    //     cardImage1.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[i].getImagePath()));
-                    // } else if (i == 1) {
-                    //     hand2.setText(AetherWars.p1.getHand()[i].toString());
-                    //     mana2.setText(Integer.toString(AetherWars.p1.getHand()[i].getMana()));
-                    //     cardImage2.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[i].getImagePath()));
-                    // } else if (i == 2) {
-                    //     hand3.setText(AetherWars.p1.getHand()[i].toString());
-                    //     mana3.setText(Integer.toString(AetherWars.p1.getHand()[i].getMana()));
-                    //     cardImage3.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[i].getImagePath()));
-                    // } else if (i == 3) {
-                    //     hand4.setText(AetherWars.p1.getHand()[i].toString());
-                    //     mana4.setText(Integer.toString(AetherWars.p1.getHand()[i].getMana()));
-                    //     cardImage4.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[i].getImagePath()));
-                    // } else if (i == 4) {
-                    //     hand5.setText(AetherWars.p1.getHand()[i].toString());
-                    //     mana5.setText(Integer.toString(AetherWars.p1.getHand()[i].getMana()));
-                    //     cardImage5.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[i].getImagePath()));
-                    // }
                     handText.get(i).setText(AetherWars.p1.getHand()[i].toString());
                     manaText.get(i).setText("MANA " + String.valueOf(AetherWars.p1.getHand()[i].getMana()));
                     cardImage.get(i).setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[i].getImagePath())); 
@@ -84,27 +63,6 @@ public class Controller {
             }
             for(int i=0; i<5; i++){
                 if(AetherWars.p2.getHand()[i] != null){
-                    // if (i == 0) {
-                    //     hand1.setText(AetherWars.p2.getHand()[i].toString());
-                    //     mana1.setText(Integer.toString(AetherWars.p2.getHand()[i].getMana()));
-                    //     cardImage1.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[i].getImagePath()));
-                    // } else if (i == 1) {
-                    //     hand2.setText(AetherWars.p2.getHand()[i].toString());
-                    //     mana2.setText(Integer.toString(AetherWars.p2.getHand()[i].getMana()));
-                    //     cardImage2.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[i].getImagePath()));
-                    // } else if (i == 2) {
-                    //     hand3.setText(AetherWars.p2.getHand()[i].toString());
-                    //     mana3.setText(Integer.toString(AetherWars.p2.getHand()[i].getMana()));
-                    //     cardImage3.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[i].getImagePath()));
-                    // } else if (i == 3) {
-                    //     hand4.setText(AetherWars.p2.getHand()[i].toString());
-                    //     mana4.setText(Integer.toString(AetherWars.p2.getHand()[i].getMana()));
-                    //     cardImage4.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[i].getImagePath()));
-                    // } else if (i == 4) {
-                    //     hand5.setText(AetherWars.p2.getHand()[i].toString());
-                    //     mana5.setText(Integer.toString(AetherWars.p2.getHand()[i].getMana()));
-                    //     cardImage5.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[i].getImagePath()));
-                    // }
                     handText.get(i).setText(AetherWars.p2.getHand()[i].toString());
                     manaText.get(i).setText("MANA " + String.valueOf(AetherWars.p2.getHand()[i].getMana()));
                     cardImage.get(i).setImage(new Image("./com/aetherwars/" + AetherWars.p2.getHand()[i].getImagePath())); 
