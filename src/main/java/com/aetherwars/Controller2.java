@@ -1,5 +1,8 @@
 package com.aetherwars;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import java.util.Collections;
 import com.aetherwars.Controller;
 import javafx.event.ActionEvent;
@@ -19,6 +22,7 @@ import java.net.URL;
 
 public class Controller2 implements Initializable {
     private int drawcardChosenField = 0;
+    public static Card sixthCard = new Card();
 
     @FXML
     private Rectangle drawcard1;
@@ -95,10 +99,11 @@ public class Controller2 implements Initializable {
     }
 
     @FXML
-    void submitDraw(ActionEvent event) {
+    void submitDraw(ActionEvent event) throws Exception {
+        int kosong;
         if (drawcardChosenField != 0){
             if (AetherWars.playerTurn){
-                int kosong = AetherWars.p1.firstEmptyHand();
+                kosong = AetherWars.p1.firstEmptyHand();
                 if (kosong != -1){
                     if (AetherWars.p1.getDeck().size() >= 3){
                         AetherWars.p1.getHand()[kosong] = AetherWars.p1.getDeck().get(drawcardChosenField - 1);
@@ -112,7 +117,19 @@ public class Controller2 implements Initializable {
                     else if (AetherWars.p1.getDeck().size() == 1 && drawcardChosenField == 2){
                         AetherWars.p1.getHand()[kosong] = AetherWars.p1.getDeck().get(drawcardChosenField - 2);
                     }
-    
+                } else {
+                    if (AetherWars.p1.getDeck().size() >= 3){
+                        sixthCard = AetherWars.p1.getDeck().get(drawcardChosenField - 1);
+                    }
+                    else if (AetherWars.p1.getDeck().size() == 2 && drawcardChosenField == 1){
+                        sixthCard = AetherWars.p1.getDeck().get(drawcardChosenField - 1);
+                    }
+                    else if (AetherWars.p1.getDeck().size() == 2 && drawcardChosenField == 3){
+                        sixthCard = AetherWars.p1.getDeck().get(drawcardChosenField - 2);
+                    }
+                    else if (AetherWars.p1.getDeck().size() == 1 && drawcardChosenField == 2){
+                        sixthCard = AetherWars.p1.getDeck().get(drawcardChosenField - 2);
+                    }
                 }
                 if (AetherWars.p1.getDeck().size() >= 3){
                     AetherWars.p1.getDeck().remove(drawcardChosenField - 1);
@@ -129,7 +146,7 @@ public class Controller2 implements Initializable {
                 Collections.shuffle(AetherWars.p1.getDeck());
             }
             else{
-                int kosong = AetherWars.p2.firstEmptyHand();
+                kosong = AetherWars.p2.firstEmptyHand();
                 if (kosong != -1){
                     if (AetherWars.p2.getDeck().size() >= 3){
                         AetherWars.p2.getHand()[kosong] = AetherWars.p2.getDeck().get(drawcardChosenField - 1);
@@ -142,6 +159,19 @@ public class Controller2 implements Initializable {
                     }
                     else if (AetherWars.p2.getDeck().size() == 1 && drawcardChosenField == 2){
                         AetherWars.p2.getHand()[kosong] = AetherWars.p2.getDeck().get(drawcardChosenField - 2);
+                    }
+                } else {
+                    if (AetherWars.p2.getDeck().size() >= 3){
+                        sixthCard = AetherWars.p2.getDeck().get(drawcardChosenField - 1);
+                    }
+                    else if (AetherWars.p2.getDeck().size() == 2 && drawcardChosenField == 1){
+                        sixthCard = AetherWars.p2.getDeck().get(drawcardChosenField - 1);
+                    }
+                    else if (AetherWars.p2.getDeck().size() == 2 && drawcardChosenField == 3){
+                        sixthCard = AetherWars.p2.getDeck().get(drawcardChosenField - 2);
+                    }
+                    else if (AetherWars.p2.getDeck().size() == 1 && drawcardChosenField == 2){
+                        sixthCard = AetherWars.p2.getDeck().get(drawcardChosenField - 2);
                     }
                 }
                 if (AetherWars.p2.getDeck().size() >= 3){
@@ -159,7 +189,14 @@ public class Controller2 implements Initializable {
                 Collections.shuffle(AetherWars.p2.getDeck());  
             }
             Stage popupwindow = (Stage) drawcard1.getScene().getWindow();
-            popupwindow.close();
+            if (kosong == -1){
+                Pane throwPane = FXMLLoader.load(AetherWars.class.getClassLoader().getResource("./ThrowCards.fxml"));
+                popupwindow.setTitle("Throw card");
+                popupwindow.setScene(new Scene(throwPane));
+                popupwindow.showAndWait();
+            }else {
+                popupwindow.close();
+            }
         }
     }
 
