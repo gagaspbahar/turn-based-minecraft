@@ -679,4 +679,54 @@ public class Controller {
         // TODO : change phase
         turn.setText("Phase 2");
     }
+    @FXML
+    void moveField1Card1(MouseEvent event) {
+
+    }
+
+    @FXML
+    void moveField1Card2(MouseEvent event) {
+
+    }
+
+    @FXML
+    void moveField1Card3(MouseEvent event) {
+
+    }
+
+    @FXML
+    void moveField1Card4(MouseEvent event) {
+
+    }
+
+    @FXML
+    void moveField1Card5(MouseEvent event) {
+
+    }
+
+    @FXML
+    void moveField2Card1(MouseEvent event) {
+
+    }
+
+    @FXML
+    void moveField2Card2(MouseEvent event) {
+
+    }
+
+    @FXML
+    void moveField2Card3(MouseEvent event) {
+
+    }
+
+    @FXML
+    void moveField2Card4(MouseEvent event) {
+
+    }
+
+    @FXML
+    void moveField2Card5(MouseEvent event) {
+
+    }
+
 }
