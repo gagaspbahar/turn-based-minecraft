@@ -18,7 +18,12 @@ import java.util.Arrays;
 import com.aetherwars.model.Card;
 
 public class Controller {
+    /** VARIABLE ZONE **/
+    private int chosenField = 0;
 /**** SAMPLE ZONE ****/
+    @FXML
+    private Label chosenidx;
+
     @FXML
     private Label namatest;
 
@@ -159,6 +164,24 @@ public class Controller {
         infoDescription.setText("");
         infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
     }
+    @FXML
+    void card1Clicked(MouseEvent event){
+        if(chosenField == 0){
+            card1.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
+            chosenField = 1;
+            chosenidx.setText(String.valueOf(chosenField));
+        } else if(chosenField == 1) {
+            card1.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+            chosenField = 0;
+            chosenidx.setText(String.valueOf(chosenField));
+        } else {
+            List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1,card2,card3,card4,card5));
+            cards.get(chosenField-1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+            card1.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
+            chosenField = 1;
+            chosenidx.setText(String.valueOf(chosenField));
+        }
+    }
 
     @FXML
     void card2HoverIn(MouseEvent event) {
@@ -178,6 +201,24 @@ public class Controller {
         infoStat.setText("");
         infoDescription.setText("");
         infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+    }
+    @FXML
+    void card2Clicked(MouseEvent event){
+        if(chosenField == 0){
+            card2.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
+            chosenField = 2;
+            chosenidx.setText(String.valueOf(chosenField));
+        } else if(chosenField == 2) {
+            card2.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+            chosenField = 0;
+            chosenidx.setText(String.valueOf(chosenField));
+        } else {
+            List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1,card2,card3,card4,card5));
+            cards.get(chosenField-1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+            card2.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
+            chosenField = 2;
+            chosenidx.setText(String.valueOf(chosenField));
+        }
     }
 
     @FXML
@@ -199,6 +240,24 @@ public class Controller {
         infoDescription.setText("");
         infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
     }
+    @FXML
+    void card3Clicked(MouseEvent event){
+        if(chosenField == 0){
+            card3.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
+            chosenField = 3;
+            chosenidx.setText(String.valueOf(chosenField));
+        } else if(chosenField == 3) {
+            card3.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+            chosenField = 0;
+            chosenidx.setText(String.valueOf(chosenField));
+        } else {
+            List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1,card2,card3,card4,card5));
+            cards.get(chosenField-1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+            card3.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
+            chosenField = 3;
+            chosenidx.setText(String.valueOf(chosenField));
+        }
+    }
 
     @FXML
     void card4HoverIn(MouseEvent event) {
@@ -218,8 +277,24 @@ public class Controller {
         infoStat.setText("");
         infoDescription.setText("");
         infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
-//        card1.setFill(Color.WHITE);
-
+    }
+    @FXML
+    void card4Clicked(MouseEvent event){
+        if(chosenField == 0){
+            card4.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
+            chosenField = 4;
+            chosenidx.setText(String.valueOf(chosenField));
+        } else if(chosenField == 4) {
+            card4.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+            chosenField = 0;
+            chosenidx.setText(String.valueOf(chosenField));
+        } else {
+            List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1,card2,card3,card4,card5));
+            cards.get(chosenField-1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+            card4.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
+            chosenField = 4;
+            chosenidx.setText(String.valueOf(chosenField));
+        }
     }
 
     @FXML
@@ -241,6 +316,26 @@ public class Controller {
         infoDescription.setText("");
         infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
     }
+    
+    @FXML
+    void card5Clicked(MouseEvent event){
+        if(chosenField == 0){
+            card5.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
+            chosenField = 5;
+            chosenidx.setText(String.valueOf(chosenField));
+        } else if(chosenField == 5) {
+            card5.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+            chosenField = 0;
+            chosenidx.setText(String.valueOf(chosenField));
+        } else {
+            List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1,card2,card3,card4,card5));
+            cards.get(chosenField-1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+            card5.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
+            chosenField = 5;
+            chosenidx.setText(String.valueOf(chosenField));
+        }
+        
+    }
 
 
     /*** CARD INFORMATION SECTION ***/
@@ -250,6 +345,30 @@ public class Controller {
     private Label infoStat;
     @FXML
     private Label infoDescription;
+
+    /*** UTILITY BUTTON ***/
+    @FXML
+    private Button removeButton;
+    @FXML
+    private Button addXPbutton;
+    @FXML 
+    private Button resetCardButton;
+    @FXML
+    void removeCard(MouseEvent event) {
+        namatest.setText("ANJAY REMOVE");
+        // TODO : BLABLA
+    }
+    @FXML
+    void addFieldXP(MouseEvent event) {
+        namatest.setText("ANJAY XP");
+    }
+    @FXML
+    void resetChosenCard(MouseEvent event) {
+        List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1,card2,card3,card4,card5));
+        cards.get(chosenField-1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+        chosenField = 0;
+        chosenidx.setText(String.valueOf(chosenField));
+    }
 
 
     /*** SUBMIT BUTTON SECTION ***/

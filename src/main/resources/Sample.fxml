@@ -160,7 +160,7 @@
          <font>
             <Font size="8.0" />
          </font></Label>
-      <Button fx:id="proceedButton" layoutX="367.0" layoutY="188.0" mnemonicParsing="false" onMouseClicked="#drawCard" text="Button" />
+      <Button fx:id="proceedButton" layoutX="369.0" layoutY="189.0" mnemonicParsing="false" onMouseClicked="#drawCard" text="Button" />
       <Label fx:id="deckSize" layoutX="720.0" layoutY="318.0" text="50 / 50" />
       <Label fx:id="manaSize" layoutX="725.0" layoutY="367.0" text="1 / 1" />
       <Label fx:id="hand5" layoutX="289.0" layoutY="358.0">
@@ -178,10 +178,14 @@
          </font></Label>
       <Label fx:id="indextest" layoutX="203.0" layoutY="270.0" text="index" />
       <Label fx:id="namatest" layoutX="125.0" layoutY="270.0" text="nama" />
-      <Rectangle fx:id="card1" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="27.0" layoutY="301.0" onMouseEntered="#card1HoverIn" onMouseExited="#card1HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-      <Rectangle fx:id="card2" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="89.0" layoutY="301.0" onMouseEntered="#card2HoverIn" onMouseExited="#card2HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-      <Rectangle fx:id="card3" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="151.0" layoutY="301.0" onMouseEntered="#card3HoverIn" onMouseExited="#card3HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-      <Rectangle fx:id="card4" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="213.0" layoutY="301.0" onMouseEntered="#card4HoverIn" onMouseExited="#card4HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-      <Rectangle fx:id="card5" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="275.0" layoutY="301.0" onMouseEntered="#card5HoverIn" onMouseExited="#card5HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle fx:id="card1" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="27.0" layoutY="301.0" onMouseClicked="#card1Clicked" onMouseEntered="#card1HoverIn" onMouseExited="#card1HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle fx:id="card2" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="89.0" layoutY="301.0" onMouseClicked="#card2Clicked" onMouseEntered="#card2HoverIn" onMouseExited="#card2HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle fx:id="card3" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="151.0" layoutY="301.0" onMouseClicked="#card3Clicked" onMouseEntered="#card3HoverIn" onMouseExited="#card3HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle fx:id="card4" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="213.0" layoutY="301.0" onMouseClicked="#card4Clicked" onMouseEntered="#card4HoverIn" onMouseExited="#card4HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle fx:id="card5" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="275.0" layoutY="301.0" onMouseClicked="#card5Clicked" onMouseEntered="#card5HoverIn" onMouseExited="#card5HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Button fx:id="addXPbutton" layoutX="120.0" layoutY="411.0" mnemonicParsing="false" onMouseClicked="#addFieldXP" text="Add XP" />
+      <Button fx:id="removeButton" layoutX="50.0" layoutY="411.0" mnemonicParsing="false" onMouseClicked="#removeCard" text="Remove" />
+      <Button fx:id="resetCardButton" layoutX="182.0" layoutY="411.0" mnemonicParsing="false" onMouseClicked="#resetChosenCard" text="RESET" />
+      <Label fx:id="chosenidx" layoutX="42.0" layoutY="270.0" text="chosen" />
    </children>
 </AnchorPane>
