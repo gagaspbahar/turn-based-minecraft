@@ -152,6 +152,115 @@ public class Controller {
     @FXML
     private ImageView cardImage5;
 
+    // Card Field Handler
+    @FXML
+    private Rectangle field1Card1;
+    @FXML
+    private Rectangle field1Card2;
+    @FXML
+    private Rectangle field1Card3;
+    @FXML
+    private Rectangle field1Card4;
+    @FXML
+    private Rectangle field1Card5;
+    @FXML
+    private Rectangle field2Card1;
+    @FXML
+    private Rectangle field2Card2;
+    @FXML
+    private Rectangle field2Card3;
+    @FXML
+    private Rectangle field2Card4;
+    @FXML
+    private Rectangle field2Card5;
+
+    // Attack Field Handler
+    @FXML
+    private Label field1Attack1;
+    @FXML
+    private Label field1Attack2;
+    @FXML
+    private Label field1Attack3;
+    @FXML
+    private Label field1Attack4;
+    @FXML
+    private Label field1Attack5;
+    @FXML
+    private Label field2Attack1;
+    @FXML
+    private Label field2Attack2;
+    @FXML
+    private Label field2Attack3;
+    @FXML
+    private Label field2Attack4;
+    @FXML
+    private Label field2Attack5;
+
+    // Health Field Handler
+    @FXML
+    private Label field1Health1;
+    @FXML
+    private Label field1Health2;
+    @FXML
+    private Label field1Health3;
+    @FXML
+    private Label field1Health4;
+    @FXML
+    private Label field1Health5;
+    @FXML
+    private Label field2Health1;
+    @FXML
+    private Label field2Health2;
+    @FXML
+    private Label field2Health3;
+    @FXML
+    private Label field2Health4;
+    @FXML
+    private Label field2Health5;
+
+    // Image Field Handler
+    @FXML
+    private ImageView field1Image1;
+    @FXML
+    private ImageView field1Image2;
+    @FXML
+    private ImageView field1Image3;
+    @FXML
+    private ImageView field1Image4;
+    @FXML
+    private ImageView field1Image5;
+    @FXML
+    private ImageView field2Image1;
+    @FXML
+    private ImageView field2Image2;
+    @FXML
+    private ImageView field2Image3;
+    @FXML
+    private ImageView field2Image4;
+    @FXML
+    private ImageView field2Image5;
+
+    // Level Field Handler
+    @FXML
+    private Label field1Level1;
+    @FXML
+    private Label field1Level2;
+    @FXML
+    private Label field1Level3;
+    @FXML
+    private Label field1Level4;
+    @FXML
+    private Label field1Level5;
+    @FXML
+    private Label field2Level1;
+    @FXML
+    private Label field2Level2;
+    @FXML
+    private Label field2Level3;
+    @FXML
+    private Label field2Level4;
+    @FXML
+    private Label field2Level5;
 
 //     Hover Handler
     @FXML
@@ -366,6 +475,146 @@ public class Controller {
         }
     }
 
+    // HOVER FIELD CHARACTER
+    @FXML 
+    void field1Card1HoverIn(MouseEvent event) {
+        infoStat.setText(AetherWars.p1.getFieldCard()[0].getStat());
+        infoDescription.setText(AetherWars.p1.getFieldCard()[0].getDescription());
+        infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[0].getImagePath()));
+    }
+
+    @FXML
+    void field1Card1HoverOut(MouseEvent event) {
+        infoStat.setText("");
+        infoDescription.setText("");
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+    }
+
+    @FXML 
+    void field1Card2HoverIn(MouseEvent event) {
+        infoStat.setText(AetherWars.p1.getFieldCard()[1].getStat());
+        infoDescription.setText(AetherWars.p1.getFieldCard()[1].getDescription());
+        infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[1].getImagePath()));
+    }
+
+    @FXML
+    void field1Card2HoverOut(MouseEvent event) {
+        infoStat.setText("");
+        infoDescription.setText("");
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+    }
+
+    @FXML 
+    void field1Card3HoverIn(MouseEvent event) {
+        infoStat.setText(AetherWars.p1.getFieldCard()[2].getStat());
+        infoDescription.setText(AetherWars.p1.getFieldCard()[2].getDescription());
+        infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[2].getImagePath()));
+    }
+
+    @FXML
+    void field1Card3HoverOut(MouseEvent event) {
+        infoStat.setText("");
+        infoDescription.setText("");
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+    }
+
+    @FXML 
+    void field1Card4HoverIn(MouseEvent event) {
+        infoStat.setText(AetherWars.p1.getFieldCard()[3].getStat());
+        infoDescription.setText(AetherWars.p1.getFieldCard()[3].getDescription());
+        infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[3].getImagePath()));
+    }
+
+    @FXML
+    void field1Card4HoverOut(MouseEvent event) {
+        infoStat.setText("");
+        infoDescription.setText("");
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+    }
+
+    @FXML 
+    void field1Card5HoverIn(MouseEvent event) {
+        infoStat.setText(AetherWars.p1.getFieldCard()[4].getStat());
+        infoDescription.setText(AetherWars.p1.getFieldCard()[4].getDescription());
+        infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[4].getImagePath()));
+    }
+
+    @FXML
+    void field1Card5HoverOut(MouseEvent event) {
+        infoStat.setText("");
+        infoDescription.setText("");
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+    }
+
+    @FXML 
+    void field2Card1HoverIn(MouseEvent event) {
+        infoStat.setText(AetherWars.p2.getFieldCard()[0].getStat());
+        infoDescription.setText(AetherWars.p2.getFieldCard()[0].getDescription());
+        infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[0].getImagePath()));
+    }
+
+    @FXML
+    void field2Card1HoverOut(MouseEvent event) {
+        infoStat.setText("");
+        infoDescription.setText("");
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+    }
+
+    @FXML 
+    void field2Card2HoverIn(MouseEvent event) {
+        infoStat.setText(AetherWars.p2.getFieldCard()[1].getStat());
+        infoDescription.setText(AetherWars.p2.getFieldCard()[1].getDescription());
+        infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[1].getImagePath()));
+    }
+
+    @FXML
+    void field2Card2HoverOut(MouseEvent event) {
+        infoStat.setText("");
+        infoDescription.setText("");
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+    }
+
+    @FXML 
+    void field2Card3HoverIn(MouseEvent event) {
+        infoStat.setText(AetherWars.p2.getFieldCard()[2].getStat());
+        infoDescription.setText(AetherWars.p2.getFieldCard()[2].getDescription());
+        infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[2].getImagePath()));
+    }
+
+    @FXML
+    void field2Card3HoverOut(MouseEvent event) {
+        infoStat.setText("");
+        infoDescription.setText("");
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+    }
+
+    @FXML 
+    void field2Card4HoverIn(MouseEvent event) {
+        infoStat.setText(AetherWars.p2.getFieldCard()[3].getStat());
+        infoDescription.setText(AetherWars.p2.getFieldCard()[3].getDescription());
+        infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[3].getImagePath()));
+    }
+
+    @FXML
+    void field2Card4HoverOut(MouseEvent event) {
+        infoStat.setText("");
+        infoDescription.setText("");
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+    }
+
+    @FXML 
+    void field2Card5HoverIn(MouseEvent event) {
+        infoStat.setText(AetherWars.p2.getFieldCard()[4].getStat());
+        infoDescription.setText(AetherWars.p2.getFieldCard()[4].getDescription());
+        infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[4].getImagePath()));
+    }
+
+    @FXML
+    void field2Card5HoverOut(MouseEvent event) {
+        infoStat.setText("");
+        infoDescription.setText("");
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+    }
 
     /*** CARD INFORMATION SECTION ***/
     @FXML

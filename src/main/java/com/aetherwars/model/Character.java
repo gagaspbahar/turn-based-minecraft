@@ -202,6 +202,10 @@ public class Character extends Card {
   }
 
   public String getStat(){
-    return this.getName() + "\nATK: " + this.getAttack() + "\nHP: " + this.getHealth() +"\nLEVEL: " + this.getLevel() + "\nEXP: " + this.getEXP() + "\nTYPE: " + this.getCharType();
+    return this.getName() + "\nATK: " + this.getAttack() + "\nHP: " + this.getHealth() +"\nLEVEL: " + this.getLevel() + "\nEXP: " + this.getEXP() +"/" + (this.getLevel()*2 - 1) + "\nTYPE: " + this.getCharType();
+  }
+
+  public String getExpLevel(){
+    return this.getEXP() + "/" + (this.getLevel()*2 - 1) + " [" + this.getLevel() + "]";
   }
 }
