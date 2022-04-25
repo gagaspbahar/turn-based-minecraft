@@ -1,7 +1,13 @@
 package com.aetherwars;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import javafx.fxml.FXMLLoader;
 import com.aetherwars.model.Character;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -9,6 +15,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+import javafx.stage.Modality;
+import javafx.scene.Node;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,20 +43,27 @@ public class Controller {
     private Button proceedButton;
 //
     @FXML
-    void drawCard(MouseEvent event) {
+    void drawCard(MouseEvent event)throws Exception {
         List<Label> handText = new ArrayList<Label>(Arrays.asList(hand1,hand2,hand3,hand4,hand5));
         List<Label> manaText = new ArrayList<Label>(Arrays.asList(mana1,mana2,mana3,mana4,mana5));
         List<ImageView> cardImage = new ArrayList<ImageView>(Arrays.asList(cardImage1,cardImage2,cardImage3,cardImage4,cardImage5));
 
-        if (AetherWars.playerTurn) {
-            Card c = AetherWars.p1.getDeck().remove(0);
-            int idx = AetherWars.p1.firstEmptyHand();
-            indextest.setText(String.valueOf(idx));
+        Stage popupwindow = new Stage();
+        Pane drawcardPane = FXMLLoader.load(AetherWars.class.getClassLoader().getResource("./Draw3cards.fxml"));
+        popupwindow.initModality(Modality.APPLICATION_MODAL);
+        popupwindow.setTitle("Draw card");
+        popupwindow.setScene(new Scene(drawcardPane));
+        popupwindow.showAndWait();
 
-            if (idx != -1){
-                AetherWars.p1.getHand()[idx] = c;
-            }
-            // namatest.setText(AetherWars.p1.getHand()[idx].getName());
+        if (AetherWars.playerTurn)  {
+
+            // int idx = AetherWars.p1.firstEmptyHand();
+            // indextest.setText(String.valueOf(idx));
+
+            // if (idx != -1){
+            //     AetherWars.p1.getHand()[idx] = c;
+            // }
+            // // namatest.setText(AetherWars.p1.getHand()[idx].getName());
             for(int i=0; i<5; i++){
                 if (AetherWars.p1.getHand()[i] != null){
                     handText.get(i).setText(AetherWars.p1.getHand()[i].toString());
@@ -63,12 +79,11 @@ public class Controller {
             AetherWars.playerTurn = false;
             
         } else{
-            Card c = AetherWars.p2.getDeck().remove(0);
-            int idx = AetherWars.p2.firstEmptyHand();
-            indextest.setText(String.valueOf(idx));
-            if (idx != -1){
-                AetherWars.p2.getHand()[idx] = c;
-            }
+            // int idx = AetherWars.p2.firstEmptyHand();
+            // indextest.setText(String.valueOf(idx));
+            // if (idx != -1){
+            //     AetherWars.p2.getHand()[idx] = c;
+            // }
             // namatest.setText(AetherWars.p2.getHand()[idx].getName());
             for(int i=0; i<5; i++){
                 if(AetherWars.p2.getHand()[i] != null){
