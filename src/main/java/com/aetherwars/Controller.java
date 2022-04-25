@@ -38,11 +38,11 @@ public class Controller {
             Card c = AetherWars.p1.getDeck().remove(0);
             int idx = AetherWars.p1.firstEmptyHand();
             indextest.setText(String.valueOf(idx));
-            namatest.setText(c.getName());
 
             if (idx != -1){
                 AetherWars.p1.getHand()[idx] = c;
             }
+            namatest.setText(AetherWars.p1.getHand()[idx].getName());
             for(int i=0; i<5; i++){
                 if (AetherWars.p1.getHand()[i] != null){
                     handText.get(i).setText(AetherWars.p1.getHand()[i].toString());
@@ -57,10 +57,10 @@ public class Controller {
             Card c = AetherWars.p2.getDeck().remove(0);
             int idx = AetherWars.p2.firstEmptyHand();
             indextest.setText(String.valueOf(idx));
-            namatest.setText(c.getName());
             if (idx != -1){
                 AetherWars.p2.getHand()[idx] = c;
             }
+            namatest.setText(AetherWars.p2.getHand()[idx].getName());
             for(int i=0; i<5; i++){
                 if(AetherWars.p2.getHand()[i] != null){
                     handText.get(i).setText(AetherWars.p2.getHand()[i].toString());

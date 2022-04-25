@@ -163,16 +163,16 @@
       <Button fx:id="proceedButton" layoutX="367.0" layoutY="188.0" mnemonicParsing="false" onMouseClicked="#drawCard" text="Button" />
       <Label fx:id="deckSize" layoutX="720.0" layoutY="318.0" text="50 / 50" />
       <Label fx:id="manaSize" layoutX="725.0" layoutY="367.0" text="1 / 1" />
-      <Label fx:id="hand41" layoutX="289.0" layoutY="358.0">
+      <Label fx:id="hand5" layoutX="289.0" layoutY="358.0">
          <font>
             <Font size="8.0" />
          </font></Label>
-      <ImageView fx:id="cardImage41" fitHeight="50.0" fitWidth="40.0" layoutX="288.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cardImage5" fitHeight="50.0" fitWidth="40.0" layoutX="288.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@com/aetherwars/card/image/character/base.png" />
          </image>
       </ImageView>
-      <Label fx:id="mana41" layoutX="289.0" layoutY="378.0">
+      <Label fx:id="mana5" layoutX="289.0" layoutY="378.0">
          <font>
             <Font size="8.0" />
          </font></Label>
