@@ -4,15 +4,16 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.paint.Color;
 import com.aetherwars.model.Character;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.stage.StageStyle;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -51,8 +52,10 @@ public class Controller {
         Stage popupwindow = new Stage();
         Pane drawcardPane = FXMLLoader.load(AetherWars.class.getClassLoader().getResource("./Draw3cards.fxml"));
         popupwindow.initModality(Modality.APPLICATION_MODAL);
+        popupwindow.initStyle(StageStyle.UNDECORATED);
         popupwindow.setTitle("Draw card");
-        popupwindow.setScene(new Scene(drawcardPane));
+        popupwindow.setScene(new Scene(drawcardPane,Color.RED));
+        popupwindow.centerOnScreen();
         popupwindow.showAndWait();
 
         if (AetherWars.playerTurn)  {

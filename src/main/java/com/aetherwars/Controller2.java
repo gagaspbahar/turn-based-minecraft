@@ -193,6 +193,7 @@ public class Controller2 implements Initializable {
                 Pane throwPane = FXMLLoader.load(AetherWars.class.getClassLoader().getResource("./ThrowCards.fxml"));
                 popupwindow.setTitle("Throw card");
                 popupwindow.setScene(new Scene(throwPane));
+                popupwindow.centerOnScreen();
                 popupwindow.showAndWait();
             }else {
                 popupwindow.close();
