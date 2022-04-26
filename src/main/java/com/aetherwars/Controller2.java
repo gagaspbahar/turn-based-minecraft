@@ -194,7 +194,7 @@ public class Controller2 implements Initializable {
                 popupwindow.setTitle("Throw card");
                 popupwindow.setScene(new Scene(throwPane));
                 popupwindow.centerOnScreen();
-                popupwindow.showAndWait();
+                //popupwindow.showAndWait();
             }else {
                 popupwindow.close();
             }
