@@ -80,7 +80,7 @@
             <Image url="@com/aetherwars/card/image/character/base.png" />
          </image>
       </ImageView>
-      <Label fx:id="turn" layoutX="376.0" layoutY="37.0" text="Turn 0" />
+      <Label fx:id="turn" layoutX="376.0" layoutY="37.0" text="Turn 1" />
       <Label fx:id="infoStat" layoutX="467.0" layoutY="309.0" maxHeight="-Infinity" maxWidth="-Infinity" />
       <Label fx:id="infoDescription" layoutX="580.0" layoutY="310.0" maxHeight="-Infinity" maxWidth="-Infinity" />
       <ImageView fx:id="infoImage" fitHeight="100.0" fitWidth="62.0" layoutX="363.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true">
@@ -130,7 +130,7 @@
       <Label fx:id="chosenidx" layoutX="42.0" layoutY="270.0" text="chosen" />
       <Label fx:id="utilityWarningText" layoutX="202.0" layoutY="416.0" textFill="RED" />
       <Label fx:id="field1Attack1" layoutX="115.0" layoutY="93.0" text="?" />
-      <ImageView fx:id="field1Image1" fitHeight="40.0" fitWidth="23.0" layoutX="128.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="field1Image1" fitHeight="35.0" fitWidth="23.0" layoutX="128.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@com/aetherwars/card/image/character/base.png" />
          </image>
@@ -249,16 +249,17 @@
             <Font size="8.0" />
          </font>
       </Label>
-      <Rectangle fx:id="field1Card3" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="109.0" layoutY="165.0" onMouseClicked="#moveField1Card3" onMouseEntered="#field1Card3HoverIn" onMouseExited="#field1Card3HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
-      <Rectangle fx:id="field1Card4" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="201.0" layoutY="165.0" onMouseClicked="#moveField1Card4" onMouseEntered="#field1Card4HoverIn" onMouseExited="#field1Card4HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
-      <Rectangle fx:id="field2Card2" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="531.0" layoutY="85.0" onMouseClicked="#moveField2Card2" onMouseEntered="#field2Card2HoverIn" onMouseExited="#field2Card2HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
-      <Rectangle fx:id="field2Card1" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="623.0" layoutY="86.0" onMouseClicked="#moveField2Card1" onMouseEntered="#field2Card1HoverIn" onMouseExited="#field2Card1HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
-      <Rectangle fx:id="field2Card4" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="531.0" layoutY="159.0" onMouseClicked="#moveField2Card4" onMouseEntered="#field2Card4HoverIn" onMouseExited="#field2Card4HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
-      <Rectangle fx:id="field2Card3" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="623.0" layoutY="159.0" onMouseClicked="#moveField2Card3" onMouseEntered="#field2Card3HoverIn" onMouseExited="#field2Card3HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
-      <Rectangle fx:id="field2Card5" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="443.0" layoutY="127.0" onMouseClicked="#moveField2Card5" onMouseEntered="#field2Card5HoverIn" onMouseExited="#field2Card5HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
-      <Rectangle fx:id="field1Card1" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="109.0" layoutY="91.0" onMouseClicked="#moveField1Card1" onMouseEntered="#field1Card1HoverIn" onMouseExited="#field1Card1HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
+      <Rectangle fx:id="field1Card3" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="109.0" layoutY="165.0" onMouseClicked="#clickField1Card3" onMouseEntered="#field1Card3HoverIn" onMouseExited="#field1Card3HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
+      <Rectangle fx:id="field1Card4" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="201.0" layoutY="165.0" onMouseClicked="#clickField1Card4" onMouseEntered="#field1Card4HoverIn" onMouseExited="#field1Card4HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
+      <Rectangle fx:id="field2Card2" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="531.0" layoutY="85.0" onMouseClicked="#clickField2Card2" onMouseEntered="#field2Card2HoverIn" onMouseExited="#field2Card2HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
+      <Rectangle fx:id="field2Card1" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="623.0" layoutY="86.0" onMouseClicked="#clickField2Card1" onMouseEntered="#field2Card1HoverIn" onMouseExited="#field2Card1HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
+      <Rectangle fx:id="field2Card4" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="531.0" layoutY="159.0" onMouseClicked="#clickField2Card4" onMouseEntered="#field2Card4HoverIn" onMouseExited="#field2Card4HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
+      <Rectangle fx:id="field2Card3" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="623.0" layoutY="159.0" onMouseClicked="#clickField2Card3" onMouseEntered="#field2Card3HoverIn" onMouseExited="#field2Card3HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
+      <Rectangle fx:id="field2Card5" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="443.0" layoutY="127.0" onMouseClicked="#clickField2Card5" onMouseEntered="#field2Card5HoverIn" onMouseExited="#field2Card5HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
       <Rectangle fx:id="card5" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="275.0" layoutY="301.0" onMouseClicked="#card5Clicked" onMouseEntered="#card5HoverIn" onMouseExited="#card5HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-      <Rectangle fx:id="field1Card2" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="201.0" layoutY="92.0" onMouseClicked="#moveField1Card2" onMouseEntered="#field1Card2HoverIn" onMouseExited="#field1Card2HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
-      <Rectangle fx:id="field1Card5" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="280.0" layoutY="128.0" onMouseClicked="#moveField1Card5" onMouseEntered="#field1Card5HoverIn" onMouseExited="#field1Card5HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
+      <Rectangle fx:id="field1Card2" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="201.0" layoutY="92.0" onMouseClicked="#clickField1Card2" onMouseEntered="#field1Card2HoverIn" onMouseExited="#field1Card2HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
+      <Rectangle fx:id="field1Card5" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="280.0" layoutY="128.0" onMouseClicked="#clickField1Card5" onMouseEntered="#field1Card5HoverIn" onMouseExited="#field1Card5HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
+      <Rectangle fx:id="field1Card1" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="109.0" layoutY="91.0" onMouseClicked="#clickField1Card1" onMouseEntered="#field1Card1HoverIn" onMouseExited="#field1Card1HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
+      <Label fx:id="movefieldtest" layoutX="377.0" layoutY="126.0" text="Label" />
    </children>
 </AnchorPane>
