@@ -216,3 +216,47 @@ class MorphSpell extends Spell {
     return this.getName() + "\nTARGET ID: " + this.targetid + "\nTYPE: " + this.getSpellType();
   }
 }
+
+class HealSpell extends Spell {
+  private final SpellType spellType = SpellType.HEAL;
+  private int health;
+  
+  public HealSpell(){
+    super();
+  }
+
+  public HealSpell(Card card, int health){
+    super(card);
+    this.health = health;
+  }
+
+  public HealSpell(int health) {this.health = health; }
+
+  public int getHealth(){
+    return this.health;
+  }
+
+  @Override
+  public void cast(Character c, Player p){
+    int temp = p.getHealth();
+    if(temp + this.getHealth() <= 100){
+      p.setHealth(temp + this.getHealth());
+    }
+    else{
+      p.setHealth(100);
+    }
+  }
+
+  public SpellType getSpellType(){
+    return this.spellType;
+  }
+
+  @Override
+  public String toString() {
+    return "HEAL";
+  }
+
+  public String getStat(){
+    return this.getName() + "\nTYPE: " + this.getSpellType();
+  }
+}

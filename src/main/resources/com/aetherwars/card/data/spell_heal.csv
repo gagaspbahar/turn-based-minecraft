@@ -1,0 +1,4 @@
+﻿"id	name	description	imagepath	health	mana"
+"501	Green Herbs	Plant that can heal player	card/image/spell/heal/greenherbs.jpg	10	3"
+"502	Indomi goreng	Bisa dimakan dan nambah nyawa	card/image/spell/heal/indomigoreng.png	25	5"
+"503	Dukungan Gebetan	Nyawa langsung naik drastis!!	card/image/spell/heal/gebetan.png	50	8"

@@ -14,12 +14,14 @@ public class Config implements BaseConfig {
   private static final String SPELL_PTN_CSV_FILE_PATH = "./com/aetherwars/card/data/spell_ptn.csv";
   private static final String SPELL_SWAP_FILE_PATH = "./com/aetherwars/card/data/spell_swap.csv";
   private static final String SPELL_LEVEL_FILE_PATH = "./com/aetherwars/card/data/spell_level.csv";
+  private static final String SPELL_HEAL_FILE_PATH = "./com/aetherwars/card/data/spell_heal.csv";
 
   public CharacterConfig characters;
   public MorphSpellConfig morphSpells;
   public PotionSpellConfig potionSpells;
   public SwapSpellConfig swapSpells;
   public LevelSpellConfig levelSpells;
+  public HealSpellConfig healSpells;
 
   public Config() {
     this.characters = new CharacterConfig(CHARACTER_CSV_FILE_PATH);
@@ -27,6 +29,7 @@ public class Config implements BaseConfig {
     this.levelSpells = new LevelSpellConfig(SPELL_LEVEL_FILE_PATH);
     this.swapSpells = new SwapSpellConfig(SPELL_SWAP_FILE_PATH);
     this.potionSpells = new PotionSpellConfig(SPELL_PTN_CSV_FILE_PATH);
+    this.healSpells = new HealSpellConfig(SPELL_HEAL_FILE_PATH);
     try {
       this.loadData();
     }
@@ -46,6 +49,7 @@ public class Config implements BaseConfig {
     this.levelSpells.loadData();
     this.swapSpells.loadData();
     this.potionSpells.loadData();
+    this.healSpells.loadData();
   }
 
   public String getNameFromID(int id) {
@@ -66,6 +70,9 @@ public class Config implements BaseConfig {
     else if (id / 100 == 4){ // Level
       ans = this.levelSpells.getNameFromID(id);
     }
+    else if (id / 100 == 5){ // heal
+      ans = this.healSpells.getNameFromID(id);
+    }
     return ans;
   }
   public String getDescriptionFromID(int id) {
@@ -85,6 +92,9 @@ public class Config implements BaseConfig {
     }
     else if (id / 100 == 4){ // Level
       ans = this.levelSpells.getDescriptionFromID(id);
+    }
+    else if (id / 100 == 5){ // heal
+      ans = this.healSpells.getDescriptionFromID(id);
     }
     return ans;
   }
@@ -107,6 +117,9 @@ public class Config implements BaseConfig {
     else if (id / 100 == 4){ // Level
       ans = this.levelSpells.getImagePathFromID(id);
     }
+    else if (id / 100 == 5){ // Heal
+      ans = this.healSpells.getImagePathFromID(id);
+    }
     return ans;
   }
   public CardType getCardTypeFromID(int id) {
@@ -127,6 +140,9 @@ public class Config implements BaseConfig {
     else if (id / 100 == 4){ // Level
       ans = this.levelSpells.getCardTypeFromID(id);
     }
+    else if (id / 100 == 5){ // Heal
+      ans = this.healSpells.getCardTypeFromID(id);
+    }
     return ans;
   }
   public int getManaFromID(int id) {
@@ -146,6 +162,9 @@ public class Config implements BaseConfig {
     }
     else if (id / 100 == 4){ // Level (Cant be cast)
       ans = 0;
+    }
+    else if (id / 100 == 5){ // Heal
+      ans = this.healSpells.getManaFromID(id);
     }
     return ans;
   }

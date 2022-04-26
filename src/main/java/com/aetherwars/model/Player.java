@@ -140,7 +140,7 @@ public class Player {
     public void initializeDeck() {
         // Inisialisasi deck pemain
         Random rand = new Random();
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 27; i++) {
             int id = rand.nextInt(18);
             id = id + 1;
 //            Card card = new Card(1,"aam","aa","asdasd",CardType.CHARACTER,5);
@@ -182,6 +182,15 @@ public class Player {
             Card card = new Card(id, this.config.getNameFromID(id), this.config.getDescriptionFromID(id),
                     this.config.getImagePathFromID(id), CardType.SPELL, this.config.getManaFromID(id));
             LevelSpell p = new LevelSpell(card);
+            this.deck.add(p);
+        }
+
+        for (int i = 0; i < 3; i++) {
+            int id = rand.nextInt(3);
+            id = id + 501;
+            Card card = new Card(id, this.config.getNameFromID(id), this.config.getDescriptionFromID(id),
+                    this.config.getImagePathFromID(id), CardType.SPELL, this.config.getManaFromID(id));
+            HealSpell p = new HealSpell(card, this.config.healSpells.getHPFromID(id));
             this.deck.add(p);
         }
         Collections.shuffle(this.deck);
