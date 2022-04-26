@@ -296,11 +296,11 @@ public class Controller {
 //     Hover Handler
     @FXML
     void card1HoverIn(MouseEvent event) {
-        if (!AetherWars.playerTurn) {
+        if (!AetherWars.playerTurn && AetherWars.p1.getHand()[0] != null) {
             infoStat.setText(AetherWars.p1.getHand()[0].getStat());
             infoDescription.setText(AetherWars.p1.getHand()[0].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[0].getImagePath()));
-        }else{
+        }else if (AetherWars.playerTurn && AetherWars.p2.getHand()[0] != null) {
             infoStat.setText(AetherWars.p2.getHand()[0].getStat());
             infoDescription.setText(AetherWars.p2.getHand()[0].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getHand()[0].getImagePath()));
@@ -339,11 +339,11 @@ public class Controller {
 
     @FXML
     void card2HoverIn(MouseEvent event) {
-        if (!AetherWars.playerTurn) {
+        if (!AetherWars.playerTurn && AetherWars.p1.getHand()[1] != null) {
             infoStat.setText(AetherWars.p1.getHand()[1].getStat());
             infoDescription.setText(AetherWars.p1.getHand()[1].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[1].getImagePath()));
-        }else{
+        }else if (AetherWars.playerTurn && AetherWars.p2.getHand()[1] != null) {
             infoStat.setText(AetherWars.p2.getHand()[1].getStat());
             infoDescription.setText(AetherWars.p2.getHand()[1].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getHand()[1].getImagePath()));
@@ -382,11 +382,11 @@ public class Controller {
 
     @FXML
     void card3HoverIn(MouseEvent event) {
-        if (!AetherWars.playerTurn) {
+        if (!AetherWars.playerTurn && AetherWars.p1.getHand()[2] != null) {
             infoStat.setText(AetherWars.p1.getHand()[2].getStat());
             infoDescription.setText(AetherWars.p1.getHand()[2].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[2].getImagePath()));
-        }else{
+        }else if (AetherWars.playerTurn && AetherWars.p2.getHand()[2] != null) {
             infoStat.setText(AetherWars.p2.getHand()[2].getStat());
             infoDescription.setText(AetherWars.p2.getHand()[2].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getHand()[2].getImagePath()));
@@ -425,11 +425,11 @@ public class Controller {
 
     @FXML
     void card4HoverIn(MouseEvent event) {
-        if (!AetherWars.playerTurn) {
+        if (!AetherWars.playerTurn && AetherWars.p1.getHand()[3] != null) {
             infoStat.setText(AetherWars.p1.getHand()[3].getStat());
             infoDescription.setText(AetherWars.p1.getHand()[3].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[3].getImagePath()));
-        }else{
+        }else if (AetherWars.playerTurn && AetherWars.p2.getHand()[3] != null) {
             infoStat.setText(AetherWars.p2.getHand()[3].getStat());
             infoDescription.setText(AetherWars.p2.getHand()[3].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getHand()[3].getImagePath()));
@@ -469,11 +469,11 @@ public class Controller {
 
     @FXML
     void card5HoverIn(MouseEvent event) {
-        if (!AetherWars.playerTurn) {
+        if (!AetherWars.playerTurn && AetherWars.p1.getHand()[4] != null) {
             infoStat.setText(AetherWars.p1.getHand()[4].getStat());
             infoDescription.setText(AetherWars.p1.getHand()[4].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[4].getImagePath()));
-        }else{
+        }else if (AetherWars.playerTurn && AetherWars.p2.getHand()[4] != null) {
             infoStat.setText(AetherWars.p2.getHand()[4].getStat());
             infoDescription.setText(AetherWars.p2.getHand()[4].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getHand()[4].getImagePath()));
@@ -514,9 +514,11 @@ public class Controller {
     // HOVER FIELD CHARACTER
     @FXML 
     void field1Card1HoverIn(MouseEvent event) {
-        infoStat.setText(AetherWars.p1.getFieldCard()[0].getStat());
-        infoDescription.setText(AetherWars.p1.getFieldCard()[0].getDescriptionNewlineFormat());
-        infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[0].getImagePath()));
+        if (AetherWars.p1.getFieldCard()[0] != null){
+            infoStat.setText(AetherWars.p1.getFieldCard()[0].getStat());
+            infoDescription.setText(AetherWars.p1.getFieldCard()[0].getDescriptionNewlineFormat());
+            infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[0].getImagePath()));
+        }
     }
 
     @FXML
@@ -528,9 +530,11 @@ public class Controller {
 
     @FXML 
     void field1Card2HoverIn(MouseEvent event) {
-        infoStat.setText(AetherWars.p1.getFieldCard()[1].getStat());
-        infoDescription.setText(AetherWars.p1.getFieldCard()[1].getDescriptionNewlineFormat());
-        infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[1].getImagePath()));
+        if (AetherWars.p1.getFieldCard()[1] != null){
+            infoStat.setText(AetherWars.p1.getFieldCard()[1].getStat());
+            infoDescription.setText(AetherWars.p1.getFieldCard()[1].getDescriptionNewlineFormat());
+            infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[1].getImagePath()));
+        }
     }
 
     @FXML
@@ -542,9 +546,11 @@ public class Controller {
 
     @FXML 
     void field1Card3HoverIn(MouseEvent event) {
-        infoStat.setText(AetherWars.p1.getFieldCard()[2].getStat());
-        infoDescription.setText(AetherWars.p1.getFieldCard()[2].getDescriptionNewlineFormat());
-        infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[2].getImagePath()));
+        if (AetherWars.p1.getFieldCard()[2] != null){
+            infoStat.setText(AetherWars.p1.getFieldCard()[2].getStat());
+            infoDescription.setText(AetherWars.p1.getFieldCard()[2].getDescriptionNewlineFormat());
+            infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[2].getImagePath()));
+        }
     }
 
     @FXML
@@ -556,9 +562,11 @@ public class Controller {
 
     @FXML 
     void field1Card4HoverIn(MouseEvent event) {
-        infoStat.setText(AetherWars.p1.getFieldCard()[3].getStat());
-        infoDescription.setText(AetherWars.p1.getFieldCard()[3].getDescriptionNewlineFormat());
-        infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[3].getImagePath()));
+        if (AetherWars.p1.getFieldCard()[3] != null){
+            infoStat.setText(AetherWars.p1.getFieldCard()[3].getStat());
+            infoDescription.setText(AetherWars.p1.getFieldCard()[3].getDescriptionNewlineFormat());
+            infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[3].getImagePath()));
+        }
     }
 
     @FXML
@@ -570,9 +578,11 @@ public class Controller {
 
     @FXML 
     void field1Card5HoverIn(MouseEvent event) {
-        infoStat.setText(AetherWars.p1.getFieldCard()[4].getStat());
-        infoDescription.setText(AetherWars.p1.getFieldCard()[4].getDescriptionNewlineFormat());
-        infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[4].getImagePath()));
+        if (AetherWars.p1.getFieldCard()[4] != null){
+            infoStat.setText(AetherWars.p1.getFieldCard()[4].getStat());
+            infoDescription.setText(AetherWars.p1.getFieldCard()[4].getDescriptionNewlineFormat());
+            infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[4].getImagePath()));
+        }
     }
 
     @FXML
@@ -584,9 +594,11 @@ public class Controller {
 
     @FXML 
     void field2Card1HoverIn(MouseEvent event) {
-        infoStat.setText(AetherWars.p2.getFieldCard()[0].getStat());
-        infoDescription.setText(AetherWars.p2.getFieldCard()[0].getDescriptionNewlineFormat());
-        infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[0].getImagePath()));
+        if (AetherWars.p2.getFieldCard()[0] != null){
+            infoStat.setText(AetherWars.p2.getFieldCard()[0].getStat());
+            infoDescription.setText(AetherWars.p2.getFieldCard()[0].getDescriptionNewlineFormat());
+            infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[0].getImagePath()));
+        }
     }
 
     @FXML
@@ -598,9 +610,11 @@ public class Controller {
 
     @FXML 
     void field2Card2HoverIn(MouseEvent event) {
-        infoStat.setText(AetherWars.p2.getFieldCard()[1].getStat());
-        infoDescription.setText(AetherWars.p2.getFieldCard()[1].getDescriptionNewlineFormat());
-        infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[1].getImagePath()));
+        if (AetherWars.p2.getFieldCard()[1] != null){
+            infoStat.setText(AetherWars.p2.getFieldCard()[1].getStat());
+            infoDescription.setText(AetherWars.p2.getFieldCard()[1].getDescriptionNewlineFormat());
+            infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[1].getImagePath()));
+        }
     }
 
     @FXML
@@ -612,9 +626,11 @@ public class Controller {
 
     @FXML 
     void field2Card3HoverIn(MouseEvent event) {
-        infoStat.setText(AetherWars.p2.getFieldCard()[2].getStat());
-        infoDescription.setText(AetherWars.p2.getFieldCard()[2].getDescriptionNewlineFormat());
-        infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[2].getImagePath()));
+        if (AetherWars.p2.getFieldCard()[2] != null){
+            infoStat.setText(AetherWars.p2.getFieldCard()[2].getStat());
+            infoDescription.setText(AetherWars.p2.getFieldCard()[2].getDescriptionNewlineFormat());
+            infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[2].getImagePath()));
+        }
     }
 
     @FXML
@@ -626,9 +642,11 @@ public class Controller {
 
     @FXML 
     void field2Card4HoverIn(MouseEvent event) {
-        infoStat.setText(AetherWars.p2.getFieldCard()[3].getStat());
-        infoDescription.setText(AetherWars.p2.getFieldCard()[3].getDescriptionNewlineFormat());
-        infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[3].getImagePath()));
+        if (AetherWars.p2.getFieldCard()[3] != null){
+            infoStat.setText(AetherWars.p2.getFieldCard()[3].getStat());
+            infoDescription.setText(AetherWars.p2.getFieldCard()[3].getDescriptionNewlineFormat());
+            infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[3].getImagePath()));
+        }
     }
 
     @FXML
@@ -640,9 +658,11 @@ public class Controller {
 
     @FXML 
     void field2Card5HoverIn(MouseEvent event) {
-        infoStat.setText(AetherWars.p2.getFieldCard()[4].getStat());
-        infoDescription.setText(AetherWars.p2.getFieldCard()[4].getDescriptionNewlineFormat());
-        infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[4].getImagePath()));
+        if (AetherWars.p2.getFieldCard()[4] != null){
+            infoStat.setText(AetherWars.p2.getFieldCard()[4].getStat());
+            infoDescription.setText(AetherWars.p2.getFieldCard()[4].getDescriptionNewlineFormat());
+            infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[4].getImagePath()));
+        }
     }
 
     @FXML
