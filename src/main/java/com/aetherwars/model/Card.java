@@ -41,6 +41,19 @@ public class Card {
     return this.description;
   }
 
+  public String getDescriptionNewlineFormat(){
+    String temp = "";
+    String finalString = "";
+    for(int i = 0; i < this.description.length(); i++){
+      temp += this.description.charAt(i);
+      if(temp.length() == 15){
+        finalString += temp + "\n";
+        temp = "";
+      }
+    }
+    return finalString;
+  }
+
   public String getImagePath(){
     return this.imagepath;
   }
