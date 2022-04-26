@@ -50,6 +50,7 @@ public class AetherWars extends Application {
     Pane mainPane = FXMLLoader.load(AetherWars.class.getClassLoader().getResource("./Sample.fxml"));
       stage.resizableProperty().setValue(Boolean.FALSE);
       stage.setScene(new Scene(mainPane));
+      stage.setTitle("AetherWars");
       stage.show();
   }
 

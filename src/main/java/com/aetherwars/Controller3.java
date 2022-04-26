@@ -126,7 +126,8 @@ public class Controller3 implements Initializable {
         drawcard6.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
     }
 
-    void clickCard4(MouseEvent event) {
+    @FXML
+    void card4Clicked(MouseEvent event) {
         drawcard4.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
         throwChosenField = 4;
         drawcard1.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
@@ -137,7 +138,7 @@ public class Controller3 implements Initializable {
     }
 
     @FXML
-    void clickCard5(MouseEvent event) {
+    void card5Clicked(MouseEvent event) {
         drawcard5.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
         throwChosenField = 5;
         drawcard1.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
@@ -148,14 +149,14 @@ public class Controller3 implements Initializable {
     }
 
     @FXML
-    void clickCard6(MouseEvent event) {
+    void card6Clicked(MouseEvent event) {
         drawcard6.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
-        throwChosenField = 5;
+        throwChosenField = 6;
         drawcard1.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
         drawcard3.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
         drawcard4.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
         drawcard2.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
-        drawcard2.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+        drawcard5.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
     }
 
     @FXML
@@ -207,13 +208,13 @@ public class Controller3 implements Initializable {
         drawcardhand3.setText(c3.toString());
         drawcardmana3.setText("MANA " + String.valueOf(c3.getMana()));
         drawcardimage3.setImage(new Image("./com/aetherwars/" + c3.getImagePath()));
-        // drawcardhand4.setText(c4.toString());
+        drawcardhand4.setText(c4.toString());
         drawcardmana4.setText("MANA " + String.valueOf(c4.getMana()));
         drawcardimage4.setImage(new Image("./com/aetherwars/" + c4.getImagePath())); 
-        // drawcardhand5.setText(c5.toString());
+        drawcardhand5.setText(c5.toString());
         drawcardmana5.setText("MANA " + String.valueOf(c5.getMana()));
         drawcardimage5.setImage(new Image("./com/aetherwars/" + c5.getImagePath())); 
-        // drawcardhand6.setText(c6.toString());
+        drawcardhand6.setText(c6.toString());
         drawcardmana6.setText("MANA " + String.valueOf(c6.getMana()));
         drawcardimage6.setImage(new Image("./com/aetherwars/" + c6.getImagePath()));
 

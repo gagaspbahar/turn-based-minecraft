@@ -307,7 +307,7 @@ public class Controller {
     void card1HoverOut(MouseEvent event) {
         infoStat.setText("");
         infoDescription.setText("");
-        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.jpg"));
     }
     @FXML
     void card1Clicked(MouseEvent event){
@@ -349,7 +349,7 @@ public class Controller {
     void card2HoverOut(MouseEvent event) {
         infoStat.setText("");
         infoDescription.setText("");
-        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.jpg"));
     }
     @FXML
     void card2Clicked(MouseEvent event){
@@ -391,7 +391,7 @@ public class Controller {
     void card3HoverOut(MouseEvent event) {
         infoStat.setText("");
         infoDescription.setText("");
-        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.jpg"));
     }
     @FXML
     void card3Clicked(MouseEvent event){
@@ -433,7 +433,7 @@ public class Controller {
     void card4HoverOut(MouseEvent event) {
         infoStat.setText("");
         infoDescription.setText("");
-        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.jpg"));
     }
     @FXML
     void card4Clicked(MouseEvent event){
@@ -476,7 +476,7 @@ public class Controller {
     void card5HoverOut(MouseEvent event) {
         infoStat.setText("");
         infoDescription.setText("");
-        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.jpg"));
     }
     
     @FXML
