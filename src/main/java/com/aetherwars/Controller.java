@@ -514,7 +514,7 @@ public class Controller {
     void field1Card1HoverOut(MouseEvent event) {
         infoStat.setText("");
         infoDescription.setText("");
-        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.jpg"));
     }
 
     @FXML 
@@ -528,7 +528,7 @@ public class Controller {
     void field1Card2HoverOut(MouseEvent event) {
         infoStat.setText("");
         infoDescription.setText("");
-        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.jpg"));
     }
 
     @FXML 
@@ -542,7 +542,7 @@ public class Controller {
     void field1Card3HoverOut(MouseEvent event) {
         infoStat.setText("");
         infoDescription.setText("");
-        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.jpg"));
     }
 
     @FXML 
@@ -556,7 +556,7 @@ public class Controller {
     void field1Card4HoverOut(MouseEvent event) {
         infoStat.setText("");
         infoDescription.setText("");
-        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.jpg"));
     }
 
     @FXML 
@@ -570,7 +570,7 @@ public class Controller {
     void field1Card5HoverOut(MouseEvent event) {
         infoStat.setText("");
         infoDescription.setText("");
-        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.jpg"));
     }
 
     @FXML 
@@ -584,7 +584,7 @@ public class Controller {
     void field2Card1HoverOut(MouseEvent event) {
         infoStat.setText("");
         infoDescription.setText("");
-        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.jpg"));
     }
 
     @FXML 
@@ -598,7 +598,7 @@ public class Controller {
     void field2Card2HoverOut(MouseEvent event) {
         infoStat.setText("");
         infoDescription.setText("");
-        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.jpg"));
     }
 
     @FXML 
@@ -612,7 +612,7 @@ public class Controller {
     void field2Card3HoverOut(MouseEvent event) {
         infoStat.setText("");
         infoDescription.setText("");
-        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.jpg"));
     }
 
     @FXML 
@@ -626,7 +626,7 @@ public class Controller {
     void field2Card4HoverOut(MouseEvent event) {
         infoStat.setText("");
         infoDescription.setText("");
-        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.jpg"));
     }
 
     @FXML 
@@ -640,7 +640,7 @@ public class Controller {
     void field2Card5HoverOut(MouseEvent event) {
         infoStat.setText("");
         infoDescription.setText("");
-        infoImage.setImage(new Image("./com/aetherwars/card/image/character/white.jpg"));
+        infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.jpg"));
     }
 
     /*** CARD INFORMATION SECTION ***/
