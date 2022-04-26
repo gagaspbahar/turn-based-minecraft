@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.stage.StageStyle;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -31,6 +32,10 @@ public class Controller {
     /** VARIABLE ZONE **/
     private int chosenField = 0;
 /**** SAMPLE ZONE ****/
+
+    @FXML
+    private AnchorPane background;
+
     @FXML
     private Label chosenidx;
 
@@ -49,14 +54,17 @@ public class Controller {
         List<Label> manaText = new ArrayList<Label>(Arrays.asList(mana1,mana2,mana3,mana4,mana5));
         List<ImageView> cardImage = new ArrayList<ImageView>(Arrays.asList(cardImage1,cardImage2,cardImage3,cardImage4,cardImage5));
 
+        background.setStyle("-fx-background-color: grey");
+
         Stage popupwindow = new Stage();
         Pane drawcardPane = FXMLLoader.load(AetherWars.class.getClassLoader().getResource("./Draw3cards.fxml"));
         popupwindow.initModality(Modality.APPLICATION_MODAL);
         popupwindow.initStyle(StageStyle.UNDECORATED);
         popupwindow.setTitle("Draw card");
-        popupwindow.setScene(new Scene(drawcardPane,Color.RED));
+        popupwindow.setScene(new Scene(drawcardPane));
         popupwindow.centerOnScreen();
         popupwindow.showAndWait();
+        
 
         if (AetherWars.playerTurn)  {
 
@@ -103,6 +111,7 @@ public class Controller {
             deckSize.setText((AetherWars.p2.getDeck().size()) + " / 50");
             AetherWars.playerTurn = true;
         }
+        background.setStyle("-fx-background-color: white");
     }
 //asdasdsasda
 
