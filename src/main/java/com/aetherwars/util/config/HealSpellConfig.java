@@ -29,9 +29,6 @@ public class HealSpellConfig {
         healSpell[0] = healSpell[0].substring(1);
         healSpell[5] = healSpell[5].substring(0, healSpell[5].length() - 1);  
       }
-    for(String[] healSpell : this.healSpells){
-        System.out.println(healSpell[0]+ healSpell[1]+ healSpell[2]+ healSpell[3]+ healSpell[4]+ healSpell[5]);
-      }
   }
 
   public String getNameFromID(int id){
