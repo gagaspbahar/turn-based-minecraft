@@ -798,7 +798,50 @@ public class Controller {
 
     @FXML
     void addFieldXP(MouseEvent event) {
-        // TODO: SAADSA
+        List<Label> attackText = new ArrayList<Label>(
+                Arrays.asList(field1Attack1, field1Attack2, field1Attack3, field1Attack4, field1Attack5, 
+                                field2Attack1, field2Attack2, field2Attack3, field2Attack4, field2Attack5));
+        List<Label> healthText = new ArrayList<Label>(
+                Arrays.asList(field1Health1, field1Health2, field1Health3, field1Health4, field1Health5,
+                                field2Health1, field2Health2, field2Health3, field2Health4, field2Health5));
+        List<Label> levelText = new ArrayList<Label>(
+                Arrays.asList(field1Level1, field1Level2, field1Level3, field1Level4, field1Level5,
+                field2Level1, field2Level2, field2Level3, field2Level4, field2Level5));
+        // chosenField 0  gbs milih
+        if (chosenField == 0){
+            utilityWarningText.setText("Choose field slot to add XP!");
+        }
+        // Kalo chosenField 1 sampai 5 dan playerTurn false
+        // if mana > 0
+        else if(chosenField >= 1 && chosenField <= 5 && !AetherWars.playerTurn){
+            if(AetherWars.p1.getMana() > 0){
+                AetherWars.p1.getFieldCard()[chosenField - 1].addExp(1);
+                AetherWars.p1.setMana(AetherWars.p1.getMana() - 1);
+                attackText.get(chosenField - 1).setText(String.valueOf(AetherWars.p1.getFieldCard()[chosenField - 1].getAttack()));
+                healthText.get(chosenField - 1).setText(String.valueOf(AetherWars.p1.getFieldCard()[chosenField - 1].getHealth()));
+                levelText.get(chosenField - 1).setText(String.valueOf(AetherWars.p1.getFieldCard()[chosenField - 1].getExpLevel()));
+                manaSize.setText(String.valueOf(AetherWars.p1.getMana()) + "/" + AetherWars.turn);
+            }
+            else{
+                utilityWarningText.setText("Not Enough Mana!");
+            }
+        }
+        // kalo chosenField 6 sampai 10 dan playerTurn true
+        else if(chosenField >= 6 && chosenField <= 10 && AetherWars.playerTurn && AetherWars.p2.getMana() > 0){
+            if(AetherWars.p2.getMana() > 0){
+                AetherWars.p2.getFieldCard()[chosenField - 6].addExp(1);
+                AetherWars.p2.setMana(AetherWars.p2.getMana() - 1);
+                attackText.get(chosenField - 1).setText(String.valueOf(AetherWars.p2.getFieldCard()[chosenField - 6].getAttack()));
+                healthText.get(chosenField - 1).setText(String.valueOf(AetherWars.p2.getFieldCard()[chosenField - 6].getHealth()));
+                levelText.get(chosenField - 1).setText(String.valueOf(AetherWars.p2.getFieldCard()[chosenField - 6].getExpLevel()));
+                manaSize.setText(String.valueOf(AetherWars.p2.getMana()) + "/" + AetherWars.turn);
+            }
+            else{
+                utilityWarningText.setText("Not Enough Mana!");
+            }
+        } else{
+            utilityWarningText.setText("case aneh!");
+        }
     }
 
     /*** SUBMIT BUTTON SECTION ***/
