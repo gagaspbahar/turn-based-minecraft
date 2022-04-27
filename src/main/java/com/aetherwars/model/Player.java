@@ -14,6 +14,7 @@ public class Player {
     private int mana;
     private Character fieldCard[];
     private Boolean fieldCardStatus[];
+    private Boolean fieldCardHasAttacked[];
     private Card hand[];
     private Boolean handStatus[];
     private List<Card> deck;
@@ -25,6 +26,7 @@ public class Player {
         this.mana = 1;
         this.fieldCard = new Character[]{null, null, null, null, null};
         this.fieldCardStatus = new Boolean[]{false, false, false, false, false};
+        this.fieldCardHasAttacked = new Boolean[]{false, false, false, false, false};
         this.hand = new Card[]{null, null, null, null, null};
         this.handStatus = new Boolean[]{false, false, false, false, false};
         this.deck = new ArrayList<Card>(50);
@@ -42,6 +44,7 @@ public class Player {
         this.mana = 1;
         this.fieldCard = new Character[]{null, null, null, null, null};
         this.fieldCardStatus = new Boolean[]{false, false, false, false, false};
+        this.fieldCardHasAttacked = new Boolean[]{false, false, false, false, false};
         this.hand = new Card[]{null, null, null, null, null};
         this.handStatus = new Boolean[]{false, false, false, false, false};
         this.deck = new ArrayList<Card>(50);
@@ -72,6 +75,18 @@ public class Player {
     public Boolean[] getHandStatus() {return this.handStatus; }
 
     public Boolean[] getFieldCardStatus() {return this.fieldCardStatus; }
+
+    public Boolean[] getFieldCardHasAttacked() {return this.fieldCardHasAttacked; }
+
+    public int getFieldCardValue(){
+        int ans = 0;
+        for (int i = 0; i < 5; i++) {
+            if (this.fieldCardStatus[i]) {
+                ans++;
+            }
+        }
+        return ans;
+    }
 
     public void setName(String s) {
         this.name = s;

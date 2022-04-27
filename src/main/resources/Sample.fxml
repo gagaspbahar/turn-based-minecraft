@@ -31,16 +31,14 @@
             <Image url="@com/aetherwars/card/image/character/base.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="62.0" fitWidth="62.0" layoutX="30.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="player1image" fitHeight="62.0" fitWidth="62.0" layoutX="30.0" layoutY="129.0" onMouseClicked="#clickPlayer1Image" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@com/aetherwars/card/image/character/mascot1.png" />
          </image></ImageView>
-      <ImageView fitHeight="62.0" fitWidth="62.0" layoutX="705.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="player2image" fitHeight="62.0" fitWidth="62.0" layoutX="705.0" layoutY="134.0" onMouseClicked="#clickPlayer2Image" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@com/aetherwars/card/image/character/mascot2.png" />
          </image></ImageView>
-      <Text layoutX="35.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" />
-      <Text layoutX="736.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2" />
       <Text layoutX="97.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DRAW" />
       <Text layoutX="254.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PLAN" />
       <Text layoutX="410.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATTACK" />
@@ -261,5 +259,7 @@
       <Rectangle fx:id="field1Card5" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="280.0" layoutY="128.0" onMouseClicked="#clickField1Card5" onMouseEntered="#field1Card5HoverIn" onMouseExited="#field1Card5HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
       <Rectangle fx:id="field1Card1" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="109.0" layoutY="91.0" onMouseClicked="#clickField1Card1" onMouseEntered="#field1Card1HoverIn" onMouseExited="#field1Card1HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
       <Label fx:id="movefieldtest" layoutX="377.0" layoutY="126.0" text="Label" />
+      <Label fx:id="player1text" layoutX="36.0" layoutY="67.0" text="Player 1" />
+      <Label fx:id="player2text" layoutX="717.0" layoutY="67.0" text="Player 2" />
    </children>
 </AnchorPane>

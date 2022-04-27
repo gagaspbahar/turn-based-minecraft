@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import com.aetherwars.model.Character;
 import com.aetherwars.model.type.CardType;
 import com.aetherwars.model.type.CharType;
+import com.aetherwars.model.type.PhaseType;
 
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -19,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.Modality;
@@ -35,7 +37,8 @@ public class Controller {
     /** VARIABLE ZONE **/
     private int chosenHand = 0;
     private int chosenField = 0;
-
+    private int chosenPlayer = 0;
+    
     
 /**** SAMPLE ZONE ****/
 
@@ -234,6 +237,17 @@ public class Controller {
     @FXML
     private Label field2Level5;
 
+    // Name Label Handler
+    @FXML
+    private Label player1text;
+    @FXML
+    private Label player2text;
+
+    // Player Image Handler
+    @FXML
+    private ImageView player1image;
+    @FXML
+    private ImageView player2image;
     
 
     @FXML
@@ -731,12 +745,12 @@ public class Controller {
                 AetherWars.p1.removeCardFromField(chosenField-1);
                 
             } else{
-                fieldCards2.get(chosenField - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
-                attackText2.get(chosenField - 1).setText("?");
-                healthText2.get(chosenField - 1).setText("?");
-                levelText2.get(chosenField - 1).setText("0/0 [0]");
-                fieldImage2.get(chosenField - 1).setImage(new Image("./com/aetherwars/card/image/character/base.png"));
-                AetherWars.p2.removeCardFromField(chosenField-1);
+                fieldCards2.get(chosenField - 6).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                attackText2.get(chosenField - 6).setText("?");
+                healthText2.get(chosenField - 6).setText("?");
+                levelText2.get(chosenField - 6).setText("0/0 [0]");
+                fieldImage2.get(chosenField - 6).setImage(new Image("./com/aetherwars/card/image/character/base.png"));
+                AetherWars.p2.removeCardFromField(chosenField-6);
             }
             chosenField = 0;
             utilityWarningText.setText("");
@@ -769,6 +783,8 @@ public class Controller {
         // TODO : change phase
         turn.setText("Phase 2");
     }
+
+
     @FXML
     void clickField1Card1(MouseEvent event) {
         if(chosenField == 1){
@@ -1071,16 +1087,16 @@ public class Controller {
 
     @FXML
     void clickField2Card1(MouseEvent event) {
-        if(chosenField == 1){
+        if(chosenField == 6){
             field2Card1.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
-            movefieldtest.setText(String.valueOf(1));
+            movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
         } else if(chosenField == 0){
             if(chosenHand == 0){
                 //ATTACK OR REMOVE CARD OR ADD EXP
                 if(AetherWars.p2.getFieldCardStatus()[0]){
-                    chosenField = 1;
+                    chosenField = 6;
                     movefieldtest.setText(String.valueOf(chosenField));
                     field2Card1.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
                 } else{
@@ -1126,21 +1142,40 @@ public class Controller {
                     utilityWarningText.setText("Can't spawn to Opponent's Field!");
                 }
             }
+        } else if(chosenField > 0 && chosenField < 6 && AetherWars.phase == PhaseType.ATTACK && AetherWars.playerTurn){
+            // Attack
+            // int source = chosenField;
+            // if(AetherWars.p1.getFieldCardHasAttacked()[source-1]){
+            //     utilityWarningText.setText("Character already attacked!");
+            // }
+            // else{
+            //     if(AetherWars.p1.getFieldCardStatus()[source-1]){
+            //         if(AetherWars.p2.getFieldCardStatus()[0]){
+            //             chosenField = 6;
+            //             movefieldtest.setText(String.valueOf(chosenField));
+            //             // p1.get
+            //         } else{
+            //             utilityWarningText.setText("Empty Field!");
+            //         }
+            //     } else{
+            //         utilityWarningText.setText("Empty Field!");
+            //     }
+            // }
         }
     }
 
     @FXML
     void clickField2Card2(MouseEvent event) {
-        if(chosenField == 2){
+        if(chosenField == 7){
             field2Card2.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
-            movefieldtest.setText(String.valueOf(2));
+            movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
         } else if(chosenField == 0){
             if(chosenHand == 0){
                 //ATTACK OR REMOVE CARD OR ADD EXP
                 if(AetherWars.p2.getFieldCardStatus()[1]){
-                    chosenField = 2;
+                    chosenField = 7;
                     movefieldtest.setText(String.valueOf(chosenField));
                     field2Card2.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
                 } else{
@@ -1191,16 +1226,16 @@ public class Controller {
 
     @FXML
     void clickField2Card3(MouseEvent event) {
-        if(chosenField == 3){
+        if(chosenField == 8){
             field2Card3.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
-            movefieldtest.setText(String.valueOf(3));
+            movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
         } else if(chosenField == 0){
             if(chosenHand == 0){
                 //ATTACK OR REMOVE CARD OR ADD EXP
                 if(AetherWars.p2.getFieldCardStatus()[2]){
-                    chosenField = 3;
+                    chosenField = 8;
                     movefieldtest.setText(String.valueOf(chosenField));
                     field2Card3.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
                 } else{
@@ -1251,16 +1286,16 @@ public class Controller {
 
     @FXML
     void clickField2Card4(MouseEvent event) {
-        if(chosenField == 4){
+        if(chosenField == 9){
             field2Card4.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
-            movefieldtest.setText(String.valueOf(4));
+            movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
         } else if(chosenField == 0){
             if(chosenHand == 0){
                 //ATTACK OR REMOVE CARD OR ADD EXP
                 if(AetherWars.p2.getFieldCardStatus()[3]){
-                    chosenField = 4;
+                    chosenField = 9;
                     movefieldtest.setText(String.valueOf(chosenField));
                     field2Card4.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
                 } else{
@@ -1311,16 +1346,16 @@ public class Controller {
 
     @FXML
     void clickField2Card5(MouseEvent event) {
-        if(chosenField == 5){
+        if(chosenField == 10){
             field2Card5.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
-            movefieldtest.setText(String.valueOf(5));
+            movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
         } else if(chosenField == 0){
             if(chosenHand == 0){
                 //ATTACK OR REMOVE CARD OR ADD EXP
                 if(AetherWars.p2.getFieldCardStatus()[4]){
-                    chosenField = 5;
+                    chosenField = 10;
                     movefieldtest.setText(String.valueOf(chosenField));
                     field2Card5.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
                 } else{
@@ -1367,6 +1402,26 @@ public class Controller {
                 }
             }
         }
+    }
+
+    @FXML
+    void clickPlayer1Image(MouseEvent event) {
+        if(AetherWars.p1.getFieldCardValue() == 0 && !AetherWars.playerTurn){
+            if (chosenPlayer == 1){
+                player1image.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                chosenPlayer = 0;
+                utilityWarningText.setText("");
+            } else {
+                
+            }
+        } else {
+            utilityWarningText.setText("Please attack a character first!");
+        }
+    }
+
+    @FXML
+    void clickPlayer2Image(MouseEvent event) {
+
     }
 
 }

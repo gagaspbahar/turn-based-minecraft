@@ -23,12 +23,9 @@ import com.aetherwars.model.*;
 import com.aetherwars.model.Character;
 
 public class AetherWars extends Application {
-  private static final String CHARACTER_CSV_FILE_PATH = "./character.csv";
-  private static final String SPELL_MORPH_CSV_FILE_PATH = "card/data/spell_morph.csv";
-  private static final String SPELL_PTN_CSV_FILE_PATH = "card/data/spell_ptn.csv";
-  private static final String SPELL_SWAP_FILE_PATH = "card/data/spell_swap.csv";
-  public static boolean playerTurn = true;
+  public static boolean playerTurn = true; // true = 1, false = 2
   public static int turn = 1;
+  public static PhaseType phase = PhaseType.DRAW;
   public static Player p1 = new Player("Player 1");
   public static Player p2 = new Player("Player 2");
 
