@@ -2,6 +2,7 @@ package com.aetherwars.model;
 
 import com.aetherwars.model.type.*;
 import com.aetherwars.util.*;
+import java.util.ArrayList;
 
 public abstract class Spell extends Card {
   public Spell(){
@@ -115,13 +116,13 @@ class LevelSpell extends Spell {
   @Override
   public void cast(Character c, Player  p){
     if(this.getID() == 401){
-      if(p.getMana() >= (c.getLevel()+1)/2){
+      if(p.getMana() >= (c.getLevel()+1)/2 && c.getLevel() < 10){
         c.setLevel(c.getLevel() + 1);
         c.setEXP(0);
         p.setMana(p.getMana() - (c.getLevel()+1)/2);
         c.updateStats(c.getLevel()-1, c.getLevel());
       }
-    } else if(this.getID() == 402){
+    } else if(this.getID() == 402 && c.getLevel() > 1){
       if(p.getMana() >= (c.getLevel()+1)/2){
         c.setLevel(c.getLevel() - 1);
         c.setEXP(0);
@@ -217,11 +218,20 @@ class MorphSpell extends Spell {
   public void cast(Character c, Player p){
     if(p.getMana() >= this.getMana()){
       int id = this.targetid;
-      Card card = new Card(id, config.getNameFromID(id), config.getDescriptionFromID(id),
-                    config.getImagePathFromID(id), CardType.CHARACTER, config.getManaFromID(id));
-      c = new Character(card, config.characters.getCharTypeFromID(id),
-              config.characters.getAttackFromID(id), config.characters.getHealthFromID(id),
-              config.characters.getAttackUpFromID(id), config.characters.getHealthUpFromID(id));
+      c.setName(config.getNameFromID(id));
+      c.setDescription(config.getDescriptionFromID(id));
+      c.setImagePath(config.getImagePathFromID(id));
+      c.setMana(config.getManaFromID(id));
+      c.setType(CardType.CHARACTER);
+      c.setCharType(config.characters.getCharTypeFromID(id));
+      c.setAttack(config.characters.getAttackFromID(id));
+      c.setHealth(config.characters.getHealthFromID(id));
+      c.setLevel(1);
+      c.setEXP(0);
+      c.setSwapDura(-1);
+      c.setSpellsEffect(new ArrayList<PotionSpell>());
+      c.setAttackUp(config.characters.getAttackUpFromID(id));
+      c.setHealthUp(config.characters.getHealthUpFromID(id));
       p.setMana(p.getMana() - this.getMana());
     }
   }
@@ -261,12 +271,15 @@ class HealSpell extends Spell {
 
   @Override
   public void cast(Character c, Player p){
-    int temp = p.getHealth();
-    if(temp + this.getHealth() <= 100){
-      p.setHealth(temp + this.getHealth());
-    }
-    else{
-      p.setHealth(100);
+    if(p.getMana() >= this.getMana()){
+      int temp = p.getHealth();
+      if(temp + this.getHealth() <= 100){
+        p.setHealth(temp + this.getHealth());
+      }
+      else{
+        p.setHealth(100);
+      }
+      p.setMana(p.getMana() - this.getMana());
     }
   }
 

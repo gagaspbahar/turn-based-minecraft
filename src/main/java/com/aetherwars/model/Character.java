@@ -101,6 +101,10 @@ public class Character extends Card {
 
   public void setHealthUp(int healthup) { this.healthup = healthup; }
 
+  public void setCharType(CharType type){ this.charType = type; }
+
+  public void setSpellsEffect(ArrayList<PotionSpell> spellsEffect) { this.spellsEffect = spellsEffect; }
+
   public void addSpellsEffect(PotionSpell spell){
     this.spellsEffect.add(spell);
   }
@@ -165,12 +169,20 @@ public class Character extends Card {
 
   public void updateStats(int prevLevel, int newLevel) {
     int newAttack = (newLevel - prevLevel)*this.getAttackUp();
-    if(newAttack < 0) {
-      newAttack = 0;
-    }
     int newHealth = (newLevel - prevLevel)*this.getHealthUp();
-    this.setAttack(this.getAttack() + newAttack);
-    this.setHealth(this.getHealth() + newHealth);
+    if(this.getAttack() + newAttack < 0){
+      this.setAttack(0);
+    }
+    else {
+      this.setAttack(this.getAttack() + newAttack);
+    }
+
+    if(this.getHealth() + newHealth < 0){
+      this.setHealth(0);
+    }
+    else {
+      this.setHealth(this.getHealth() + newHealth);
+    }
   }
 
   public void updateSpellsEffect(){
