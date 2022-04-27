@@ -253,10 +253,10 @@ class HealSpell extends Spell {
 
   @Override
   public String toString() {
-    return "HEAL";
+    return "HEAL" + " (" + Integer.toString(this.getHealth()) + ")";
   }
 
   public String getStat(){
-    return this.getName() + "\nTYPE: " + this.getSpellType();
+    return this.getName() + "\nHEALTH: " + this.getHealth() +"\nTYPE: " + this.getSpellType();
   }
 }
