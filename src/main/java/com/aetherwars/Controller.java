@@ -264,6 +264,15 @@ public class Controller {
     private Rectangle HPPlayer2;
 
     @FXML
+    private Rectangle drawRectangle;
+    @FXML
+    private Rectangle planRectangle;
+    @FXML
+    private Rectangle attackRectangle;
+    @FXML
+    private Rectangle endRectangle;
+
+    @FXML
     void drawCard(MouseEvent event) throws Exception {
         List<Label> handText = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
         List<Label> manaText = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
@@ -299,7 +308,7 @@ public class Controller {
                 }
             }
             deckSize.setText((AetherWars.p1.getDeck().size()) + " / 50");
-            AetherWars.playerTurn = false;
+            // AetherWars.playerTurn = false;
         } else {
             AetherWars.p2.resetMana(AetherWars.turn);
             manaSize.setText(AetherWars.p2.getMana() + " / " + AetherWars.turn);
@@ -318,8 +327,8 @@ public class Controller {
 
             }
             deckSize.setText((AetherWars.p2.getDeck().size()) + " / 50");
-            AetherWars.playerTurn = true;
-            AetherWars.turn++;
+            // AetherWars.playerTurn = true;
+            // AetherWars.turn++;
         }
         background.setStyle("-fx-background-color: white");
     }
@@ -816,8 +825,31 @@ public class Controller {
 
     @FXML
     void submitClicked(MouseEvent event) {
-        // TODO : change phase
-        turn.setText("Phase 2");
+        System.out.println(AetherWars.phase);
+        if(AetherWars.phase == PhaseType.DRAW){
+            drawRectangle.setFill(Color.valueOf("#dfdfdf"));
+            planRectangle.setFill(Color.valueOf("#ff8c00"));
+            AetherWars.phase = PhaseType.PLAN;
+        }
+        else if(AetherWars.phase == PhaseType.PLAN){
+            planRectangle.setFill(Color.valueOf("#dfdfdf"));
+            attackRectangle.setFill(Color.valueOf("#ff8c00"));
+            AetherWars.phase = PhaseType.ATTACK;
+        }
+        else if(AetherWars.phase == PhaseType.ATTACK){
+            attackRectangle.setFill(Color.valueOf("#dfdfdf"));
+            endRectangle.setFill(Color.valueOf("#ff8c00"));
+            AetherWars.phase = PhaseType.END;
+        }
+        else{
+            endRectangle.setFill(Color.valueOf("#dfdfdf"));
+            drawRectangle.setFill(Color.valueOf("#ff8c00"));
+            AetherWars.phase = PhaseType.DRAW;
+            AetherWars.playerTurn = !AetherWars.playerTurn;
+            AetherWars.turn += 1;
+            turn.setText("Turn " + String.valueOf(AetherWars.turn));
+            // TODO : kalo turn 10, game over
+        }
     }
 
     @FXML

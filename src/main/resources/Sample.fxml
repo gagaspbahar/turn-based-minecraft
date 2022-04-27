@@ -22,10 +22,10 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="120.0" layoutX="573.0" layoutY="296.0" stroke="BLACK" strokeType="INSIDE" width="120.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="40.0" layoutX="706.0" layoutY="299.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="40.0" layoutX="706.0" layoutY="348.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-      <Rectangle fx:id="draw" arcHeight="5.0" arcWidth="5.0" fill="#dfdfdf" height="18.0" layoutX="30.0" layoutY="242.0" stroke="BLACK" strokeType="INSIDE" width="160.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dfdfdf" height="18.0" layoutX="188.0" layoutY="242.0" stroke="BLACK" strokeType="INSIDE" width="160.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dfdfdf" height="18.0" layoutX="345.0" layoutY="242.0" stroke="BLACK" strokeType="INSIDE" width="160.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dfdfdf" height="18.0" layoutX="503.0" layoutY="242.0" stroke="BLACK" strokeType="INSIDE" width="160.0" />
+      <Rectangle fx:id="drawRectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff8c00" height="18.0" layoutX="30.0" layoutY="242.0" stroke="BLACK" strokeType="INSIDE" width="160.0" />
+      <Rectangle fx:id="planRectangle" arcHeight="5.0" arcWidth="5.0" fill="#dfdfdf" height="18.0" layoutX="188.0" layoutY="242.0" stroke="BLACK" strokeType="INSIDE" width="160.0" />
+      <Rectangle fx:id="attackRectangle" arcHeight="5.0" arcWidth="5.0" fill="#dfdfdf" height="18.0" layoutX="345.0" layoutY="242.0" stroke="BLACK" strokeType="INSIDE" width="160.0" />
+      <Rectangle fx:id="endRectangle" arcHeight="5.0" arcWidth="5.0" fill="#dfdfdf" height="18.0" layoutX="503.0" layoutY="242.0" stroke="BLACK" strokeType="INSIDE" width="160.0" />
       <ImageView fx:id="cardImage1" fitHeight="50.0" fitWidth="40.0" layoutX="38.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@com/aetherwars/card/image/character/base.png" />
