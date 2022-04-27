@@ -255,12 +255,12 @@
       <Rectangle fx:id="field2Card3" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="623.0" layoutY="159.0" onMouseClicked="#clickField2Card3" onMouseEntered="#field2Card3HoverIn" onMouseExited="#field2Card3HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
       <Rectangle fx:id="field2Card5" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="443.0" layoutY="127.0" onMouseClicked="#clickField2Card5" onMouseEntered="#field2Card5HoverIn" onMouseExited="#field2Card5HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
       <Rectangle fx:id="card5" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="275.0" layoutY="301.0" onMouseClicked="#card5Clicked" onMouseEntered="#card5HoverIn" onMouseExited="#card5HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-      <Rectangle fx:id="field1Card2" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="201.0" layoutY="92.0" onMouseClicked="#clickField1Card2" onMouseEntered="#field1Card2HoverIn" onMouseExited="#field1Card2HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
+      <Rectangle fx:id="field1Card2" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="62.0" layoutX="201.0" layoutY="92.0" onMouseClicked="#clickField1Card2" onMouseEntered="#field1Card2HoverIn" onMouseExited="#field1Card2HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
       <Rectangle fx:id="field1Card5" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="280.0" layoutY="128.0" onMouseClicked="#clickField1Card5" onMouseEntered="#field1Card5HoverIn" onMouseExited="#field1Card5HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
       <Rectangle fx:id="field1Card1" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="109.0" layoutY="91.0" onMouseClicked="#clickField1Card1" onMouseEntered="#field1Card1HoverIn" onMouseExited="#field1Card1HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
       <Label fx:id="movefieldtest" layoutX="377.0" layoutY="126.0" text="Label" />
-      <Label fx:id="player1text" layoutX="36.0" layoutY="67.0" text="Player 1" />
-      <Label fx:id="player2text" layoutX="717.0" layoutY="67.0" text="Player 2" />
+      <Label fx:id="player1text" layoutX="36.0" layoutY="67.0" style="-fx-background-color: #ad2517;" text="Player 1" textFill="WHITE" />
+      <Label fx:id="player2text" layoutX="717.0" layoutY="67.0" style="-fx-background-color: #dfdfdf;" text="Player 2" />
       <Button fx:id="reduceHP" layoutX="357.0" layoutY="92.0" mnemonicParsing="false" onMouseClicked="#clickReduceHP" text="Reduce HP" />
       <Label fx:id="attack1" layoutX="134.0" layoutY="59.0" text="Label" />
       <Label fx:id="health1" layoutX="176.0" layoutY="59.0" text="Label" />
