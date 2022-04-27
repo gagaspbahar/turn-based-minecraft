@@ -97,6 +97,10 @@ public class Character extends Card {
 
   public void setSwapDura(int dura) { this.swapDura = dura; }
 
+  public void setAttackUp(int attackup) { this.attackup = attackup; }
+
+  public void setHealthUp(int healthup) { this.healthup = healthup; }
+
   public void addSpellsEffect(PotionSpell spell){
     this.spellsEffect.add(spell);
   }
@@ -161,6 +165,9 @@ public class Character extends Card {
 
   public void updateStats(int prevLevel, int newLevel) {
     int newAttack = (newLevel - prevLevel)*this.getAttackUp();
+    if(newAttack < 0) {
+      newAttack = 0;
+    }
     int newHealth = (newLevel - prevLevel)*this.getHealthUp();
     this.setAttack(this.getAttack() + newAttack);
     this.setHealth(this.getHealth() + newHealth);

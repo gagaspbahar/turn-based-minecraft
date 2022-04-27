@@ -1,6 +1,7 @@
 package com.aetherwars.model;
 
 import com.aetherwars.model.type.*;
+import com.aetherwars.util.*;
 
 public abstract class Spell extends Card {
   public Spell(){
@@ -9,8 +10,8 @@ public abstract class Spell extends Card {
   public Spell(Card card){
     super(card.getID(), card.getName(), card.getDescription(), card.getImagePath(), card.getType(), card.getMana());
   }
-  abstract SpellType getSpellType();
-  abstract void cast(Character c, Player p);
+  public abstract SpellType getSpellType();
+  public abstract void cast(Character c, Player p);
 }
 
 // abstract class TempSpell extends Spell {
@@ -113,10 +114,20 @@ class LevelSpell extends Spell {
 
   @Override
   public void cast(Character c, Player  p){
-    if(p.getMana() >= (c.getLevel()+1)/2){
-      c.setLevel(c.getLevel() + 1);
-      c.setEXP(0);
-      p.setMana(p.getMana() - (c.getLevel()+1)/2);
+    if(this.getID() == 401){
+      if(p.getMana() >= (c.getLevel()+1)/2){
+        c.setLevel(c.getLevel() + 1);
+        c.setEXP(0);
+        p.setMana(p.getMana() - (c.getLevel()+1)/2);
+        c.updateStats(c.getLevel()-1, c.getLevel());
+      }
+    } else if(this.getID() == 402){
+      if(p.getMana() >= (c.getLevel()+1)/2){
+        c.setLevel(c.getLevel() - 1);
+        c.setEXP(0);
+        p.setMana(p.getMana() - (c.getLevel()+1)/2);
+        c.updateStats(c.getLevel()+1, c.getLevel());
+      }
     }
   }
 
@@ -151,7 +162,7 @@ class SwapSpell extends Spell {
   @Override
   public void cast(Character c, Player p){
     if(p.getMana() >= this.getMana()){
-      if(c.getSwapDura() == 0){
+      if(c.getSwapDura() == -1){
         int newHealth = c.getAttack();
         int newAttack = c.getHealth();
         c.setHealth(newHealth);
@@ -186,21 +197,33 @@ class SwapSpell extends Spell {
 class MorphSpell extends Spell {
   private final SpellType spellType = SpellType.MORPH;
   private int targetid;
+  private Config config;
   
   public MorphSpell(){
     super();
+    this.targetid = 0;
+    this.config = new Config();
   }
 
   public MorphSpell(Card card, int targetid){
     super(card);
     this.targetid = targetid;
+    this.config = new Config();
   }
 
   public MorphSpell(int targetid) {this.targetid = targetid; }
 
   @Override
   public void cast(Character c, Player p){
-    
+    if(p.getMana() >= this.getMana()){
+      int id = this.targetid;
+      Card card = new Card(id, config.getNameFromID(id), config.getDescriptionFromID(id),
+                    config.getImagePathFromID(id), CardType.CHARACTER, config.getManaFromID(id));
+      c = new Character(card, config.characters.getCharTypeFromID(id),
+              config.characters.getAttackFromID(id), config.characters.getHealthFromID(id),
+              config.characters.getAttackUpFromID(id), config.characters.getHealthUpFromID(id));
+      p.setMana(p.getMana() - this.getMana());
+    }
   }
 
   public SpellType getSpellType(){

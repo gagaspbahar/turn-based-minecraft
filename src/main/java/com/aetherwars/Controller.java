@@ -5,10 +5,12 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.paint.Color;
+import com.aetherwars.model.Spell;
 import com.aetherwars.model.Character;
 import com.aetherwars.model.type.CardType;
 import com.aetherwars.model.type.CharType;
 import com.aetherwars.model.type.PhaseType;
+import com.aetherwars.model.type.SpellType;
 
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -40,7 +42,10 @@ public class Controller {
     private int chosenPlayer = 0;
 
     /**** SAMPLE ZONE ****/
-
+    @FXML
+    private Label attack1;
+    @FXML
+    private Label health1;
     @FXML
     private AnchorPane background;
 
@@ -869,7 +874,83 @@ public class Controller {
                         AetherWars.p1.setMana(AetherWars.p1.getMana() - c.getMana());
                         manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
                     }
-                } else {
+                } else if(!AetherWars.playerTurn && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.SPELL){
+                    if (!AetherWars.p1.getFieldCardStatus()[0]) {
+                        utilityWarningText.setText("Can't add spell to Empty Field!");
+                    } else if (AetherWars.p1.getMana() < AetherWars.p1.getHand()[chosenHand - 1].getMana()) {
+                        utilityWarningText.setText("Not Enough Mana!");
+                    } else {
+                        // Pakein Spell
+                        Spell s = (Spell) AetherWars.p1.getHand()[chosenHand - 1];
+                        s.cast(AetherWars.p1.getFieldCard()[0], AetherWars.p1);
+                        
+                        // Check if card is dead
+                        if(AetherWars.p1.getFieldCard()[0].getHealth() <= 0){
+                            field1Attack1.setText("?");
+                            field1Health1.setText("?");
+                            field1Level1.setText("0/0 [0]");
+                            field1Image1.setImage(new Image("./com/aetherwars/card/image/character/base.png"));
+                            AetherWars.p1.removeCardFromField(0);
+                        } else{
+                            // re-Render Field
+                            field1Attack1.setText(String.valueOf(AetherWars.p1.getFieldCard()[0].getAttack()));
+                            field1Health1.setText(String.valueOf(AetherWars.p1.getFieldCard()[0].getHealth()));
+                            field1Level1.setText(AetherWars.p1.getFieldCard()[0].getExpLevel());
+                            field1Image1.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[0].getImagePath()));
+                        }
+                        // field1Attack1.setText(String.valueOf(AetherWars.p1.getFieldCard()[0].getAttack()));
+                        // field1Health1.setText(String.valueOf(AetherWars.p1.getFieldCard()[0].getHealth()));
+                        // field1Level1.setText(AetherWars.p1.getFieldCard()[0].getExpLevel());
+                        // field1Image1.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[0].getImagePath()));
+                        attack1.setText(String.valueOf(AetherWars.p1.getFieldCard()[0].getAttack()));
+                        health1.setText(String.valueOf(AetherWars.p1.getFieldCard()[0].getHealth()));
+                        manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
+                        // Hapus Spell dari Hand
+                        List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
+                        List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
+                        List<ImageView> cardImage = new ArrayList<ImageView>(Arrays.asList(cardImage1, cardImage2, cardImage3, cardImage4, cardImage5));
+                        List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1, card2, card3, card4, card5));
+                        hand.get(chosenHand - 1).setText("");
+                        mana.get(chosenHand - 1).setText("");
+                        cardImage.get(chosenHand - 1).setImage(new Image("./com/aetherwars/card/image/character/base.png"));
+                        AetherWars.p1.getHandStatus()[chosenHand - 1] = false;
+                        AetherWars.p1.getHand()[chosenHand - 1] = null;
+                        cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                    }
+                } else if (AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.SPELL){
+                    Spell s = (Spell) AetherWars.p2.getHand()[chosenHand - 1];
+                    if (s.getSpellType() == SpellType.MORPH){
+                        if (!AetherWars.p1.getFieldCardStatus()[0]) {
+                            utilityWarningText.setText("Can't add spell to Empty Field!");
+                        } else if (AetherWars.p2.getMana() < AetherWars.p2.getHand()[chosenHand - 1].getMana()) {
+                            utilityWarningText.setText("Not Enough Mana!");
+                        } else {
+                            s.cast(AetherWars.p1.getFieldCard()[0], AetherWars.p2);
+
+                            //re-Render field
+                            field1Attack1.setText(String.valueOf(AetherWars.p1.getFieldCard()[0].getAttack()));
+                            field1Health1.setText(String.valueOf(AetherWars.p1.getFieldCard()[0].getHealth()));
+                            field1Level1.setText(AetherWars.p1.getFieldCard()[0].getExpLevel());
+                            field1Image1.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[0].getImagePath()));
+                            manaSize.setText(AetherWars.p2.getMana() + " / " + AetherWars.turn);
+
+                            // Hapus Spell dari Hand
+                            List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
+                            List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
+                            List<ImageView> cardImage = new ArrayList<ImageView>(Arrays.asList(cardImage1, cardImage2, cardImage3, cardImage4, cardImage5));
+                            List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1, card2, card3, card4, card5));
+                            hand.get(chosenHand - 1).setText("");
+                            mana.get(chosenHand - 1).setText("");
+                            cardImage.get(chosenHand - 1).setImage(new Image("./com/aetherwars/card/image/character/base.png"));
+                            AetherWars.p2.getHandStatus()[chosenHand - 1] = false;
+                            AetherWars.p2.getHand()[chosenHand - 1] = null;
+                            cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                        }
+                    } else{
+                        utilityWarningText.setText("You can only cast MORPH spell to opponent!");
+                    }
+                }
+                else {
                     utilityWarningText.setText("Can't spawn to Opponent's Field!");
                 }
             }
