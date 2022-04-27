@@ -78,6 +78,12 @@ public class Player {
 
     public Boolean[] getFieldCardHasAttacked() {return this.fieldCardHasAttacked; }
 
+    public void setFieldCardHasAttackedFalse() {
+        for (int i = 0; i < 5; i++) {
+            this.fieldCardHasAttacked[i] = false;
+        }
+    }
+
     public int getFieldCardValue(){
         int ans = 0;
         for (int i = 0; i < 5; i++) {
