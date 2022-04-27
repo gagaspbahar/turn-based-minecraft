@@ -898,12 +898,6 @@ public class Controller {
                             field1Level1.setText(AetherWars.p1.getFieldCard()[0].getExpLevel());
                             field1Image1.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[0].getImagePath()));
                         }
-                        // field1Attack1.setText(String.valueOf(AetherWars.p1.getFieldCard()[0].getAttack()));
-                        // field1Health1.setText(String.valueOf(AetherWars.p1.getFieldCard()[0].getHealth()));
-                        // field1Level1.setText(AetherWars.p1.getFieldCard()[0].getExpLevel());
-                        // field1Image1.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[0].getImagePath()));
-                        attack1.setText(String.valueOf(AetherWars.p1.getFieldCard()[0].getAttack()));
-                        health1.setText(String.valueOf(AetherWars.p1.getFieldCard()[0].getHealth()));
                         manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
                         // Hapus Spell dari Hand
                         List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
