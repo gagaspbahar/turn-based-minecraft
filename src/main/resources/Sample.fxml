@@ -14,8 +14,8 @@
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="GREY" height="18.0" layoutX="30.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="302.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="GREY" height="18.0" layoutX="465.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="302.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="GREEN" height="18.0" layoutX="30.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="182.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="GREEN" height="18.0" layoutX="507.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="260.0" />
+      <Rectangle fx:id="HPPlayer1" arcHeight="5.0" arcWidth="5.0" fill="GREEN" height="18.0" layoutX="30.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="182.0" />
+      <Rectangle fx:id="HPPlayer2" arcHeight="5.0" arcWidth="5.0" fill="GREEN" height="18.0" layoutX="507.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="260.0" />
       <Circle fill="GREY" layoutX="394.0" layoutY="45.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="140.0" layoutX="347.0" layoutY="278.0" stroke="BLACK" strokeType="INSIDE" width="95.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="120.0" layoutX="454.0" layoutY="296.0" stroke="BLACK" strokeType="INSIDE" width="120.0" />
@@ -261,5 +261,6 @@
       <Label fx:id="movefieldtest" layoutX="377.0" layoutY="126.0" text="Label" />
       <Label fx:id="player1text" layoutX="36.0" layoutY="67.0" text="Player 1" />
       <Label fx:id="player2text" layoutX="717.0" layoutY="67.0" text="Player 2" />
+      <Button fx:id="reduceHP" layoutX="357.0" layoutY="92.0" mnemonicParsing="false" onMouseClicked="#clickReduceHP" text="Reduce HP" />
    </children>
 </AnchorPane>

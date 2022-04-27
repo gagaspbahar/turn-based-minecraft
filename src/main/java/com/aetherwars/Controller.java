@@ -38,9 +38,8 @@ public class Controller {
     private int chosenHand = 0;
     private int chosenField = 0;
     private int chosenPlayer = 0;
-    
-    
-/**** SAMPLE ZONE ****/
+
+    /**** SAMPLE ZONE ****/
 
     @FXML
     private AnchorPane background;
@@ -51,17 +50,20 @@ public class Controller {
     @FXML
     private Label namatest;
 
-    @FXML 
+    @FXML
     private Label indextest;
 
     @FXML
     private Label movefieldtest;
-    
+
     @FXML
     private Button proceedButton;
-//
-    
-//asdasdsasda
+
+    @FXML
+    private Button reduceHP;
+    //
+
+    // asdasdsasda
 
     @FXML
     private Label deckSize;
@@ -248,13 +250,20 @@ public class Controller {
     private ImageView player1image;
     @FXML
     private ImageView player2image;
-    
+
+    // Player HP Handler
+    @FXML
+    private Rectangle HPPlayer1;
 
     @FXML
-    void drawCard(MouseEvent event)throws Exception {
-        List<Label> handText = new ArrayList<Label>(Arrays.asList(hand1,hand2,hand3,hand4,hand5));
-        List<Label> manaText = new ArrayList<Label>(Arrays.asList(mana1,mana2,mana3,mana4,mana5));
-        List<ImageView> cardImage = new ArrayList<ImageView>(Arrays.asList(cardImage1,cardImage2,cardImage3,cardImage4,cardImage5));
+    private Rectangle HPPlayer2;
+
+    @FXML
+    void drawCard(MouseEvent event) throws Exception {
+        List<Label> handText = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
+        List<Label> manaText = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
+        List<ImageView> cardImage = new ArrayList<ImageView>(
+                Arrays.asList(cardImage1, cardImage2, cardImage3, cardImage4, cardImage5));
 
         background.setStyle("-fx-background-color: grey");
 
@@ -268,15 +277,16 @@ public class Controller {
         popupwindow.showAndWait();
         turn.setText("Turn " + String.valueOf(AetherWars.turn));
 
-        if (AetherWars.playerTurn)  {
+        if (AetherWars.playerTurn) {
             AetherWars.p1.resetMana(AetherWars.turn);
-            manaSize.setText(AetherWars.p1.getMana() + " / "+ AetherWars.turn);
+            manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
 
-            for(int i=0; i<5; i++){
-                if (AetherWars.p1.getHand()[i] != null){
+            for (int i = 0; i < 5; i++) {
+                if (AetherWars.p1.getHand()[i] != null) {
                     handText.get(i).setText(AetherWars.p1.getHand()[i].toString());
                     manaText.get(i).setText("MANA " + String.valueOf(AetherWars.p1.getHand()[i].getMana()));
-                    cardImage.get(i).setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[i].getImagePath())); 
+                    cardImage.get(i)
+                            .setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[i].getImagePath()));
                 } else {
                     handText.get(i).setText("");
                     manaText.get(i).setText("");
@@ -284,22 +294,23 @@ public class Controller {
                 }
             }
             deckSize.setText((AetherWars.p1.getDeck().size()) + " / 50");
-            AetherWars.playerTurn = false;            
-        } else{
+            AetherWars.playerTurn = false;
+        } else {
             AetherWars.p2.resetMana(AetherWars.turn);
-            manaSize.setText(AetherWars.p2.getMana() + " / "+ AetherWars.turn);
+            manaSize.setText(AetherWars.p2.getMana() + " / " + AetherWars.turn);
 
-            for(int i=0; i<5; i++){
-                if(AetherWars.p2.getHand()[i] != null){
+            for (int i = 0; i < 5; i++) {
+                if (AetherWars.p2.getHand()[i] != null) {
                     handText.get(i).setText(AetherWars.p2.getHand()[i].toString());
                     manaText.get(i).setText("MANA " + String.valueOf(AetherWars.p2.getHand()[i].getMana()));
-                    cardImage.get(i).setImage(new Image("./com/aetherwars/" + AetherWars.p2.getHand()[i].getImagePath())); 
+                    cardImage.get(i)
+                            .setImage(new Image("./com/aetherwars/" + AetherWars.p2.getHand()[i].getImagePath()));
                 } else {
                     handText.get(i).setText("");
                     manaText.get(i).setText("");
                     cardImage.get(i).setImage(new Image("./com/aetherwars/card/image/character/base.png"));
                 }
-                
+
             }
             deckSize.setText((AetherWars.p2.getDeck().size()) + " / 50");
             AetherWars.playerTurn = true;
@@ -307,14 +318,15 @@ public class Controller {
         }
         background.setStyle("-fx-background-color: white");
     }
-//     Hover Handler
+
+    // Hover Handler
     @FXML
     void card1HoverIn(MouseEvent event) {
         if (!AetherWars.playerTurn && AetherWars.p1.getHand()[0] != null) {
             infoStat.setText(AetherWars.p1.getHand()[0].getStat());
             infoDescription.setText(AetherWars.p1.getHand()[0].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[0].getImagePath()));
-        }else if (AetherWars.playerTurn && AetherWars.p2.getHand()[0] != null) {
+        } else if (AetherWars.playerTurn && AetherWars.p2.getHand()[0] != null) {
             infoStat.setText(AetherWars.p2.getHand()[0].getStat());
             infoDescription.setText(AetherWars.p2.getHand()[0].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getHand()[0].getImagePath()));
@@ -327,26 +339,28 @@ public class Controller {
         infoDescription.setText("");
         infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.png"));
     }
+
     @FXML
-    void card1Clicked(MouseEvent event){
-        if((!AetherWars.playerTurn && AetherWars.p1.getHandStatus()[0]) || (AetherWars.playerTurn && AetherWars.p2.getHandStatus()[0])){
-            if(chosenHand == 0){
+    void card1Clicked(MouseEvent event) {
+        if ((!AetherWars.playerTurn && AetherWars.p1.getHandStatus()[0])
+                || (AetherWars.playerTurn && AetherWars.p2.getHandStatus()[0])) {
+            if (chosenHand == 0) {
                 card1.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
                 chosenHand = 1;
                 chosenidx.setText(String.valueOf(chosenHand));
-            } else if(chosenHand == 1) {
+            } else if (chosenHand == 1) {
                 card1.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
                 chosenHand = 0;
                 chosenidx.setText(String.valueOf(chosenHand));
             } else {
-                List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1,card2,card3,card4,card5));
-                cards.get(chosenHand-1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1, card2, card3, card4, card5));
+                cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
                 card1.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
                 chosenHand = 1;
                 chosenidx.setText(String.valueOf(chosenHand));
             }
             utilityWarningText.setText("");
-        } else{
+        } else {
             utilityWarningText.setText("Empty Hand!");
         }
     }
@@ -357,12 +371,12 @@ public class Controller {
             infoStat.setText(AetherWars.p1.getHand()[1].getStat());
             infoDescription.setText(AetherWars.p1.getHand()[1].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[1].getImagePath()));
-        }else if (AetherWars.playerTurn && AetherWars.p2.getHand()[1] != null) {
+        } else if (AetherWars.playerTurn && AetherWars.p2.getHand()[1] != null) {
             infoStat.setText(AetherWars.p2.getHand()[1].getStat());
             infoDescription.setText(AetherWars.p2.getHand()[1].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getHand()[1].getImagePath()));
         }
-}
+    }
 
     @FXML
     void card2HoverOut(MouseEvent event) {
@@ -370,26 +384,28 @@ public class Controller {
         infoDescription.setText("");
         infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.png"));
     }
+
     @FXML
-    void card2Clicked(MouseEvent event){
-        if((!AetherWars.playerTurn && AetherWars.p1.getHandStatus()[1]) || (AetherWars.playerTurn && AetherWars.p2.getHandStatus()[1])){
-            if(chosenHand == 0){
+    void card2Clicked(MouseEvent event) {
+        if ((!AetherWars.playerTurn && AetherWars.p1.getHandStatus()[1])
+                || (AetherWars.playerTurn && AetherWars.p2.getHandStatus()[1])) {
+            if (chosenHand == 0) {
                 card2.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
                 chosenHand = 2;
                 chosenidx.setText(String.valueOf(chosenHand));
-            } else if(chosenHand == 2) {
+            } else if (chosenHand == 2) {
                 card2.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
                 chosenHand = 0;
                 chosenidx.setText(String.valueOf(chosenHand));
             } else {
-                List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1,card2,card3,card4,card5));
-                cards.get(chosenHand-1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1, card2, card3, card4, card5));
+                cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
                 card2.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
                 chosenHand = 2;
                 chosenidx.setText(String.valueOf(chosenHand));
             }
             utilityWarningText.setText("");
-        } else{
+        } else {
             utilityWarningText.setText("Empty Hand!");
         }
     }
@@ -400,7 +416,7 @@ public class Controller {
             infoStat.setText(AetherWars.p1.getHand()[2].getStat());
             infoDescription.setText(AetherWars.p1.getHand()[2].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[2].getImagePath()));
-        }else if (AetherWars.playerTurn && AetherWars.p2.getHand()[2] != null) {
+        } else if (AetherWars.playerTurn && AetherWars.p2.getHand()[2] != null) {
             infoStat.setText(AetherWars.p2.getHand()[2].getStat());
             infoDescription.setText(AetherWars.p2.getHand()[2].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getHand()[2].getImagePath()));
@@ -413,26 +429,28 @@ public class Controller {
         infoDescription.setText("");
         infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.png"));
     }
+
     @FXML
-    void card3Clicked(MouseEvent event){
-        if((!AetherWars.playerTurn && AetherWars.p1.getHandStatus()[2]) || (AetherWars.playerTurn && AetherWars.p2.getHandStatus()[2])){
-            if(chosenHand == 0){
+    void card3Clicked(MouseEvent event) {
+        if ((!AetherWars.playerTurn && AetherWars.p1.getHandStatus()[2])
+                || (AetherWars.playerTurn && AetherWars.p2.getHandStatus()[2])) {
+            if (chosenHand == 0) {
                 card3.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
                 chosenHand = 3;
                 chosenidx.setText(String.valueOf(chosenHand));
-            } else if(chosenHand == 3) {
+            } else if (chosenHand == 3) {
                 card3.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
                 chosenHand = 0;
                 chosenidx.setText(String.valueOf(chosenHand));
             } else {
-                List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1,card2,card3,card4,card5));
-                cards.get(chosenHand-1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1, card2, card3, card4, card5));
+                cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
                 card3.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
                 chosenHand = 3;
                 chosenidx.setText(String.valueOf(chosenHand));
             }
             utilityWarningText.setText("");
-        } else{
+        } else {
             utilityWarningText.setText("Empty Hand!");
         }
     }
@@ -443,7 +461,7 @@ public class Controller {
             infoStat.setText(AetherWars.p1.getHand()[3].getStat());
             infoDescription.setText(AetherWars.p1.getHand()[3].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[3].getImagePath()));
-        }else if (AetherWars.playerTurn && AetherWars.p2.getHand()[3] != null) {
+        } else if (AetherWars.playerTurn && AetherWars.p2.getHand()[3] != null) {
             infoStat.setText(AetherWars.p2.getHand()[3].getStat());
             infoDescription.setText(AetherWars.p2.getHand()[3].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getHand()[3].getImagePath()));
@@ -456,26 +474,28 @@ public class Controller {
         infoDescription.setText("");
         infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.png"));
     }
+
     @FXML
-    void card4Clicked(MouseEvent event){
-        if((!AetherWars.playerTurn && AetherWars.p1.getHandStatus()[3]) || (AetherWars.playerTurn && AetherWars.p2.getHandStatus()[3])){
-            if(chosenHand == 0){
+    void card4Clicked(MouseEvent event) {
+        if ((!AetherWars.playerTurn && AetherWars.p1.getHandStatus()[3])
+                || (AetherWars.playerTurn && AetherWars.p2.getHandStatus()[3])) {
+            if (chosenHand == 0) {
                 card4.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
                 chosenHand = 4;
                 chosenidx.setText(String.valueOf(chosenHand));
-            } else if(chosenHand == 4) {
+            } else if (chosenHand == 4) {
                 card4.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
                 chosenHand = 0;
                 chosenidx.setText(String.valueOf(chosenHand));
             } else {
-                List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1,card2,card3,card4,card5));
-                cards.get(chosenHand-1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1, card2, card3, card4, card5));
+                cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
                 card4.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
                 chosenHand = 4;
                 chosenidx.setText(String.valueOf(chosenHand));
             }
             utilityWarningText.setText("");
-        } else{
+        } else {
             utilityWarningText.setText("Empty Hand!");
         }
 
@@ -487,7 +507,7 @@ public class Controller {
             infoStat.setText(AetherWars.p1.getHand()[4].getStat());
             infoDescription.setText(AetherWars.p1.getHand()[4].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getHand()[4].getImagePath()));
-        }else if (AetherWars.playerTurn && AetherWars.p2.getHand()[4] != null) {
+        } else if (AetherWars.playerTurn && AetherWars.p2.getHand()[4] != null) {
             infoStat.setText(AetherWars.p2.getHand()[4].getStat());
             infoDescription.setText(AetherWars.p2.getHand()[4].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getHand()[4].getImagePath()));
@@ -500,35 +520,36 @@ public class Controller {
         infoDescription.setText("");
         infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.png"));
     }
-    
+
     @FXML
-    void card5Clicked(MouseEvent event){
-        if((!AetherWars.playerTurn && AetherWars.p1.getHandStatus()[4]) || (AetherWars.playerTurn && AetherWars.p2.getHandStatus()[4])){
-            if(chosenHand == 0){
+    void card5Clicked(MouseEvent event) {
+        if ((!AetherWars.playerTurn && AetherWars.p1.getHandStatus()[4])
+                || (AetherWars.playerTurn && AetherWars.p2.getHandStatus()[4])) {
+            if (chosenHand == 0) {
                 card5.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
                 chosenHand = 5;
                 chosenidx.setText(String.valueOf(chosenHand));
-            } else if(chosenHand == 5) {
+            } else if (chosenHand == 5) {
                 card5.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
                 chosenHand = 0;
                 chosenidx.setText(String.valueOf(chosenHand));
             } else {
-                List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1,card2,card3,card4,card5));
-                cards.get(chosenHand-1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1, card2, card3, card4, card5));
+                cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
                 card5.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
                 chosenHand = 5;
                 chosenidx.setText(String.valueOf(chosenHand));
             }
             utilityWarningText.setText("");
-        } else{
+        } else {
             utilityWarningText.setText("Empty Hand!");
         }
     }
 
     // HOVER FIELD CHARACTER
-    @FXML 
+    @FXML
     void field1Card1HoverIn(MouseEvent event) {
-        if (AetherWars.p1.getFieldCard()[0] != null){
+        if (AetherWars.p1.getFieldCard()[0] != null) {
             infoStat.setText(AetherWars.p1.getFieldCard()[0].getStat());
             infoDescription.setText(AetherWars.p1.getFieldCard()[0].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[0].getImagePath()));
@@ -542,9 +563,9 @@ public class Controller {
         infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.png"));
     }
 
-    @FXML 
+    @FXML
     void field1Card2HoverIn(MouseEvent event) {
-        if (AetherWars.p1.getFieldCard()[1] != null){
+        if (AetherWars.p1.getFieldCard()[1] != null) {
             infoStat.setText(AetherWars.p1.getFieldCard()[1].getStat());
             infoDescription.setText(AetherWars.p1.getFieldCard()[1].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[1].getImagePath()));
@@ -558,9 +579,9 @@ public class Controller {
         infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.png"));
     }
 
-    @FXML 
+    @FXML
     void field1Card3HoverIn(MouseEvent event) {
-        if (AetherWars.p1.getFieldCard()[2] != null){
+        if (AetherWars.p1.getFieldCard()[2] != null) {
             infoStat.setText(AetherWars.p1.getFieldCard()[2].getStat());
             infoDescription.setText(AetherWars.p1.getFieldCard()[2].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[2].getImagePath()));
@@ -574,9 +595,9 @@ public class Controller {
         infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.png"));
     }
 
-    @FXML 
+    @FXML
     void field1Card4HoverIn(MouseEvent event) {
-        if (AetherWars.p1.getFieldCard()[3] != null){
+        if (AetherWars.p1.getFieldCard()[3] != null) {
             infoStat.setText(AetherWars.p1.getFieldCard()[3].getStat());
             infoDescription.setText(AetherWars.p1.getFieldCard()[3].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[3].getImagePath()));
@@ -590,9 +611,9 @@ public class Controller {
         infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.png"));
     }
 
-    @FXML 
+    @FXML
     void field1Card5HoverIn(MouseEvent event) {
-        if (AetherWars.p1.getFieldCard()[4] != null){
+        if (AetherWars.p1.getFieldCard()[4] != null) {
             infoStat.setText(AetherWars.p1.getFieldCard()[4].getStat());
             infoDescription.setText(AetherWars.p1.getFieldCard()[4].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[4].getImagePath()));
@@ -606,9 +627,9 @@ public class Controller {
         infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.png"));
     }
 
-    @FXML 
+    @FXML
     void field2Card1HoverIn(MouseEvent event) {
-        if (AetherWars.p2.getFieldCard()[0] != null){
+        if (AetherWars.p2.getFieldCard()[0] != null) {
             infoStat.setText(AetherWars.p2.getFieldCard()[0].getStat());
             infoDescription.setText(AetherWars.p2.getFieldCard()[0].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[0].getImagePath()));
@@ -622,9 +643,9 @@ public class Controller {
         infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.png"));
     }
 
-    @FXML 
+    @FXML
     void field2Card2HoverIn(MouseEvent event) {
-        if (AetherWars.p2.getFieldCard()[1] != null){
+        if (AetherWars.p2.getFieldCard()[1] != null) {
             infoStat.setText(AetherWars.p2.getFieldCard()[1].getStat());
             infoDescription.setText(AetherWars.p2.getFieldCard()[1].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[1].getImagePath()));
@@ -638,9 +659,9 @@ public class Controller {
         infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.png"));
     }
 
-    @FXML 
+    @FXML
     void field2Card3HoverIn(MouseEvent event) {
-        if (AetherWars.p2.getFieldCard()[2] != null){
+        if (AetherWars.p2.getFieldCard()[2] != null) {
             infoStat.setText(AetherWars.p2.getFieldCard()[2].getStat());
             infoDescription.setText(AetherWars.p2.getFieldCard()[2].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[2].getImagePath()));
@@ -654,9 +675,9 @@ public class Controller {
         infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.png"));
     }
 
-    @FXML 
+    @FXML
     void field2Card4HoverIn(MouseEvent event) {
-        if (AetherWars.p2.getFieldCard()[3] != null){
+        if (AetherWars.p2.getFieldCard()[3] != null) {
             infoStat.setText(AetherWars.p2.getFieldCard()[3].getStat());
             infoDescription.setText(AetherWars.p2.getFieldCard()[3].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[3].getImagePath()));
@@ -670,9 +691,9 @@ public class Controller {
         infoImage.setImage(new Image("./com/aetherwars/card/image/character/base.png"));
     }
 
-    @FXML 
+    @FXML
     void field2Card5HoverIn(MouseEvent event) {
-        if (AetherWars.p2.getFieldCard()[4] != null){
+        if (AetherWars.p2.getFieldCard()[4] != null) {
             infoStat.setText(AetherWars.p2.getFieldCard()[4].getStat());
             infoDescription.setText(AetherWars.p2.getFieldCard()[4].getDescriptionNewlineFormat());
             infoImage.setImage(new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[4].getImagePath()));
@@ -704,66 +725,76 @@ public class Controller {
 
     @FXML
     void removeCard(MouseEvent event) {
-        List<Label> handText = new ArrayList<Label>(Arrays.asList(hand1,hand2,hand3,hand4,hand5));
-        List<Label> manaText = new ArrayList<Label>(Arrays.asList(mana1,mana2,mana3,mana4,mana5));
-        List<ImageView> cardImage = new ArrayList<ImageView>(Arrays.asList(cardImage1,cardImage2,cardImage3,cardImage4,cardImage5));
-        
-        List<Label> attackText1 = new ArrayList<Label>(Arrays.asList(field1Attack1,field1Attack2,field1Attack3,field1Attack4,field1Attack5));
-        List<Label> healthText1 = new ArrayList<Label>(Arrays.asList(field1Health1,field1Health2,field1Health3,field1Health4,field1Health5));
-        List<ImageView> fieldImage1 = new ArrayList<ImageView>(Arrays.asList(field1Image1,field1Image2,field1Image3,field1Image4,field1Image5));
-        List<Label> levelText1 = new ArrayList<Label>(Arrays.asList(field1Level1,field1Level2,field1Level3,field1Level4,field1Level5));
+        List<Label> handText = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
+        List<Label> manaText = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
+        List<ImageView> cardImage = new ArrayList<ImageView>(
+                Arrays.asList(cardImage1, cardImage2, cardImage3, cardImage4, cardImage5));
 
-        List<Label> attackText2 = new ArrayList<Label>(Arrays.asList(field2Attack1,field2Attack2,field2Attack3,field2Attack4,field2Attack5));
-        List<Label> healthText2 = new ArrayList<Label>(Arrays.asList(field2Health1,field2Health2,field2Health3,field2Health4,field2Health5));
-        List<ImageView> fieldImage2 = new ArrayList<ImageView>(Arrays.asList(field2Image1,field2Image2,field2Image3,field2Image4,field2Image5));
-        List<Label> levelText2 = new ArrayList<Label>(Arrays.asList(field2Level1,field2Level2,field2Level3,field2Level4,field2Level5));
+        List<Label> attackText1 = new ArrayList<Label>(
+                Arrays.asList(field1Attack1, field1Attack2, field1Attack3, field1Attack4, field1Attack5));
+        List<Label> healthText1 = new ArrayList<Label>(
+                Arrays.asList(field1Health1, field1Health2, field1Health3, field1Health4, field1Health5));
+        List<ImageView> fieldImage1 = new ArrayList<ImageView>(
+                Arrays.asList(field1Image1, field1Image2, field1Image3, field1Image4, field1Image5));
+        List<Label> levelText1 = new ArrayList<Label>(
+                Arrays.asList(field1Level1, field1Level2, field1Level3, field1Level4, field1Level5));
 
-        List<Rectangle> fieldCards1 = new ArrayList<Rectangle>(Arrays.asList(field1Card1,field1Card2,field1Card3,field1Card4,field1Card5));
-        List<Rectangle> fieldCards2 = new ArrayList<Rectangle>(Arrays.asList(field2Card1,field2Card2,field2Card3,field2Card4,field2Card5));
+        List<Label> attackText2 = new ArrayList<Label>(
+                Arrays.asList(field2Attack1, field2Attack2, field2Attack3, field2Attack4, field2Attack5));
+        List<Label> healthText2 = new ArrayList<Label>(
+                Arrays.asList(field2Health1, field2Health2, field2Health3, field2Health4, field2Health5));
+        List<ImageView> fieldImage2 = new ArrayList<ImageView>(
+                Arrays.asList(field2Image1, field2Image2, field2Image3, field2Image4, field2Image5));
+        List<Label> levelText2 = new ArrayList<Label>(
+                Arrays.asList(field2Level1, field2Level2, field2Level3, field2Level4, field2Level5));
+
+        List<Rectangle> fieldCards1 = new ArrayList<Rectangle>(
+                Arrays.asList(field1Card1, field1Card2, field1Card3, field1Card4, field1Card5));
+        List<Rectangle> fieldCards2 = new ArrayList<Rectangle>(
+                Arrays.asList(field2Card1, field2Card2, field2Card3, field2Card4, field2Card5));
         if (chosenHand != 0) {
-            List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1,card2,card3,card4,card5));
-            cards.get(chosenHand-1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+            List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1, card2, card3, card4, card5));
+            cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenidx.setText(String.valueOf(chosenHand));
-            if(!AetherWars.playerTurn) {
-                AetherWars.p1.removeCardFromHand(chosenHand-1);
-            }else{
-                AetherWars.p2.removeCardFromHand(chosenHand-1);
+            if (!AetherWars.playerTurn) {
+                AetherWars.p1.removeCardFromHand(chosenHand - 1);
+            } else {
+                AetherWars.p2.removeCardFromHand(chosenHand - 1);
             }
-            handText.get(chosenHand-1).setText("");
-            manaText.get(chosenHand-1).setText("");
-            cardImage.get(chosenHand-1).setImage(new Image("./com/aetherwars/card/image/character/base.png"));
+            handText.get(chosenHand - 1).setText("");
+            manaText.get(chosenHand - 1).setText("");
+            cardImage.get(chosenHand - 1).setImage(new Image("./com/aetherwars/card/image/character/base.png"));
             chosenHand = 0;
             utilityWarningText.setText("");
-        } else if(chosenField != 0){
-            utilityWarningText.setText(AetherWars.playerTurn +" " +String.valueOf(chosenField));
-            if(!AetherWars.playerTurn) {
+        } else if (chosenField != 0) {
+            utilityWarningText.setText(AetherWars.playerTurn + " " + String.valueOf(chosenField));
+            if (!AetherWars.playerTurn) {
                 fieldCards1.get(chosenField - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
                 attackText1.get(chosenField - 1).setText("?");
                 healthText1.get(chosenField - 1).setText("?");
                 levelText1.get(chosenField - 1).setText("0/0 [0]");
                 fieldImage1.get(chosenField - 1).setImage(new Image("./com/aetherwars/card/image/character/base.png"));
-                AetherWars.p1.removeCardFromField(chosenField-1);
-                
-            } else{
+                AetherWars.p1.removeCardFromField(chosenField - 1);
+
+            } else {
                 fieldCards2.get(chosenField - 6).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
                 attackText2.get(chosenField - 6).setText("?");
                 healthText2.get(chosenField - 6).setText("?");
                 levelText2.get(chosenField - 6).setText("0/0 [0]");
                 fieldImage2.get(chosenField - 6).setImage(new Image("./com/aetherwars/card/image/character/base.png"));
-                AetherWars.p2.removeCardFromField(chosenField-6);
+                AetherWars.p2.removeCardFromField(chosenField - 6);
             }
             chosenField = 0;
             utilityWarningText.setText("");
-        } 
-        else{
+        } else {
             utilityWarningText.setText("Choose card to remove!");
         }
     }
+
     @FXML
     void addFieldXP(MouseEvent event) {
         // TODO: SAADSA
     }
-
 
     /*** SUBMIT BUTTON SECTION ***/
     @FXML
@@ -784,51 +815,51 @@ public class Controller {
         turn.setText("Phase 2");
     }
 
-
     @FXML
     void clickField1Card1(MouseEvent event) {
-        if(chosenField == 1){
+        if (chosenField == 1) {
             field1Card1.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
             movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
-        } else if(chosenField == 0){
-            if(chosenHand == 0){
-                //ATTACK OR REMOVE CARD OR ADD EXP
-                if(AetherWars.p1.getFieldCardStatus()[0]){
+        } else if (chosenField == 0) {
+            if (chosenHand == 0) {
+                // ATTACK OR REMOVE CARD OR ADD EXP
+                if (AetherWars.p1.getFieldCardStatus()[0]) {
                     chosenField = 1;
                     movefieldtest.setText(String.valueOf(chosenField));
                     field1Card1.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
-                } else{
+                } else {
                     utilityWarningText.setText("Empty Field!");
                 }
             } else {
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
-                if(!AetherWars.playerTurn && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
-                    if(AetherWars.p1.getFieldCardStatus()[0]){
+                if (!AetherWars.playerTurn && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
+                    if (AetherWars.p1.getFieldCardStatus()[0]) {
                         utilityWarningText.setText("Field Not Empty!");
-                    } 
-                    else if(AetherWars.p1.getMana() < AetherWars.p1.getHand()[chosenHand - 1].getMana()){
+                    } else if (AetherWars.p1.getMana() < AetherWars.p1.getHand()[chosenHand - 1].getMana()) {
                         utilityWarningText.setText("Not Enough Mana!");
-                    } 
-                    else{
-                        List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1,hand2,hand3,hand4,hand5));
-                        List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1,mana2,mana3,mana4,mana5));
-                        List<ImageView> cardImage = new ArrayList<ImageView>(Arrays.asList(cardImage1,cardImage2,cardImage3,cardImage4,cardImage5));
-                        List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1,card2,card3,card4,card5));
+                    } else {
+                        List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
+                        List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
+                        List<ImageView> cardImage = new ArrayList<ImageView>(
+                                Arrays.asList(cardImage1, cardImage2, cardImage3, cardImage4, cardImage5));
+                        List<Rectangle> cards = new ArrayList<Rectangle>(
+                                Arrays.asList(card1, card2, card3, card4, card5));
                         hand.get(chosenHand - 1).setText("");
                         mana.get(chosenHand - 1).setText("");
-                        cardImage.get(chosenHand - 1).setImage(new Image("./com/aetherwars/card/image/character/base.png"));
-                        
+                        cardImage.get(chosenHand - 1)
+                                .setImage(new Image("./com/aetherwars/card/image/character/base.png"));
+
                         // ambil sama kosongin hand yang kepilih
                         Character c = (Character) AetherWars.p1.getHand()[chosenHand - 1];
                         AetherWars.p1.getHandStatus()[chosenHand - 1] = false;
                         AetherWars.p1.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
-                        
+
                         movefieldtest.setText(chosenHand + " ke " + 1);
                         chosenHand = 0;
-        
+
                         AetherWars.p1.getFieldCard()[0] = c;
                         AetherWars.p1.getFieldCardStatus()[0] = true;
                         field1Attack1.setText(String.valueOf(c.getAttack()));
@@ -836,9 +867,9 @@ public class Controller {
                         field1Image1.setImage(new Image("./com/aetherwars/" + c.getImagePath()));
                         field1Level1.setText(c.getExpLevel());
                         AetherWars.p1.setMana(AetherWars.p1.getMana() - c.getMana());
-                        manaSize.setText(AetherWars.p1.getMana() + " / "+ AetherWars.turn);
+                        manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
                     }
-                } else{
+                } else {
                     utilityWarningText.setText("Can't spawn to Opponent's Field!");
                 }
             }
@@ -847,48 +878,49 @@ public class Controller {
 
     @FXML
     void clickField1Card2(MouseEvent event) {
-        if(chosenField == 2){
+        if (chosenField == 2) {
             field1Card2.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
             movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
-        } else if(chosenField == 0){
-            if(chosenHand == 0){
-                //ATTACK OR REMOVE CARD OR ADD EXP
-                if(AetherWars.p1.getFieldCardStatus()[1]){
+        } else if (chosenField == 0) {
+            if (chosenHand == 0) {
+                // ATTACK OR REMOVE CARD OR ADD EXP
+                if (AetherWars.p1.getFieldCardStatus()[1]) {
                     chosenField = 2;
                     movefieldtest.setText(String.valueOf(chosenField));
                     field1Card2.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
-                } else{
+                } else {
                     utilityWarningText.setText("Empty Field!");
                 }
             } else {
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
-                if(!AetherWars.playerTurn && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
-                    if(AetherWars.p1.getFieldCardStatus()[1]){
+                if (!AetherWars.playerTurn && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
+                    if (AetherWars.p1.getFieldCardStatus()[1]) {
                         utilityWarningText.setText("Field Not Empty!");
-                    } 
-                    else if(AetherWars.p1.getMana() < AetherWars.p1.getHand()[chosenHand - 1].getMana()){
+                    } else if (AetherWars.p1.getMana() < AetherWars.p1.getHand()[chosenHand - 1].getMana()) {
                         utilityWarningText.setText("Not Enough Mana!");
-                    } 
-                    else{
-                        List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1,hand2,hand3,hand4,hand5));
-                        List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1,mana2,mana3,mana4,mana5));
-                        List<ImageView> cardImage = new ArrayList<ImageView>(Arrays.asList(cardImage1,cardImage2,cardImage3,cardImage4,cardImage5));
-                        List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1,card2,card3,card4,card5));
+                    } else {
+                        List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
+                        List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
+                        List<ImageView> cardImage = new ArrayList<ImageView>(
+                                Arrays.asList(cardImage1, cardImage2, cardImage3, cardImage4, cardImage5));
+                        List<Rectangle> cards = new ArrayList<Rectangle>(
+                                Arrays.asList(card1, card2, card3, card4, card5));
                         hand.get(chosenHand - 1).setText("");
                         mana.get(chosenHand - 1).setText("");
-                        cardImage.get(chosenHand - 1).setImage(new Image("./com/aetherwars/card/image/character/base.png"));
-                        
+                        cardImage.get(chosenHand - 1)
+                                .setImage(new Image("./com/aetherwars/card/image/character/base.png"));
+
                         // ambil sama kosongin hand yang kepilih
                         Character c = (Character) AetherWars.p1.getHand()[chosenHand - 1];
                         AetherWars.p1.getHandStatus()[chosenHand - 1] = false;
                         AetherWars.p1.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
-                        
+
                         movefieldtest.setText(chosenHand + " ke " + 2);
                         chosenHand = 0;
-        
+
                         AetherWars.p1.getFieldCard()[1] = c;
                         AetherWars.p1.getFieldCardStatus()[1] = true;
                         field1Attack2.setText(String.valueOf(c.getAttack()));
@@ -896,9 +928,9 @@ public class Controller {
                         field1Image2.setImage(new Image("./com/aetherwars/" + c.getImagePath()));
                         field1Level2.setText(c.getExpLevel());
                         AetherWars.p1.setMana(AetherWars.p1.getMana() - c.getMana());
-                        manaSize.setText(AetherWars.p1.getMana() + " / "+ AetherWars.turn);
+                        manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
                     }
-                } else{
+                } else {
                     utilityWarningText.setText("Can't spawn to Opponent's Field!");
                 }
             }
@@ -907,48 +939,49 @@ public class Controller {
 
     @FXML
     void clickField1Card3(MouseEvent event) {
-        if(chosenField == 3){
+        if (chosenField == 3) {
             field1Card3.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
             movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
-        } else if(chosenField == 0){
-            if(chosenHand == 0){
-                //ATTACK OR REMOVE CARD OR ADD EXP
-                if(AetherWars.p1.getFieldCardStatus()[2]){
+        } else if (chosenField == 0) {
+            if (chosenHand == 0) {
+                // ATTACK OR REMOVE CARD OR ADD EXP
+                if (AetherWars.p1.getFieldCardStatus()[2]) {
                     chosenField = 3;
                     movefieldtest.setText(String.valueOf(chosenField));
                     field1Card3.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
-                } else{
+                } else {
                     utilityWarningText.setText("Empty Field!");
                 }
             } else {
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
-                if(!AetherWars.playerTurn && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
-                    if(AetherWars.p1.getFieldCardStatus()[2]){
+                if (!AetherWars.playerTurn && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
+                    if (AetherWars.p1.getFieldCardStatus()[2]) {
                         utilityWarningText.setText("Field Not Empty!");
-                    } 
-                    else if(AetherWars.p1.getMana() < AetherWars.p1.getHand()[chosenHand - 1].getMana()){
+                    } else if (AetherWars.p1.getMana() < AetherWars.p1.getHand()[chosenHand - 1].getMana()) {
                         utilityWarningText.setText("Not Enough Mana!");
-                    } 
-                    else{
-                        List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1,hand2,hand3,hand4,hand5));
-                        List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1,mana2,mana3,mana4,mana5));
-                        List<ImageView> cardImage = new ArrayList<ImageView>(Arrays.asList(cardImage1,cardImage2,cardImage3,cardImage4,cardImage5));
-                        List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1,card2,card3,card4,card5));
+                    } else {
+                        List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
+                        List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
+                        List<ImageView> cardImage = new ArrayList<ImageView>(
+                                Arrays.asList(cardImage1, cardImage2, cardImage3, cardImage4, cardImage5));
+                        List<Rectangle> cards = new ArrayList<Rectangle>(
+                                Arrays.asList(card1, card2, card3, card4, card5));
                         hand.get(chosenHand - 1).setText("");
                         mana.get(chosenHand - 1).setText("");
-                        cardImage.get(chosenHand - 1).setImage(new Image("./com/aetherwars/card/image/character/base.png"));
-                        
+                        cardImage.get(chosenHand - 1)
+                                .setImage(new Image("./com/aetherwars/card/image/character/base.png"));
+
                         // ambil sama kosongin hand yang kepilih
                         Character c = (Character) AetherWars.p1.getHand()[chosenHand - 1];
                         AetherWars.p1.getHandStatus()[chosenHand - 1] = false;
                         AetherWars.p1.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
-                        
+
                         movefieldtest.setText(chosenHand + " ke " + 3);
                         chosenHand = 0;
-        
+
                         AetherWars.p1.getFieldCard()[2] = c;
                         AetherWars.p1.getFieldCardStatus()[2] = true;
                         field1Attack3.setText(String.valueOf(c.getAttack()));
@@ -956,9 +989,9 @@ public class Controller {
                         field1Image3.setImage(new Image("./com/aetherwars/" + c.getImagePath()));
                         field1Level3.setText(c.getExpLevel());
                         AetherWars.p1.setMana(AetherWars.p1.getMana() - c.getMana());
-                        manaSize.setText(AetherWars.p1.getMana() + " / "+ AetherWars.turn);
+                        manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
                     }
-                } else{
+                } else {
                     utilityWarningText.setText("Can't spawn to Opponent's Field!");
                 }
             }
@@ -967,48 +1000,49 @@ public class Controller {
 
     @FXML
     void clickField1Card4(MouseEvent event) {
-        if(chosenField == 4){
+        if (chosenField == 4) {
             field1Card4.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
             movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
-        } else if(chosenField == 0){
-            if(chosenHand == 0){
-                //ATTACK OR REMOVE CARD OR ADD EXP
-                if(AetherWars.p1.getFieldCardStatus()[3]){
+        } else if (chosenField == 0) {
+            if (chosenHand == 0) {
+                // ATTACK OR REMOVE CARD OR ADD EXP
+                if (AetherWars.p1.getFieldCardStatus()[3]) {
                     chosenField = 4;
                     movefieldtest.setText(String.valueOf(chosenField));
                     field1Card4.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
-                } else{
+                } else {
                     utilityWarningText.setText("Empty Field!");
                 }
             } else {
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
-                if(!AetherWars.playerTurn && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
-                    if(AetherWars.p1.getFieldCardStatus()[3]){
+                if (!AetherWars.playerTurn && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
+                    if (AetherWars.p1.getFieldCardStatus()[3]) {
                         utilityWarningText.setText("Field Not Empty!");
-                    } 
-                    else if(AetherWars.p1.getMana() < AetherWars.p1.getHand()[chosenHand - 1].getMana()){
+                    } else if (AetherWars.p1.getMana() < AetherWars.p1.getHand()[chosenHand - 1].getMana()) {
                         utilityWarningText.setText("Not Enough Mana!");
-                    } 
-                    else{
-                        List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1,hand2,hand3,hand4,hand5));
-                        List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1,mana2,mana3,mana4,mana5));
-                        List<ImageView> cardImage = new ArrayList<ImageView>(Arrays.asList(cardImage1,cardImage2,cardImage3,cardImage4,cardImage5));
-                        List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1,card2,card3,card4,card5));
+                    } else {
+                        List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
+                        List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
+                        List<ImageView> cardImage = new ArrayList<ImageView>(
+                                Arrays.asList(cardImage1, cardImage2, cardImage3, cardImage4, cardImage5));
+                        List<Rectangle> cards = new ArrayList<Rectangle>(
+                                Arrays.asList(card1, card2, card3, card4, card5));
                         hand.get(chosenHand - 1).setText("");
                         mana.get(chosenHand - 1).setText("");
-                        cardImage.get(chosenHand - 1).setImage(new Image("./com/aetherwars/card/image/character/base.png"));
-                        
+                        cardImage.get(chosenHand - 1)
+                                .setImage(new Image("./com/aetherwars/card/image/character/base.png"));
+
                         // ambil sama kosongin hand yang kepilih
                         Character c = (Character) AetherWars.p1.getHand()[chosenHand - 1];
                         AetherWars.p1.getHandStatus()[chosenHand - 1] = false;
                         AetherWars.p1.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
-                        
+
                         movefieldtest.setText(chosenHand + " ke " + 4);
                         chosenHand = 0;
-        
+
                         AetherWars.p1.getFieldCard()[3] = c;
                         AetherWars.p1.getFieldCardStatus()[3] = true;
                         field1Attack4.setText(String.valueOf(c.getAttack()));
@@ -1016,9 +1050,9 @@ public class Controller {
                         field1Image4.setImage(new Image("./com/aetherwars/" + c.getImagePath()));
                         field1Level4.setText(c.getExpLevel());
                         AetherWars.p1.setMana(AetherWars.p1.getMana() - c.getMana());
-                        manaSize.setText(AetherWars.p1.getMana() + " / "+ AetherWars.turn);
+                        manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
                     }
-                } else{
+                } else {
                     utilityWarningText.setText("Can't spawn to Opponent's Field!");
                 }
             }
@@ -1027,48 +1061,49 @@ public class Controller {
 
     @FXML
     void clickField1Card5(MouseEvent event) {
-        if(chosenField == 5){
+        if (chosenField == 5) {
             field1Card5.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
             movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
-        } else if(chosenField == 0){
-            if(chosenHand == 0){
-                //ATTACK OR REMOVE CARD OR ADD EXP
-                if(AetherWars.p1.getFieldCardStatus()[4]){
+        } else if (chosenField == 0) {
+            if (chosenHand == 0) {
+                // ATTACK OR REMOVE CARD OR ADD EXP
+                if (AetherWars.p1.getFieldCardStatus()[4]) {
                     chosenField = 5;
                     movefieldtest.setText(String.valueOf(chosenField));
                     field1Card5.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
-                } else{
+                } else {
                     utilityWarningText.setText("Empty Field!");
                 }
             } else {
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
-                if(!AetherWars.playerTurn && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
-                    if(AetherWars.p1.getFieldCardStatus()[4]){
+                if (!AetherWars.playerTurn && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
+                    if (AetherWars.p1.getFieldCardStatus()[4]) {
                         utilityWarningText.setText("Field Not Empty!");
-                    } 
-                    else if(AetherWars.p1.getMana() < AetherWars.p1.getHand()[chosenHand - 1].getMana()){
+                    } else if (AetherWars.p1.getMana() < AetherWars.p1.getHand()[chosenHand - 1].getMana()) {
                         utilityWarningText.setText("Not Enough Mana!");
-                    } 
-                    else{
-                        List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1,hand2,hand3,hand4,hand5));
-                        List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1,mana2,mana3,mana4,mana5));
-                        List<ImageView> cardImage = new ArrayList<ImageView>(Arrays.asList(cardImage1,cardImage2,cardImage3,cardImage4,cardImage5));
-                        List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1,card2,card3,card4,card5));
+                    } else {
+                        List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
+                        List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
+                        List<ImageView> cardImage = new ArrayList<ImageView>(
+                                Arrays.asList(cardImage1, cardImage2, cardImage3, cardImage4, cardImage5));
+                        List<Rectangle> cards = new ArrayList<Rectangle>(
+                                Arrays.asList(card1, card2, card3, card4, card5));
                         hand.get(chosenHand - 1).setText("");
                         mana.get(chosenHand - 1).setText("");
-                        cardImage.get(chosenHand - 1).setImage(new Image("./com/aetherwars/card/image/character/base.png"));
-                        
+                        cardImage.get(chosenHand - 1)
+                                .setImage(new Image("./com/aetherwars/card/image/character/base.png"));
+
                         // ambil sama kosongin hand yang kepilih
                         Character c = (Character) AetherWars.p1.getHand()[chosenHand - 1];
                         AetherWars.p1.getHandStatus()[chosenHand - 1] = false;
                         AetherWars.p1.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
-                        
+
                         movefieldtest.setText(chosenHand + " ke " + 1);
                         chosenHand = 0;
-        
+
                         AetherWars.p1.getFieldCard()[4] = c;
                         AetherWars.p1.getFieldCardStatus()[4] = true;
                         field1Attack5.setText(String.valueOf(c.getAttack()));
@@ -1076,9 +1111,9 @@ public class Controller {
                         field1Image5.setImage(new Image("./com/aetherwars/" + c.getImagePath()));
                         field1Level5.setText(c.getExpLevel());
                         AetherWars.p1.setMana(AetherWars.p1.getMana() - c.getMana());
-                        manaSize.setText(AetherWars.p1.getMana() + " / "+ AetherWars.turn);
+                        manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
                     }
-                } else{
+                } else {
                     utilityWarningText.setText("Can't spawn to Opponent's Field!");
                 }
             }
@@ -1087,48 +1122,49 @@ public class Controller {
 
     @FXML
     void clickField2Card1(MouseEvent event) {
-        if(chosenField == 6){
+        if (chosenField == 6) {
             field2Card1.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
             movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
-        } else if(chosenField == 0){
-            if(chosenHand == 0){
-                //ATTACK OR REMOVE CARD OR ADD EXP
-                if(AetherWars.p2.getFieldCardStatus()[0]){
+        } else if (chosenField == 0) {
+            if (chosenHand == 0) {
+                // ATTACK OR REMOVE CARD OR ADD EXP
+                if (AetherWars.p2.getFieldCardStatus()[0]) {
                     chosenField = 6;
                     movefieldtest.setText(String.valueOf(chosenField));
                     field2Card1.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
-                } else{
+                } else {
                     utilityWarningText.setText("Empty Field!");
                 }
             } else {
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
-                if(AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
-                    if(AetherWars.p2.getFieldCardStatus()[0]){
+                if (AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
+                    if (AetherWars.p2.getFieldCardStatus()[0]) {
                         utilityWarningText.setText("Field Not Empty!");
-                    } 
-                    else if(AetherWars.p2.getMana() < AetherWars.p2.getHand()[chosenHand - 1].getMana()){
+                    } else if (AetherWars.p2.getMana() < AetherWars.p2.getHand()[chosenHand - 1].getMana()) {
                         utilityWarningText.setText("Not Enough Mana!");
-                    } 
-                    else{
-                        List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1,hand2,hand3,hand4,hand5));
-                        List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1,mana2,mana3,mana4,mana5));
-                        List<ImageView> cardImage = new ArrayList<ImageView>(Arrays.asList(cardImage1,cardImage2,cardImage3,cardImage4,cardImage5));
-                        List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1,card2,card3,card4,card5));
+                    } else {
+                        List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
+                        List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
+                        List<ImageView> cardImage = new ArrayList<ImageView>(
+                                Arrays.asList(cardImage1, cardImage2, cardImage3, cardImage4, cardImage5));
+                        List<Rectangle> cards = new ArrayList<Rectangle>(
+                                Arrays.asList(card1, card2, card3, card4, card5));
                         hand.get(chosenHand - 1).setText("");
                         mana.get(chosenHand - 1).setText("");
-                        cardImage.get(chosenHand - 1).setImage(new Image("./com/aetherwars/card/image/character/base.png"));
-                        
+                        cardImage.get(chosenHand - 1)
+                                .setImage(new Image("./com/aetherwars/card/image/character/base.png"));
+
                         // ambil sama kosongin hand yang kepilih
                         Character c = (Character) AetherWars.p2.getHand()[chosenHand - 1];
                         AetherWars.p2.getHandStatus()[chosenHand - 1] = false;
                         AetherWars.p2.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
-                        
+
                         movefieldtest.setText(chosenHand + " ke " + 1);
                         chosenHand = 0;
-        
+
                         AetherWars.p2.getFieldCard()[0] = c;
                         AetherWars.p2.getFieldCardStatus()[0] = true;
                         field2Attack1.setText(String.valueOf(c.getAttack()));
@@ -1136,78 +1172,80 @@ public class Controller {
                         field2Image1.setImage(new Image("./com/aetherwars/" + c.getImagePath()));
                         field2Level1.setText(c.getExpLevel());
                         AetherWars.p2.setMana(AetherWars.p2.getMana() - c.getMana());
-                        manaSize.setText(AetherWars.p2.getMana() + " / "+ (AetherWars.turn - 1));
+                        manaSize.setText(AetherWars.p2.getMana() + " / " + (AetherWars.turn - 1));
                     }
-                } else{
+                } else {
                     utilityWarningText.setText("Can't spawn to Opponent's Field!");
                 }
             }
-        } else if(chosenField > 0 && chosenField < 6 && AetherWars.phase == PhaseType.ATTACK && AetherWars.playerTurn){
+        } else if (chosenField > 0 && chosenField < 6 && AetherWars.phase == PhaseType.ATTACK
+                && AetherWars.playerTurn) {
             // Attack
             // int source = chosenField;
             // if(AetherWars.p1.getFieldCardHasAttacked()[source-1]){
-            //     utilityWarningText.setText("Character already attacked!");
+            // utilityWarningText.setText("Character already attacked!");
             // }
             // else{
-            //     if(AetherWars.p1.getFieldCardStatus()[source-1]){
-            //         if(AetherWars.p2.getFieldCardStatus()[0]){
-            //             chosenField = 6;
-            //             movefieldtest.setText(String.valueOf(chosenField));
-            //             // p1.get
-            //         } else{
-            //             utilityWarningText.setText("Empty Field!");
-            //         }
-            //     } else{
-            //         utilityWarningText.setText("Empty Field!");
-            //     }
+            // if(AetherWars.p1.getFieldCardStatus()[source-1]){
+            // if(AetherWars.p2.getFieldCardStatus()[0]){
+            // chosenField = 6;
+            // movefieldtest.setText(String.valueOf(chosenField));
+            // // p1.get
+            // } else{
+            // utilityWarningText.setText("Empty Field!");
+            // }
+            // } else{
+            // utilityWarningText.setText("Empty Field!");
+            // }
             // }
         }
     }
 
     @FXML
     void clickField2Card2(MouseEvent event) {
-        if(chosenField == 7){
+        if (chosenField == 7) {
             field2Card2.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
             movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
-        } else if(chosenField == 0){
-            if(chosenHand == 0){
-                //ATTACK OR REMOVE CARD OR ADD EXP
-                if(AetherWars.p2.getFieldCardStatus()[1]){
+        } else if (chosenField == 0) {
+            if (chosenHand == 0) {
+                // ATTACK OR REMOVE CARD OR ADD EXP
+                if (AetherWars.p2.getFieldCardStatus()[1]) {
                     chosenField = 7;
                     movefieldtest.setText(String.valueOf(chosenField));
                     field2Card2.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
-                } else{
+                } else {
                     utilityWarningText.setText("Empty Field!");
                 }
             } else {
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
-                if(AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
-                    if(AetherWars.p2.getFieldCardStatus()[1]){
+                if (AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
+                    if (AetherWars.p2.getFieldCardStatus()[1]) {
                         utilityWarningText.setText("Field Not Empty!");
-                    } 
-                    else if(AetherWars.p2.getMana() < AetherWars.p2.getHand()[chosenHand - 1].getMana()){
+                    } else if (AetherWars.p2.getMana() < AetherWars.p2.getHand()[chosenHand - 1].getMana()) {
                         utilityWarningText.setText("Not Enough Mana!");
-                    } 
-                    else{
-                        List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1,hand2,hand3,hand4,hand5));
-                        List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1,mana2,mana3,mana4,mana5));
-                        List<ImageView> cardImage = new ArrayList<ImageView>(Arrays.asList(cardImage1,cardImage2,cardImage3,cardImage4,cardImage5));
-                        List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1,card2,card3,card4,card5));
+                    } else {
+                        List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
+                        List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
+                        List<ImageView> cardImage = new ArrayList<ImageView>(
+                                Arrays.asList(cardImage1, cardImage2, cardImage3, cardImage4, cardImage5));
+                        List<Rectangle> cards = new ArrayList<Rectangle>(
+                                Arrays.asList(card1, card2, card3, card4, card5));
                         hand.get(chosenHand - 1).setText("");
                         mana.get(chosenHand - 1).setText("");
-                        cardImage.get(chosenHand - 1).setImage(new Image("./com/aetherwars/card/image/character/base.png"));
-                        
+                        cardImage.get(chosenHand - 1)
+                                .setImage(new Image("./com/aetherwars/card/image/character/base.png"));
+
                         // ambil sama kosongin hand yang kepilih
                         Character c = (Character) AetherWars.p2.getHand()[chosenHand - 1];
                         AetherWars.p2.getHandStatus()[chosenHand - 1] = false;
                         AetherWars.p2.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
-                        
+
                         movefieldtest.setText(chosenHand + " ke " + 2);
                         chosenHand = 0;
-        
+
                         AetherWars.p2.getFieldCard()[1] = c;
                         AetherWars.p2.getFieldCardStatus()[1] = true;
                         field2Attack2.setText(String.valueOf(c.getAttack()));
@@ -1215,9 +1253,9 @@ public class Controller {
                         field2Image2.setImage(new Image("./com/aetherwars/" + c.getImagePath()));
                         field2Level2.setText(c.getExpLevel());
                         AetherWars.p2.setMana(AetherWars.p2.getMana() - c.getMana());
-                        manaSize.setText(AetherWars.p2.getMana() + " / "+ (AetherWars.turn - 1));
+                        manaSize.setText(AetherWars.p2.getMana() + " / " + (AetherWars.turn - 1));
                     }
-                } else{
+                } else {
                     utilityWarningText.setText("Can't spawn to Opponent's Field!");
                 }
             }
@@ -1226,48 +1264,49 @@ public class Controller {
 
     @FXML
     void clickField2Card3(MouseEvent event) {
-        if(chosenField == 8){
+        if (chosenField == 8) {
             field2Card3.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
             movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
-        } else if(chosenField == 0){
-            if(chosenHand == 0){
-                //ATTACK OR REMOVE CARD OR ADD EXP
-                if(AetherWars.p2.getFieldCardStatus()[2]){
+        } else if (chosenField == 0) {
+            if (chosenHand == 0) {
+                // ATTACK OR REMOVE CARD OR ADD EXP
+                if (AetherWars.p2.getFieldCardStatus()[2]) {
                     chosenField = 8;
                     movefieldtest.setText(String.valueOf(chosenField));
                     field2Card3.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
-                } else{
+                } else {
                     utilityWarningText.setText("Empty Field!");
                 }
             } else {
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
-                if(AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
-                    if(AetherWars.p2.getFieldCardStatus()[2]){
+                if (AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
+                    if (AetherWars.p2.getFieldCardStatus()[2]) {
                         utilityWarningText.setText("Field Not Empty!");
-                    } 
-                    else if(AetherWars.p2.getMana() < AetherWars.p2.getHand()[chosenHand - 1].getMana()){
+                    } else if (AetherWars.p2.getMana() < AetherWars.p2.getHand()[chosenHand - 1].getMana()) {
                         utilityWarningText.setText("Not Enough Mana!");
-                    } 
-                    else{
-                        List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1,hand2,hand3,hand4,hand5));
-                        List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1,mana2,mana3,mana4,mana5));
-                        List<ImageView> cardImage = new ArrayList<ImageView>(Arrays.asList(cardImage1,cardImage2,cardImage3,cardImage4,cardImage5));
-                        List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1,card2,card3,card4,card5));
+                    } else {
+                        List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
+                        List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
+                        List<ImageView> cardImage = new ArrayList<ImageView>(
+                                Arrays.asList(cardImage1, cardImage2, cardImage3, cardImage4, cardImage5));
+                        List<Rectangle> cards = new ArrayList<Rectangle>(
+                                Arrays.asList(card1, card2, card3, card4, card5));
                         hand.get(chosenHand - 1).setText("");
                         mana.get(chosenHand - 1).setText("");
-                        cardImage.get(chosenHand - 1).setImage(new Image("./com/aetherwars/card/image/character/base.png"));
-                        
+                        cardImage.get(chosenHand - 1)
+                                .setImage(new Image("./com/aetherwars/card/image/character/base.png"));
+
                         // ambil sama kosongin hand yang kepilih
                         Character c = (Character) AetherWars.p2.getHand()[chosenHand - 1];
                         AetherWars.p2.getHandStatus()[chosenHand - 1] = false;
                         AetherWars.p2.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
-                        
+
                         movefieldtest.setText(chosenHand + " ke " + 3);
                         chosenHand = 0;
-        
+
                         AetherWars.p2.getFieldCard()[2] = c;
                         AetherWars.p2.getFieldCardStatus()[2] = true;
                         field2Attack3.setText(String.valueOf(c.getAttack()));
@@ -1275,9 +1314,9 @@ public class Controller {
                         field2Image3.setImage(new Image("./com/aetherwars/" + c.getImagePath()));
                         field2Level3.setText(c.getExpLevel());
                         AetherWars.p2.setMana(AetherWars.p2.getMana() - c.getMana());
-                        manaSize.setText(AetherWars.p2.getMana() + " / "+ (AetherWars.turn - 1));
+                        manaSize.setText(AetherWars.p2.getMana() + " / " + (AetherWars.turn - 1));
                     }
-                } else{
+                } else {
                     utilityWarningText.setText("Can't spawn to Opponent's Field!");
                 }
             }
@@ -1286,48 +1325,49 @@ public class Controller {
 
     @FXML
     void clickField2Card4(MouseEvent event) {
-        if(chosenField == 9){
+        if (chosenField == 9) {
             field2Card4.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
             movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
-        } else if(chosenField == 0){
-            if(chosenHand == 0){
-                //ATTACK OR REMOVE CARD OR ADD EXP
-                if(AetherWars.p2.getFieldCardStatus()[3]){
+        } else if (chosenField == 0) {
+            if (chosenHand == 0) {
+                // ATTACK OR REMOVE CARD OR ADD EXP
+                if (AetherWars.p2.getFieldCardStatus()[3]) {
                     chosenField = 9;
                     movefieldtest.setText(String.valueOf(chosenField));
                     field2Card4.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
-                } else{
+                } else {
                     utilityWarningText.setText("Empty Field!");
                 }
             } else {
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
-                if(AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
-                    if(AetherWars.p2.getFieldCardStatus()[3]){
+                if (AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
+                    if (AetherWars.p2.getFieldCardStatus()[3]) {
                         utilityWarningText.setText("Field Not Empty!");
-                    } 
-                    else if(AetherWars.p2.getMana() < AetherWars.p2.getHand()[chosenHand - 1].getMana()){
+                    } else if (AetherWars.p2.getMana() < AetherWars.p2.getHand()[chosenHand - 1].getMana()) {
                         utilityWarningText.setText("Not Enough Mana!");
-                    } 
-                    else{
-                        List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1,hand2,hand3,hand4,hand5));
-                        List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1,mana2,mana3,mana4,mana5));
-                        List<ImageView> cardImage = new ArrayList<ImageView>(Arrays.asList(cardImage1,cardImage2,cardImage3,cardImage4,cardImage5));
-                        List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1,card2,card3,card4,card5));
+                    } else {
+                        List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
+                        List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
+                        List<ImageView> cardImage = new ArrayList<ImageView>(
+                                Arrays.asList(cardImage1, cardImage2, cardImage3, cardImage4, cardImage5));
+                        List<Rectangle> cards = new ArrayList<Rectangle>(
+                                Arrays.asList(card1, card2, card3, card4, card5));
                         hand.get(chosenHand - 1).setText("");
                         mana.get(chosenHand - 1).setText("");
-                        cardImage.get(chosenHand - 1).setImage(new Image("./com/aetherwars/card/image/character/base.png"));
-                        
+                        cardImage.get(chosenHand - 1)
+                                .setImage(new Image("./com/aetherwars/card/image/character/base.png"));
+
                         // ambil sama kosongin hand yang kepilih
                         Character c = (Character) AetherWars.p2.getHand()[chosenHand - 1];
                         AetherWars.p2.getHandStatus()[chosenHand - 1] = false;
                         AetherWars.p2.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
-                        
+
                         movefieldtest.setText(chosenHand + " ke " + 4);
                         chosenHand = 0;
-        
+
                         AetherWars.p2.getFieldCard()[3] = c;
                         AetherWars.p2.getFieldCardStatus()[3] = true;
                         field2Attack4.setText(String.valueOf(c.getAttack()));
@@ -1335,9 +1375,9 @@ public class Controller {
                         field2Image4.setImage(new Image("./com/aetherwars/" + c.getImagePath()));
                         field2Level4.setText(c.getExpLevel());
                         AetherWars.p2.setMana(AetherWars.p2.getMana() - c.getMana());
-                        manaSize.setText(AetherWars.p2.getMana() + " / "+ (AetherWars.turn - 1));
+                        manaSize.setText(AetherWars.p2.getMana() + " / " + (AetherWars.turn - 1));
                     }
-                } else{
+                } else {
                     utilityWarningText.setText("Can't spawn to Opponent's Field!");
                 }
             }
@@ -1346,48 +1386,49 @@ public class Controller {
 
     @FXML
     void clickField2Card5(MouseEvent event) {
-        if(chosenField == 10){
+        if (chosenField == 10) {
             field2Card5.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
             movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
-        } else if(chosenField == 0){
-            if(chosenHand == 0){
-                //ATTACK OR REMOVE CARD OR ADD EXP
-                if(AetherWars.p2.getFieldCardStatus()[4]){
+        } else if (chosenField == 0) {
+            if (chosenHand == 0) {
+                // ATTACK OR REMOVE CARD OR ADD EXP
+                if (AetherWars.p2.getFieldCardStatus()[4]) {
                     chosenField = 10;
                     movefieldtest.setText(String.valueOf(chosenField));
                     field2Card5.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
-                } else{
+                } else {
                     utilityWarningText.setText("Empty Field!");
                 }
             } else {
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
-                if(AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
-                    if(AetherWars.p2.getFieldCardStatus()[4]){
+                if (AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
+                    if (AetherWars.p2.getFieldCardStatus()[4]) {
                         utilityWarningText.setText("Field Not Empty!");
-                    } 
-                    else if(AetherWars.p2.getMana() < AetherWars.p2.getHand()[chosenHand - 1].getMana()){
+                    } else if (AetherWars.p2.getMana() < AetherWars.p2.getHand()[chosenHand - 1].getMana()) {
                         utilityWarningText.setText("Not Enough Mana!");
-                    } 
-                    else{
-                        List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1,hand2,hand3,hand4,hand5));
-                        List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1,mana2,mana3,mana4,mana5));
-                        List<ImageView> cardImage = new ArrayList<ImageView>(Arrays.asList(cardImage1,cardImage2,cardImage3,cardImage4,cardImage5));
-                        List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1,card2,card3,card4,card5));
+                    } else {
+                        List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
+                        List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
+                        List<ImageView> cardImage = new ArrayList<ImageView>(
+                                Arrays.asList(cardImage1, cardImage2, cardImage3, cardImage4, cardImage5));
+                        List<Rectangle> cards = new ArrayList<Rectangle>(
+                                Arrays.asList(card1, card2, card3, card4, card5));
                         hand.get(chosenHand - 1).setText("");
                         mana.get(chosenHand - 1).setText("");
-                        cardImage.get(chosenHand - 1).setImage(new Image("./com/aetherwars/card/image/character/base.png"));
-                        
+                        cardImage.get(chosenHand - 1)
+                                .setImage(new Image("./com/aetherwars/card/image/character/base.png"));
+
                         // ambil sama kosongin hand yang kepilih
                         Character c = (Character) AetherWars.p2.getHand()[chosenHand - 1];
                         AetherWars.p2.getHandStatus()[chosenHand - 1] = false;
                         AetherWars.p2.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
-                        
+
                         movefieldtest.setText(chosenHand + " ke " + 5);
                         chosenHand = 0;
-        
+
                         AetherWars.p2.getFieldCard()[4] = c;
                         AetherWars.p2.getFieldCardStatus()[4] = true;
                         field2Attack5.setText(String.valueOf(c.getAttack()));
@@ -1395,9 +1436,9 @@ public class Controller {
                         field2Image5.setImage(new Image("./com/aetherwars/" + c.getImagePath()));
                         field2Level5.setText(c.getExpLevel());
                         AetherWars.p2.setMana(AetherWars.p2.getMana() - c.getMana());
-                        manaSize.setText(AetherWars.p2.getMana() + " / "+ (AetherWars.turn - 1));
+                        manaSize.setText(AetherWars.p2.getMana() + " / " + (AetherWars.turn - 1));
                     }
-                } else{
+                } else {
                     utilityWarningText.setText("Can't spawn to Opponent's Field!");
                 }
             }
@@ -1406,22 +1447,62 @@ public class Controller {
 
     @FXML
     void clickPlayer1Image(MouseEvent event) {
-        if(AetherWars.p1.getFieldCardValue() == 0 && !AetherWars.playerTurn){
-            if (chosenPlayer == 1){
-                player1image.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
-                chosenPlayer = 0;
-                utilityWarningText.setText("");
+        if (!AetherWars.playerTurn) {
+            if (AetherWars.p1.getFieldCardValue() == 0) {
+                if (chosenPlayer == 1) {
+                    player1image.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                    chosenPlayer = 0;
+                    utilityWarningText.setText("");
+                } else if (chosenPlayer == 0) {
+                    // ATTACK LAWAN TAPI BELUM PENCET KARAKTER
+                    if (chosenField == 0) {
+                        utilityWarningText.setText("Pick your character first!");
+                        // ATTACK LAWAN DAN SUDAH PILIH KARAKTER
+                    } else if (chosenField > 5 && chosenField <= 10) {
+                        // KASUS BELUM PERNAH ATTACK
+                        if (!AetherWars.p1.getFieldCardHasAttacked()[chosenField - 6]) {
+                            // SET ATTACK STATUS
+                            String charName = AetherWars.p1.getFieldCard()[chosenField - 6].getName();
+                            String player = AetherWars.p1.getName();
+                            String attackStatus = String.format("%s vs %s", charName, player);
+                            utilityWarningText.setText(attackStatus);
+                            // KURANGIN HP LAWAN
+                            AetherWars.p1.getFieldCard()[chosenField - 6].attackPlayer(AetherWars.p1);
+                            // SET KARAKTER UDAH ATTACK
+                            AetherWars.p1.getFieldCardHasAttacked()[chosenField - 6] = true;
+                        }
+                        // KASUS UDAH PERNAH ATTACK
+                        else {
+                            utilityWarningText.setText("Pick another character!");
+                        }
+                    }
+                }
             } else {
-                
+                utilityWarningText.setText("Please attack a character first!");
             }
-        } else {
-            utilityWarningText.setText("Please attack a character first!");
         }
     }
 
     @FXML
     void clickPlayer2Image(MouseEvent event) {
 
+    }
+
+    @FXML
+    void clickReduceHP(MouseEvent event) {
+        double width = HPPlayer1.getWidth();
+        System.out.println("width: " + width);
+        if (width > 0) {
+            double hpLama = (width / 302) * 80;
+            System.out.println("hpLama: " + hpLama);
+            double hpBaru = (hpLama - 5);
+            System.out.println("hpBaru: " + hpBaru);
+            double newWidth = (hpBaru / 80) * 302;
+            System.out.println("newWidth: " + newWidth);
+            String hp = String.format("Sebelum = %f, Setelah = %f", width, newWidth);
+            utilityWarningText.setText(hp);
+            HPPlayer1.setWidth(newWidth);
+        }
     }
 
 }
