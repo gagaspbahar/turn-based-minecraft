@@ -191,7 +191,6 @@ public class Controller2 implements Initializable {
             Stage popupwindow = (Stage) drawcard1.getScene().getWindow();
             if (kosong == -1){
                 Pane throwPane = FXMLLoader.load(AetherWars.class.getClassLoader().getResource("./ThrowCards.fxml"));
-                popupwindow.setTitle("Throw card");
                 popupwindow.setScene(new Scene(throwPane));
                 popupwindow.centerOnScreen();
                 //popupwindow.showAndWait();

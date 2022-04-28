@@ -287,7 +287,6 @@ public class Controller {
             Pane drawcardPane = FXMLLoader.load(AetherWars.class.getClassLoader().getResource("./Draw3cards.fxml"));
             popupwindow.initModality(Modality.APPLICATION_MODAL);
             popupwindow.initStyle(StageStyle.UNDECORATED);
-            popupwindow.setTitle("Draw card");
             popupwindow.setScene(new Scene(drawcardPane));
             popupwindow.centerOnScreen();
             popupwindow.showAndWait();

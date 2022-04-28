@@ -15,17 +15,19 @@
             <Image url="@com/aetherwars/logo/AetherWars.png" />
          </image>
       </ImageView>
-      <Rectangle fx:id="newBox" arcHeight="5.0" arcWidth="5.0" fill="#cde7ff" height="47.0" layoutX="49.0" layoutY="250.0" onMouseClicked="#newBoxClicked" stroke="BLACK" strokeType="INSIDE" width="144.0" />
-      <Text fx:id="newText" layoutX="76.0" layoutY="279.0" onMouseClicked="#newTextClicked" strokeType="OUTSIDE" strokeWidth="10.0" style="-fx-font-weight: BOLD;" text="NEW GAME" wrappingWidth="89.276123046875">
+      <Rectangle fx:id="newBox" arcHeight="5.0" arcWidth="5.0" fill="#cde7ff" height="47.0" layoutX="49.0" layoutY="237.0" onMouseClicked="#newClicked" stroke="BLACK" strokeType="INSIDE" width="144.0" />
+      <Text fx:id="newText" layoutX="76.0" layoutY="266.0" onMouseClicked="#newClicked" strokeType="OUTSIDE" strokeWidth="10.0" style="-fx-font-weight: BOLD;" text="NEW GAME" wrappingWidth="89.276123046875">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Rectangle fx:id="loadBox" arcHeight="5.0" arcWidth="5.0" fill="#cde7ff" height="47.0" layoutX="217.0" layoutY="249.0" onMouseClicked="#loadBoxClicked" stroke="BLACK" strokeType="INSIDE" width="144.0" />
-      <Text fx:id="loadText" layoutX="239.0" layoutY="278.0" onMouseClicked="#loadTextClicked" strokeType="OUTSIDE" strokeWidth="10.0" style="-fx-font-weight: BOLD;" text="LOAD GAME" wrappingWidth="100.4761962890625">
+      <Rectangle fx:id="loadBox" arcHeight="5.0" arcWidth="5.0" fill="#cde7ff" height="47.0" layoutX="217.0" layoutY="237.0" onMouseClicked="#loadClicked" stroke="BLACK" strokeType="INSIDE" width="144.0" />
+      <Text fx:id="loadText" layoutX="239.0" layoutY="266.0" onMouseClicked="#loadClicked" strokeType="OUTSIDE" strokeWidth="10.0" style="-fx-font-weight: BOLD;" text="LOAD GAME" wrappingWidth="100.4761962890625">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
+      <Text layoutX="48.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(Randomly Generated Deck)" />
+      <Text layoutX="227.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(Import Deck From File)" />
    </children>
 </AnchorPane>

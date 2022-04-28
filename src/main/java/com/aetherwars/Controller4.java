@@ -24,29 +24,17 @@ public class Controller4 {
     private Text newText;
 
     @FXML
-    void loadBoxClicked(MouseEvent event) {
-
-    }
-
-    @FXML
-    void loadTextClicked(MouseEvent event) {
-
-    }
-
-    @FXML
-    void newBoxClicked(MouseEvent event) throws Exception {
+    void loadClicked(MouseEvent event) throws Exception {
         Stage popupwindow = (Stage) newBox.getScene().getWindow();
-        Pane throwPane = FXMLLoader.load(AetherWars.class.getClassLoader().getResource("./Sample.fxml"));
-        popupwindow.setTitle("Throw card");
+        Pane throwPane = FXMLLoader.load(AetherWars.class.getClassLoader().getResource("./ImportDeck.fxml"));
         popupwindow.setScene(new Scene(throwPane));
         popupwindow.centerOnScreen();
     }
 
     @FXML
-    void newTextClicked(MouseEvent event) throws Exception {
+    void newClicked(MouseEvent event) throws Exception {
         Stage popupwindow = (Stage) newBox.getScene().getWindow();
         Pane throwPane = FXMLLoader.load(AetherWars.class.getClassLoader().getResource("./Sample.fxml"));
-        popupwindow.setTitle("Throw card");
         popupwindow.setScene(new Scene(throwPane));
         popupwindow.centerOnScreen();
     }
