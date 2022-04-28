@@ -69,9 +69,40 @@ public class Controller5 {
             return;
         }
 
+        String filename1 = "./com/aetherwars/deck/" + player1box.getText();
+        String filename2 = "./com/aetherwars/deck/" + player2box.getText();
+
+        boolean file1ada;
+        boolean file2ada;
+
+        if (AetherWars.class.getClassLoader().getResource(filename1) != null) {
+            file1ada = true;
+        } else {
+            file1ada = false;
+        }
+        
+        if (AetherWars.class.getClassLoader().getResource(filename2) != null) {
+            file2ada = true;
+        } else {
+            file2ada = false;
+        }
+
+        if (!file1ada && !file2ada){
+            errorText.setText("Filename 1 and 2 not found!");
+            return;
+        }
+        if (!file1ada) {
+            errorText.setText("Filename 1 not found!");
+            return;
+        }
+        if (!file2ada){
+            errorText.setText("Filename 2 not found!");
+            return;
+        }
+
         try {
-            List<String[]> tempdeck1 = loadCSV("./com/aetherwars/deck/" + player1box.getText());
-            List<String[]> tempdeck2 = loadCSV("./com/aetherwars/deck/" + player2box.getText());
+            List<String[]> tempdeck1 = loadCSV(filename1);
+            List<String[]> tempdeck2 = loadCSV(filename2);
             for (String[] baris : tempdeck1){
                 AetherWars.p1.addDeckFromID( Integer.parseInt(baris[0]));
             }
@@ -100,7 +131,6 @@ public class Controller5 {
                 String line = scanner.nextLine();
                 String[] values = line.split(",");
                 list.add(values);
-                System.out.println(values[0]);
             }
         } catch (Exception e) {
             errorText.setText("File not found.");
@@ -112,9 +142,6 @@ public class Controller5 {
         File characterCSVFile = new File(AetherWars.class.getClassLoader().getResource(filename).toURI());
         CSVReader characterReader = new CSVReader(characterCSVFile, "\t");
         characterReader.setSkipHeader(true);
-        for (String[] row : characterReader.read()) {
-            System.out.println(row[0]);
-        }
         return characterReader.read();
 
       }
