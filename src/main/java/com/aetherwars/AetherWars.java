@@ -42,8 +42,6 @@ public class AetherWars extends Application {
 
   @Override
   public void start(Stage stage) throws Exception {
-    p1.initializeDeck();
-    p2.initializeDeck();
 
     Pane mainPane = FXMLLoader.load(AetherWars.class.getClassLoader().getResource("./Opening.fxml"));
       stage.resizableProperty().setValue(Boolean.FALSE);

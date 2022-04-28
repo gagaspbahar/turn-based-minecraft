@@ -158,6 +158,55 @@ public class Player {
         }
     }
 
+    public void addDeckFromID(int id) {
+        // Inisialisasi deck pemain
+        if (id / 100 == 0) {
+            Card card = new Card(id, this.config.getNameFromID(id), this.config.getDescriptionFromID(id),
+                    this.config.getImagePathFromID(id), CardType.CHARACTER, this.config.getManaFromID(id));
+            Character c = new Character(card, this.config.characters.getCharTypeFromID(id),
+                    this.config.characters.getAttackFromID(id), this.config.characters.getHealthFromID(id),
+                    this.config.characters.getAttackUpFromID(id), this.config.characters.getHealthUpFromID(id));
+            this.deck.add(c);
+        }
+        else if (id / 100 == 1) {
+            Card card = new Card(id, this.config.getNameFromID(id), this.config.getDescriptionFromID(id),
+                    this.config.getImagePathFromID(id), CardType.SPELL, this.config.getManaFromID(id));
+            PotionSpell p = new PotionSpell(card, this.config.potionSpells.getAttackFromID(id),
+                    this.config.potionSpells.getHPFromID(id), this.config.potionSpells.getDurationFromID(id));
+            this.deck.add(p);
+        }
+        else if (id / 100 == 2) {
+
+            Card card = new Card(id, this.config.getNameFromID(id), this.config.getDescriptionFromID(id),
+                    this.config.getImagePathFromID(id), CardType.SPELL, this.config.getManaFromID(id));
+            SwapSpell p = new SwapSpell(card, this.config.swapSpells.getDurationFromID(id));
+            this.deck.add(p);
+        }
+        else if (id / 100 == 3) {
+            Card card = new Card(id, this.config.getNameFromID(id), this.config.getDescriptionFromID(id),
+                    this.config.getImagePathFromID(id), CardType.SPELL, this.config.getManaFromID(id));
+            MorphSpell p = new MorphSpell(card, this.config.morphSpells.getTargetFromID(id));
+            this.deck.add(p);
+        }
+        else if (id / 100 == 4) {
+            Card card = new Card(id, this.config.getNameFromID(id), this.config.getDescriptionFromID(id),
+                    this.config.getImagePathFromID(id), CardType.SPELL, this.config.getManaFromID(id));
+            LevelSpell p = new LevelSpell(card);
+            this.deck.add(p);
+        }
+
+        else if (id / 100 == 5) {
+            Card card = new Card(id, this.config.getNameFromID(id), this.config.getDescriptionFromID(id),
+                    this.config.getImagePathFromID(id), CardType.SPELL, this.config.getManaFromID(id));
+            HealSpell p = new HealSpell(card, this.config.healSpells.getHPFromID(id));
+            this.deck.add(p);
+        }
+    }
+
+    public void emptyDeck(){
+        this.deck = new ArrayList<Card>(50);
+    }
+
     public void initializeDeck() {
         // Inisialisasi deck pemain
         Random rand = new Random();

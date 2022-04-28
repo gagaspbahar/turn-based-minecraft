@@ -10,26 +10,27 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="321.0" prefWidth="414.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aetherwars.Controller5">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="107.0" pickOnBounds="true" preserveRatio="true" />
-      <TextField layoutX="106.0" layoutY="108.0" prefHeight="26.0" prefWidth="200.0" />
-      <Text layoutX="168.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1 File" />
-      <Text layoutX="168.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2 File" />
-      <TextField layoutX="106.0" layoutY="187.0" prefHeight="26.0" prefWidth="200.0" />
+      <TextField fx:id="player1box" layoutX="106.0" layoutY="100.0" prefHeight="26.0" prefWidth="200.0" />
+      <Text layoutX="168.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1 File" />
+      <Text layoutX="168.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2 File" />
+      <TextField fx:id="player2box" layoutX="106.0" layoutY="176.0" prefHeight="26.0" prefWidth="200.0" />
       <Text layoutX="56.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: BOLD;" text="INPUT CONFIG FILENAME" wrappingWidth="302.78253173828125">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Rectangle fx:id="gobackBox" arcHeight="5.0" arcWidth="5.0" fill="#cde7ff" height="47.0" layoutX="46.0" layoutY="245.0" onMouseClicked="#goBackClicked" stroke="BLACK" strokeType="INSIDE" width="144.0" />
-      <Text fx:id="goBack" layoutX="82.0" layoutY="274.0" onMouseClicked="#goBackClicked" strokeType="OUTSIDE" strokeWidth="10.0" style="-fx-font-weight: BOLD;" text="GO BACK" wrappingWidth="72.47607421875">
+      <Rectangle fx:id="gobackBox" arcHeight="5.0" arcWidth="5.0" fill="#cde7ff" height="47.0" layoutX="46.0" layoutY="258.0" onMouseClicked="#goBackClicked" stroke="BLACK" strokeType="INSIDE" width="144.0" />
+      <Text fx:id="goBack" layoutX="82.0" layoutY="287.0" onMouseClicked="#goBackClicked" strokeType="OUTSIDE" strokeWidth="10.0" style="-fx-font-weight: BOLD;" text="GO BACK" wrappingWidth="72.47607421875">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Rectangle fx:id="submitLoadBox" arcHeight="5.0" arcWidth="5.0" fill="#cde7ff" height="47.0" layoutX="206.0" layoutY="245.0" onMouseClicked="#loadClicked" stroke="BLACK" strokeType="INSIDE" width="144.0" />
-      <Text fx:id="submitLoad" layoutX="221.0" layoutY="274.0" onMouseClicked="#loadClicked" strokeType="OUTSIDE" strokeWidth="10.0" style="-fx-font-weight: BOLD;" text="SUBMIT LOAD" wrappingWidth="114.8760986328125">
+      <Rectangle fx:id="submitLoadBox" arcHeight="5.0" arcWidth="5.0" fill="#cde7ff" height="47.0" layoutX="206.0" layoutY="258.0" onMouseClicked="#loadClicked" stroke="BLACK" strokeType="INSIDE" width="144.0" />
+      <Text fx:id="submitLoad" layoutX="221.0" layoutY="287.0" onMouseClicked="#loadClicked" strokeType="OUTSIDE" strokeWidth="10.0" style="-fx-font-weight: BOLD;" text="SUBMIT LOAD" wrappingWidth="114.8760986328125">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
+      <Text fx:id="errorText" fill="RED" layoutX="120.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="158.0760498046875" />
    </children>
 </AnchorPane>

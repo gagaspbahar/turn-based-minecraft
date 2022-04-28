@@ -33,6 +33,8 @@ public class Controller4 {
 
     @FXML
     void newClicked(MouseEvent event) throws Exception {
+        AetherWars.p1.initializeDeck();
+        AetherWars.p2.initializeDeck();
         Stage popupwindow = (Stage) newBox.getScene().getWindow();
         Pane throwPane = FXMLLoader.load(AetherWars.class.getClassLoader().getResource("./Sample.fxml"));
         popupwindow.setScene(new Scene(throwPane));

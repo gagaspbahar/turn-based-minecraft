@@ -5,6 +5,7 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.paint.Color;
+import java.net.URL;
 import com.aetherwars.model.Spell;
 import com.aetherwars.model.Character;
 import com.aetherwars.model.type.CardType;
@@ -17,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.stage.StageStyle;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.AnchorPane;
+import java.util.ResourceBundle;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -27,6 +29,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.Modality;
 import javafx.scene.Node;
+import javafx.fxml.Initializable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +38,7 @@ import java.util.Arrays;
 // import card from folder model
 import com.aetherwars.model.Card;
 
-public class Controller {
+public class Controller implements Initializable {
     /** VARIABLE ZONE **/
     private int chosenHand = 0;
     private int chosenField = 0;
@@ -2254,5 +2257,7 @@ public class Controller {
             HPPlayer2.setWidth(newWidth);
         }
     }
-
+    public void initialize(URL location, ResourceBundle resources) {
+        deckSize.setText((AetherWars.p1.getDeck().size()) + " / 50");
+    }
 }
