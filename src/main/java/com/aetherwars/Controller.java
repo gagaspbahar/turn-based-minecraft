@@ -1162,6 +1162,7 @@ public class Controller implements Initializable {
                         AetherWars.p1.getHandStatus()[chosenHand - 1] = false;
                         AetherWars.p1.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                        chosenHand = 0;
                     }
                 } else if (!AetherWars.playerTurn
                         && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.SPELL) {
@@ -1196,6 +1197,7 @@ public class Controller implements Initializable {
                             AetherWars.p2.getHandStatus()[chosenHand - 1] = false;
                             AetherWars.p2.getHand()[chosenHand - 1] = null;
                             cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                            chosenHand = 0;
                         }
                     } else {
                         utilityWarningText.setText("You can only cast MORPH spell to opponent!");
@@ -1340,6 +1342,7 @@ public class Controller implements Initializable {
                         AetherWars.p1.getHandStatus()[chosenHand - 1] = false;
                         AetherWars.p1.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                        chosenHand = 0;
                     }
                 } else if (!AetherWars.playerTurn
                         && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.SPELL) {
@@ -1374,6 +1377,7 @@ public class Controller implements Initializable {
                             AetherWars.p2.getHandStatus()[chosenHand - 1] = false;
                             AetherWars.p2.getHand()[chosenHand - 1] = null;
                             cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                            chosenHand = 0;
                         }
                     } else {
                         utilityWarningText.setText("You can only cast MORPH spell to opponent!");
@@ -1518,6 +1522,7 @@ public class Controller implements Initializable {
                         AetherWars.p1.getHandStatus()[chosenHand - 1] = false;
                         AetherWars.p1.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                        chosenHand = 0;
                     }
                 } else if (!AetherWars.playerTurn
                         && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.SPELL) {
@@ -1552,6 +1557,7 @@ public class Controller implements Initializable {
                             AetherWars.p2.getHandStatus()[chosenHand - 1] = false;
                             AetherWars.p2.getHand()[chosenHand - 1] = null;
                             cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                            chosenHand = 0;
                         }
                     } else {
                         utilityWarningText.setText("You can only cast MORPH spell to opponent!");
@@ -1697,6 +1703,7 @@ public class Controller implements Initializable {
                         AetherWars.p1.getHandStatus()[chosenHand - 1] = false;
                         AetherWars.p1.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                        chosenHand = 0;
                     }
                 } else if (!AetherWars.playerTurn
                         && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.SPELL) {
@@ -1731,6 +1738,7 @@ public class Controller implements Initializable {
                             AetherWars.p2.getHandStatus()[chosenHand - 1] = false;
                             AetherWars.p2.getHand()[chosenHand - 1] = null;
                             cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                            chosenHand = 0;
                         }
                     } else {
                         utilityWarningText.setText("You can only cast MORPH spell to opponent!");
@@ -1876,6 +1884,7 @@ public class Controller implements Initializable {
                         AetherWars.p1.getHandStatus()[chosenHand - 1] = false;
                         AetherWars.p1.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                        chosenHand = 0;
                     }
                 } else if (!AetherWars.playerTurn
                         && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.SPELL) {
@@ -1910,6 +1919,7 @@ public class Controller implements Initializable {
                             AetherWars.p2.getHandStatus()[chosenHand - 1] = false;
                             AetherWars.p2.getHand()[chosenHand - 1] = null;
                             cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                            chosenHand = 0;
                         }
                     } else {
                         utilityWarningText.setText("You can only cast MORPH spell to opponent!");
@@ -1976,10 +1986,9 @@ public class Controller implements Initializable {
                 } else {
                     utilityWarningText.setText("Empty Field!");
                 }
-            } else {
+            } else if(AetherWars.phase == PhaseType.PLAN){
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
-                if (!AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER
-                        && AetherWars.phase == PhaseType.PLAN) {
+                if (!AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
                     if (AetherWars.p2.getFieldCardStatus()[0]) {
                         utilityWarningText.setText("Field Not Empty!");
                     } else if (AetherWars.p2.getMana() < AetherWars.p2.getHand()[chosenHand - 1].getMana()) {
@@ -2055,6 +2064,7 @@ public class Controller implements Initializable {
                         AetherWars.p2.getHandStatus()[chosenHand - 1] = false;
                         AetherWars.p2.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                        chosenHand = 0;
                     }
                 } else if (AetherWars.playerTurn
                         && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.SPELL) {
@@ -2089,6 +2099,7 @@ public class Controller implements Initializable {
                             AetherWars.p1.getHandStatus()[chosenHand - 1] = false;
                             AetherWars.p1.getHand()[chosenHand - 1] = null;
                             cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                            chosenHand = 0;
                         }
                     } else {
                         utilityWarningText.setText("You can only cast MORPH spell to opponent!");
@@ -2155,10 +2166,9 @@ public class Controller implements Initializable {
                 } else {
                     utilityWarningText.setText("Empty Field!");
                 }
-            } else {
+            } else if(AetherWars.phase == PhaseType.PLAN){
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
-                if (!AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER
-                        && AetherWars.phase == PhaseType.PLAN) {
+                if (!AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
                     if (AetherWars.p2.getFieldCardStatus()[1]) {
                         utilityWarningText.setText("Field Not Empty!");
                     } else if (AetherWars.p2.getMana() < AetherWars.p2.getHand()[chosenHand - 1].getMana()) {
@@ -2235,6 +2245,7 @@ public class Controller implements Initializable {
                         AetherWars.p2.getHandStatus()[chosenHand - 1] = false;
                         AetherWars.p2.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                        chosenHand = 0;
                     }
                 } else if (AetherWars.playerTurn
                         && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.SPELL) {
@@ -2269,6 +2280,7 @@ public class Controller implements Initializable {
                             AetherWars.p1.getHandStatus()[chosenHand - 1] = false;
                             AetherWars.p1.getHand()[chosenHand - 1] = null;
                             cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                            chosenHand = 0;
                         }
                     } else {
                         utilityWarningText.setText("You can only cast MORPH spell to opponent!");
@@ -2337,10 +2349,9 @@ public class Controller implements Initializable {
                 } else {
                     utilityWarningText.setText("Empty Field!");
                 }
-            } else {
+            } else if(AetherWars.phase == PhaseType.PLAN){
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
-                if (!AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER
-                        && AetherWars.phase == PhaseType.PLAN) {
+                if (!AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
                     if (AetherWars.p2.getFieldCardStatus()[2]) {
                         utilityWarningText.setText("Field Not Empty!");
                     } else if (AetherWars.p2.getMana() < AetherWars.p2.getHand()[chosenHand - 1].getMana()) {
@@ -2417,6 +2428,7 @@ public class Controller implements Initializable {
                         AetherWars.p2.getHandStatus()[chosenHand - 1] = false;
                         AetherWars.p2.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                        chosenHand = 0;
                     }
                 } else if (AetherWars.playerTurn
                         && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.SPELL) {
@@ -2451,6 +2463,7 @@ public class Controller implements Initializable {
                             AetherWars.p1.getHandStatus()[chosenHand - 1] = false;
                             AetherWars.p1.getHand()[chosenHand - 1] = null;
                             cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                            chosenHand = 0;
                         }
                     } else {
                         utilityWarningText.setText("You can only cast MORPH spell to opponent!");
@@ -2517,10 +2530,9 @@ public class Controller implements Initializable {
                 } else {
                     utilityWarningText.setText("Empty Field!");
                 }
-            } else {
+            } else if(AetherWars.phase == PhaseType.PLAN){
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
-                if (!AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER
-                        && AetherWars.phase == PhaseType.PLAN) {
+                if (!AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
                     if (AetherWars.p2.getFieldCardStatus()[3]) {
                         utilityWarningText.setText("Field Not Empty!");
                     } else if (AetherWars.p2.getMana() < AetherWars.p2.getHand()[chosenHand - 1].getMana()) {
@@ -2596,6 +2608,7 @@ public class Controller implements Initializable {
                         AetherWars.p2.getHandStatus()[chosenHand - 1] = false;
                         AetherWars.p2.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                        chosenHand = 0;
                     }
                 } else if (AetherWars.playerTurn
                         && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.SPELL) {
@@ -2630,6 +2643,7 @@ public class Controller implements Initializable {
                             AetherWars.p1.getHandStatus()[chosenHand - 1] = false;
                             AetherWars.p1.getHand()[chosenHand - 1] = null;
                             cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                            chosenHand = 0;
                         }
                     } else {
                         utilityWarningText.setText("You can only cast MORPH spell to opponent!");
@@ -2696,10 +2710,9 @@ public class Controller implements Initializable {
                 } else {
                     utilityWarningText.setText("Empty Field!");
                 }
-            } else {
+            } else if(AetherWars.phase == PhaseType.PLAN){
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
-                if (!AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER
-                        && AetherWars.phase == PhaseType.PLAN) {
+                if (!AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
                     if (AetherWars.p2.getFieldCardStatus()[4]) {
                         utilityWarningText.setText("Field Not Empty!");
                     } else if (AetherWars.p2.getMana() < AetherWars.p2.getHand()[chosenHand - 1].getMana()) {
@@ -2777,6 +2790,7 @@ public class Controller implements Initializable {
                         AetherWars.p2.getHandStatus()[chosenHand - 1] = false;
                         AetherWars.p2.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                        chosenHand = 0;
                     }
                 } else if (AetherWars.playerTurn
                         && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.SPELL) {
@@ -2811,6 +2825,7 @@ public class Controller implements Initializable {
                             AetherWars.p1.getHandStatus()[chosenHand - 1] = false;
                             AetherWars.p1.getHand()[chosenHand - 1] = null;
                             cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
+                            chosenHand = 0;
                         }
                     } else {
                         utilityWarningText.setText("You can only cast MORPH spell to opponent!");

@@ -65,7 +65,11 @@ class PotionSpell extends Spell {
   public void cast(Character c, Player p){
     if(p.getMana() >= this.getMana()){
       c.setHealth(c.getHealth() + this.getHealthChange());
-      c.setAttack(c.getAttack() + this.getAttackChange());
+      if(c.getAttack() + this.getAttackChange() < 0){
+        c.setAttack(0);
+      } else {
+        c.setAttack(c.getAttack() + this.getAttackChange());
+      }
       c.addSpellsEffect(this);
       p.setMana(p.getMana() - this.getMana());
     }
