@@ -44,6 +44,8 @@ public class Controller implements Initializable {
     private int chosenField = 0;
     private int chosenPlayer = 0;
     private boolean hasDrawn = false;
+    private int p1MaxDeckSize = 0;
+    private int p2MaxDeckSize = 0;
 
     /**** SAMPLE ZONE ****/
     @FXML
@@ -311,7 +313,7 @@ public class Controller implements Initializable {
                         cardImage.get(i).setImage(new Image("./com/aetherwars/card/image/character/base.png"));
                     }
                 }
-                deckSize.setText((AetherWars.p1.getDeck().size()) + " / 50");
+                deckSize.setText((AetherWars.p1.getDeck().size()) + " / " + Integer.toString(p1MaxDeckSize));
                 // AetherWars.playerTurn = false;
             } else {
                 AetherWars.p2.resetMana(AetherWars.turn);
@@ -330,7 +332,7 @@ public class Controller implements Initializable {
                     }
 
                 }
-                deckSize.setText((AetherWars.p2.getDeck().size()) + " / 50");
+                deckSize.setText((AetherWars.p2.getDeck().size()) + " / " + Integer.toString(p2MaxDeckSize));
                 // AetherWars.playerTurn = true;
                 // AetherWars.turn++;
             }
@@ -367,7 +369,7 @@ public class Controller implements Initializable {
                     cardImage.get(i).setImage(new Image("./com/aetherwars/card/image/character/base.png"));
                 }
             }
-            deckSize.setText((AetherWars.p1.getDeck().size()) + " / 50");
+            deckSize.setText((AetherWars.p1.getDeck().size()) + " / " + Integer.toString(p1MaxDeckSize));
             // AetherWars.playerTurn = false;
         } else {
             AetherWars.p2.resetMana(AetherWars.turn);
@@ -386,7 +388,7 @@ public class Controller implements Initializable {
                 }
 
             }
-            deckSize.setText((AetherWars.p2.getDeck().size()) + " / 50");
+            deckSize.setText((AetherWars.p2.getDeck().size()) + " / " + Integer.toString(p2MaxDeckSize));
             // AetherWars.playerTurn = true;
             // AetherWars.turn++;
         }
@@ -2258,6 +2260,8 @@ public class Controller implements Initializable {
         }
     }
     public void initialize(URL location, ResourceBundle resources) {
-        deckSize.setText((AetherWars.p1.getDeck().size()) + " / 50");
+        p1MaxDeckSize = AetherWars.p1.getDeck().size();
+        p2MaxDeckSize = AetherWars.p2.getDeck().size();
+        deckSize.setText((AetherWars.p1.getDeck().size()) + " / " + Integer.toString(p1MaxDeckSize));
     }
 }
