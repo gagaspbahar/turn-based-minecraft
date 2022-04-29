@@ -1234,6 +1234,7 @@ public class Controller implements Initializable {
                             updateLevelAfterAttack(source);
 
                         }
+                        AetherWars.p2.setFieldCardHasAttacked(source - 6);
                         updateFieldColorAfterAttack(source);
                         utilityWarningText.setText(text);
                         chosenField = 0;
@@ -1415,6 +1416,7 @@ public class Controller implements Initializable {
 
                         }
                         chosenField = 0;
+                        AetherWars.p2.setFieldCardHasAttacked(source - 6);
                         updateFieldColorAfterAttack(source);
                         utilityWarningText.setText(text);
                     } else {
@@ -1594,6 +1596,7 @@ public class Controller implements Initializable {
                             updateLevelAfterAttack(source);
 
                         }
+                        AetherWars.p2.setFieldCardHasAttacked(source - 6);
                         chosenField = 0;
                         updateFieldColorAfterAttack(source);
                         utilityWarningText.setText(text);
@@ -1776,6 +1779,7 @@ public class Controller implements Initializable {
                             updateLevelAfterAttack(source);
 
                         }
+                        AetherWars.p2.setFieldCardHasAttacked(source - 6);
                         chosenField = 0;
                         updateFieldColorAfterAttack(source);
                         utilityWarningText.setText(text);
@@ -1956,6 +1960,7 @@ public class Controller implements Initializable {
                             updateLevelAfterAttack(source);
 
                         }
+                        AetherWars.p2.setFieldCardHasAttacked(source - 6);
                         chosenField = 0;
                         updateFieldColorAfterAttack(source);
                         utilityWarningText.setText(text);
@@ -2136,6 +2141,7 @@ public class Controller implements Initializable {
                             updateLevelAfterAttack(source);
 
                         }
+                        AetherWars.p1.setFieldCardHasAttacked(source - 1);
                         chosenField = 0;
                         updateFieldColorAfterAttack(source);
                         utilityWarningText.setText(text);
@@ -2319,6 +2325,7 @@ public class Controller implements Initializable {
                             updateLevelAfterAttack(source);
 
                         }
+                        AetherWars.p1.setFieldCardHasAttacked(source - 1);
                         chosenField = 0;
                         updateFieldColorAfterAttack(source);
                         utilityWarningText.setText(text);
@@ -2500,6 +2507,7 @@ public class Controller implements Initializable {
                             updateLevelAfterAttack(source);
 
                         }
+                        AetherWars.p1.setFieldCardHasAttacked(source - 1);
                         chosenField = 0;
                         updateFieldColorAfterAttack(source);
                         utilityWarningText.setText(text);
@@ -2680,6 +2688,7 @@ public class Controller implements Initializable {
                             updateLevelAfterAttack(source);
 
                         }
+                        AetherWars.p1.setFieldCardHasAttacked(source - 1);
                         chosenField = 0;
                         updateFieldColorAfterAttack(source);
                         utilityWarningText.setText(text);
@@ -2864,6 +2873,7 @@ public class Controller implements Initializable {
                             updateLevelAfterAttack(source);
 
                         }
+                        AetherWars.p1.setFieldCardHasAttacked(source - 1);
                         chosenField = 0;
                         updateFieldColorAfterAttack(source);
                         utilityWarningText.setText(text);
@@ -2902,7 +2912,7 @@ public class Controller implements Initializable {
                             AetherWars.p2.getFieldCard()[chosenField - 6].attackPlayer(AetherWars.p1);
                             reducePlayer1HP(AetherWars.p2.getFieldCard()[chosenField - 6].getAttack());
                             // SET KARAKTER UDAH ATTACK
-                            AetherWars.p2.getFieldCardHasAttacked()[chosenField - 6] = true;
+                            AetherWars.p2.setFieldCardHasAttacked(chosenField - 6);
                             updateFieldColorAfterAttack(chosenField);
                             chosenField = 0;
                         }
@@ -2943,7 +2953,8 @@ public class Controller implements Initializable {
                             AetherWars.p1.getFieldCard()[chosenField - 1].attackPlayer(AetherWars.p1);
                             reducePlayer2HP(AetherWars.p1.getFieldCard()[chosenField - 1].getAttack());
                             // SET KARAKTER UDAH ATTACK
-                            AetherWars.p1.getFieldCardHasAttacked()[chosenField - 1] = true;
+                            // AetherWars.p1.getFieldCardHasAttacked()[chosenField - 1] = true;
+                            AetherWars.p1.setFieldCardHasAttacked(chosenField - 1);
                             updateFieldColorAfterAttack(chosenField);
                             chosenField = 0;
                         }

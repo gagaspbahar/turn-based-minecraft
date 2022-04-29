@@ -84,6 +84,10 @@ public class Player {
         }
     }
 
+    public void setFieldCardHasAttacked(int index) {
+        this.fieldCardHasAttacked[index] = true;
+    }
+
     public int getFieldCardValue(){
         int ans = 0;
         for (int i = 0; i < 5; i++) {
