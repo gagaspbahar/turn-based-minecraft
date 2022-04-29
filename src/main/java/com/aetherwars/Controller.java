@@ -398,6 +398,54 @@ public class Controller implements Initializable {
         utilityWarningText.setText("");
     }
 
+    @FXML
+    void refreshField() {
+
+        List<Label> attackText1 = new ArrayList<Label>(
+                Arrays.asList(field1Attack1, field1Attack2, field1Attack3, field1Attack4, field1Attack5));
+        List<Label> healthText1 = new ArrayList<Label>(
+                Arrays.asList(field1Health1, field1Health2, field1Health3, field1Health4, field1Health5));
+        List<ImageView> fieldImage1 = new ArrayList<ImageView>(
+                Arrays.asList(field1Image1, field1Image2, field1Image3, field1Image4, field1Image5));
+        List<Label> levelText1 = new ArrayList<Label>(
+                Arrays.asList(field1Level1, field1Level2, field1Level3, field1Level4, field1Level5));
+
+        List<Label> attackText2 = new ArrayList<Label>(
+                Arrays.asList(field2Attack1, field2Attack2, field2Attack3, field2Attack4, field2Attack5));
+        List<Label> healthText2 = new ArrayList<Label>(
+                Arrays.asList(field2Health1, field2Health2, field2Health3, field2Health4, field2Health5));
+        List<ImageView> fieldImage2 = new ArrayList<ImageView>(
+                Arrays.asList(field2Image1, field2Image2, field2Image3, field2Image4, field2Image5));
+        List<Label> levelText2 = new ArrayList<Label>(
+                Arrays.asList(field2Level1, field2Level2, field2Level3, field2Level4, field2Level5));
+
+        for (int i = 0; i < 5; i++) {
+            if (AetherWars.p1.getFieldCard()[i] != null) {
+                if (AetherWars.p1.getFieldCard()[i].getHealth() == 0) {
+                    attackText1.get(i).setText("?");
+                    healthText1.get(i).setText("?");
+                    levelText1.get(i).setText("0/0 [0]");
+                    fieldImage1.get(i).setImage(new Image("./com/aetherwars/card/image/character/base.png"));
+                } else {
+                    attackText1.get(i).setText(String.valueOf(AetherWars.p1.getFieldCard()[i].getAttack()));
+                    healthText1.get(i).setText(String.valueOf(AetherWars.p1.getFieldCard()[i].getHealth()));
+                }
+            }
+
+            if (AetherWars.p2.getFieldCard()[i] != null) {
+                if (AetherWars.p2.getFieldCard()[i].getHealth() == 0) {
+                    attackText2.get(i).setText("?");
+                    healthText2.get(i).setText("?");
+                    levelText2.get(i).setText("0/0 [0]");
+                    fieldImage2.get(i).setImage(new Image("./com/aetherwars/card/image/character/base.png"));
+                } else {
+                    attackText2.get(i).setText(String.valueOf(AetherWars.p2.getFieldCard()[i].getAttack()));
+                    healthText2.get(i).setText(String.valueOf(AetherWars.p2.getFieldCard()[i].getHealth()));
+                }
+            }
+        }
+    }
+
     // Hover Handler
     @FXML
     void card1HoverIn(MouseEvent event) {
@@ -831,7 +879,7 @@ public class Controller implements Initializable {
                 Arrays.asList(field1Card1, field1Card2, field1Card3, field1Card4, field1Card5));
         List<Rectangle> fieldCards2 = new ArrayList<Rectangle>(
                 Arrays.asList(field2Card1, field2Card2, field2Card3, field2Card4, field2Card5));
-                
+
         if (chosenHand != 0) {
             List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1, card2, card3, card4, card5));
             cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
@@ -941,7 +989,7 @@ public class Controller implements Initializable {
     @FXML
     void submitClicked(MouseEvent event) {
         if (AetherWars.phase == PhaseType.DRAW) {
-            if (hasDrawn){ // ! JANGAN LUPA DIGANTI INI
+            if (hasDrawn) { // ! JANGAN LUPA DIGANTI INI
                 drawRectangle.setFill(Color.valueOf("#dfdfdf"));
                 planRectangle.setFill(Color.valueOf("#ff8c00"));
                 AetherWars.phase = PhaseType.PLAN;
@@ -958,6 +1006,14 @@ public class Controller implements Initializable {
             AetherWars.phase = PhaseType.END;
             updateFieldColorEndAttackPhase();
         } else {
+
+            // TODO: Handle Endgame
+            if (AetherWars.p1.getHealth() <= 0) {
+                utilityWarningText.setText("Player 2 Wins!");
+            } else if (AetherWars.p2.getHealth() <= 0) {
+                utilityWarningText.setText("Player 1 Wins!");
+            }
+
             if (!AetherWars.playerTurn) {
                 player1text.setStyle("-fx-background-color: #ad2517;");
                 player1text.setTextFill(Color.WHITE);
@@ -977,12 +1033,21 @@ public class Controller implements Initializable {
             AetherWars.playerTurn = !AetherWars.playerTurn;
             if (AetherWars.playerTurn) {
                 AetherWars.turn += 1;
+                for (Character x : AetherWars.p1.getFieldCard()) {
+                    if (x != null) {
+                        x.updateSpellsEffect();
+                    }
+                }
+                for (Character x : AetherWars.p2.getFieldCard()) {
+                    if (x != null) {
+                        x.updateSpellsEffect();
+                    }
+                }
+                refreshField();
             }
             turn.setText("Turn " + String.valueOf(AetherWars.turn));
             hasDrawn = false;
-            System.out.println("Player 1 (before refresh): " + AetherWars.p1.getMana());
             refreshHand();
-            System.out.println("Player 1: " + AetherWars.p1.getMana());
             chosenField = 0;
             resetFieldBorder();
         }
@@ -1094,7 +1159,7 @@ public class Controller implements Initializable {
                 } else {
                     utilityWarningText.setText("Empty Field!");
                 }
-            } else if (AetherWars.phase == PhaseType.PLAN){
+            } else if (AetherWars.phase == PhaseType.PLAN) {
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
                 if (AetherWars.playerTurn && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
                     if (AetherWars.p1.getFieldCardStatus()[0]) {
@@ -1278,7 +1343,7 @@ public class Controller implements Initializable {
                 } else {
                     utilityWarningText.setText("Empty Field!");
                 }
-            } else if (AetherWars.phase == PhaseType.PLAN){
+            } else if (AetherWars.phase == PhaseType.PLAN) {
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
                 if (AetherWars.playerTurn && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
                     if (AetherWars.p1.getFieldCardStatus()[1]) {
@@ -1399,7 +1464,7 @@ public class Controller implements Initializable {
                     } else {
                         utilityWarningText.setText("You can only cast MORPH spell to opponent!");
                     }
-                }else {
+                } else {
                     utilityWarningText.setText("Can't spawn to Opponent's Field!");
                 }
             }
@@ -1462,7 +1527,7 @@ public class Controller implements Initializable {
                 } else {
                     utilityWarningText.setText("Empty Field!");
                 }
-            } else if (AetherWars.phase == PhaseType.PLAN){
+            } else if (AetherWars.phase == PhaseType.PLAN) {
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
                 if (AetherWars.playerTurn && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
                     if (AetherWars.p1.getFieldCardStatus()[2]) {
@@ -1501,7 +1566,7 @@ public class Controller implements Initializable {
                         manaSize.setText(AetherWars.p1.getMana() + " / " + maxMana);
                     }
                 } else if (AetherWars.playerTurn
-                            && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.SPELL) {
+                        && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.SPELL) {
                     if (!AetherWars.p1.getFieldCardStatus()[2]) {
                         utilityWarningText.setText("Can't add spell to Empty Field!");
                     } else if (AetherWars.p1.getMana() < AetherWars.p1.getHand()[chosenHand - 1].getMana()) {
@@ -1646,7 +1711,7 @@ public class Controller implements Initializable {
                 } else {
                     utilityWarningText.setText("Empty Field!");
                 }
-            } else if (AetherWars.phase == PhaseType.PLAN){
+            } else if (AetherWars.phase == PhaseType.PLAN) {
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
                 if (AetherWars.playerTurn && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
                     if (AetherWars.p1.getFieldCardStatus()[3]) {
@@ -1684,8 +1749,7 @@ public class Controller implements Initializable {
                         int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
                         manaSize.setText(AetherWars.p1.getMana() + " / " + maxMana);
                     }
-                }
-                else if (AetherWars.playerTurn
+                } else if (AetherWars.playerTurn
                         && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.SPELL) {
                     if (!AetherWars.p1.getFieldCardStatus()[3]) {
                         utilityWarningText.setText("Can't add spell to Empty Field!");
@@ -1768,8 +1832,7 @@ public class Controller implements Initializable {
                     } else {
                         utilityWarningText.setText("You can only cast MORPH spell to opponent!");
                     }
-                }
-                else {
+                } else {
                     utilityWarningText.setText("Can't spawn to Opponent's Field!");
                 }
             }
@@ -1832,7 +1895,7 @@ public class Controller implements Initializable {
                 } else {
                     utilityWarningText.setText("Empty Field!");
                 }
-            } else if (AetherWars.phase == PhaseType.PLAN){
+            } else if (AetherWars.phase == PhaseType.PLAN) {
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
                 if (AetherWars.playerTurn && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
                     if (AetherWars.p1.getFieldCardStatus()[4]) {
@@ -2016,7 +2079,7 @@ public class Controller implements Initializable {
                 } else {
                     utilityWarningText.setText("Empty Field!");
                 }
-            } else if(AetherWars.phase == PhaseType.PLAN){
+            } else if (AetherWars.phase == PhaseType.PLAN) {
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
                 if (!AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
                     if (AetherWars.p2.getFieldCardStatus()[0]) {
@@ -2200,7 +2263,7 @@ public class Controller implements Initializable {
                 } else {
                     utilityWarningText.setText("Empty Field!");
                 }
-            } else if(AetherWars.phase == PhaseType.PLAN){
+            } else if (AetherWars.phase == PhaseType.PLAN) {
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
                 if (!AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
                     if (AetherWars.p2.getFieldCardStatus()[1]) {
@@ -2238,8 +2301,7 @@ public class Controller implements Initializable {
                         int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
                         manaSize.setText(AetherWars.p2.getMana() + " / " + maxMana);
                     }
-                } 
-                else if (!AetherWars.playerTurn
+                } else if (!AetherWars.playerTurn
                         && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.SPELL) {
                     if (!AetherWars.p2.getFieldCardStatus()[1]) {
                         utilityWarningText.setText("Can't add spell to Empty Field!");
@@ -2323,7 +2385,7 @@ public class Controller implements Initializable {
                         utilityWarningText.setText("You can only cast MORPH spell to opponent!");
                     }
                 }
-       
+
                 else {
                     utilityWarningText.setText("Can't spawn to Opponent's Field!");
                 }
@@ -2387,7 +2449,7 @@ public class Controller implements Initializable {
                 } else {
                     utilityWarningText.setText("Empty Field!");
                 }
-            } else if(AetherWars.phase == PhaseType.PLAN){
+            } else if (AetherWars.phase == PhaseType.PLAN) {
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
                 if (!AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
                     if (AetherWars.p2.getFieldCardStatus()[2]) {
@@ -2425,8 +2487,7 @@ public class Controller implements Initializable {
                         int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
                         manaSize.setText(AetherWars.p2.getMana() + " / " + maxMana);
                     }
-                } 
-                else if (!AetherWars.playerTurn
+                } else if (!AetherWars.playerTurn
                         && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.SPELL) {
                     if (!AetherWars.p2.getFieldCardStatus()[2]) {
                         utilityWarningText.setText("Can't add spell to Empty Field!");
@@ -2572,7 +2633,7 @@ public class Controller implements Initializable {
                 } else {
                     utilityWarningText.setText("Empty Field!");
                 }
-            } else if(AetherWars.phase == PhaseType.PLAN){
+            } else if (AetherWars.phase == PhaseType.PLAN) {
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
                 if (!AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
                     if (AetherWars.p2.getFieldCardStatus()[3]) {
@@ -2693,7 +2754,7 @@ public class Controller implements Initializable {
                     } else {
                         utilityWarningText.setText("You can only cast MORPH spell to opponent!");
                     }
-                }else {
+                } else {
                     utilityWarningText.setText("Can't spawn to Opponent's Field!");
                 }
             }
@@ -2756,7 +2817,7 @@ public class Controller implements Initializable {
                 } else {
                     utilityWarningText.setText("Empty Field!");
                 }
-            } else if(AetherWars.phase == PhaseType.PLAN){
+            } else if (AetherWars.phase == PhaseType.PLAN) {
                 // MOVE FROM HAND TO FIELD , APPLY SPELL
                 if (!AetherWars.playerTurn && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.CHARACTER) {
                     if (AetherWars.p2.getFieldCardStatus()[4]) {
@@ -2794,8 +2855,7 @@ public class Controller implements Initializable {
                         int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
                         manaSize.setText(AetherWars.p2.getMana() + " / " + maxMana);
                     }
-                } 
-                else if (!AetherWars.playerTurn
+                } else if (!AetherWars.playerTurn
                         && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.SPELL) {
                     if (!AetherWars.p2.getFieldCardStatus()[4]) {
                         utilityWarningText.setText("Can't add spell to Empty Field!");
@@ -2880,7 +2940,7 @@ public class Controller implements Initializable {
                         utilityWarningText.setText("You can only cast MORPH spell to opponent!");
                     }
                 }
-                
+
                 else {
                     utilityWarningText.setText("Can't spawn to Opponent's Field!");
                 }
@@ -3042,6 +3102,7 @@ public class Controller implements Initializable {
             HPPlayer2.setWidth(newWidth);
         }
     }
+
     public void initialize(URL location, ResourceBundle resources) {
         p1MaxDeckSize = AetherWars.p1.getDeck().size();
         p2MaxDeckSize = AetherWars.p2.getDeck().size();

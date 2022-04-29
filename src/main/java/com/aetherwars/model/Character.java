@@ -110,37 +110,58 @@ public class Character extends Card {
   }
   
   public void attackChara(Character chara2) {
+    int hpDiff = 0;
     if(this.getCharType() == CharType.OVERWORLD) {
       if(chara2.getCharType() == CharType.OVERWORLD) {
         chara2.setHealth(chara2.getHealth() - this.getAttack());
+        hpDiff = this.getAttack();
       }
       if(chara2.getCharType() == CharType.NETHER) {
         chara2.setHealth(chara2.getHealth() - this.getAttack()/2);
+        hpDiff = this.getAttack()/2;
       }
       if(chara2.getCharType() == CharType.END) {
         chara2.setHealth(chara2.getHealth() - this.getAttack()*2);
+        hpDiff = this.getAttack()*2;
       }
     } 
     else if(this.getCharType() == CharType.NETHER) {
       if(chara2.getCharType() == CharType.OVERWORLD) {
         chara2.setHealth(chara2.getHealth() - this.getAttack()*2);
+        hpDiff = this.getAttack()*2;
       }
       if(chara2.getCharType() == CharType.NETHER) {
         chara2.setHealth(chara2.getHealth() - this.getAttack());
+        hpDiff = this.getAttack();
       }
       if(chara2.getCharType() == CharType.END) {
         chara2.setHealth(chara2.getHealth() - this.getAttack()/2);
+        hpDiff = this.getAttack()/2;
       }
     } 
     else {
       if(chara2.getCharType() == CharType.END) {
         chara2.setHealth(chara2.getHealth() - this.getAttack());
+        hpDiff = this.getAttack();
       }
       if(chara2.getCharType() == CharType.OVERWORLD) {
         chara2.setHealth(chara2.getHealth() - this.getAttack()/2);
+        hpDiff = this.getAttack()/2;
       }
       if(chara2.getCharType() == CharType.NETHER) {
         chara2.setHealth(chara2.getHealth() - this.getAttack()*2);
+        hpDiff = this.getAttack()*2;
+      }
+    }
+    
+    if(chara2.getSpellsEffect().size() > 0){
+      int currSpell = chara2.getSpellsEffect().size() - 1;
+      while(hpDiff > 0 && currSpell >= 0){
+        int currHpChange = chara2.getSpellsEffect().get(currSpell).getHealthChange();
+        int hpChange = currHpChange >= hpDiff ? hpDiff : currHpChange;
+        chara2.getSpellsEffect().get(currSpell).setHealthChange(currHpChange - hpChange);
+        hpDiff -= hpChange;
+        currSpell--;
       }
     }
 
@@ -203,7 +224,7 @@ public class Character extends Card {
     }
     while(i < spells.size()){
       spells.get(i).setDuration(spells.get(i).getDuration() - 1);
-      if(spells.get(i).getDuration() == 0) {
+      if(spells.get(i).getDuration() <= 0) {
         PotionSpell potion = (PotionSpell) spells.get(i);
         this.setHealth(this.getHealth() - potion.getHealthChange());
         this.setAttack(this.getAttack() - potion.getAttackChange());

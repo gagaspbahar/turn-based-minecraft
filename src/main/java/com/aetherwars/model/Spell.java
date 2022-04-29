@@ -91,6 +91,10 @@ class PotionSpell extends Spell {
     return this.healthChange;
   }
 
+  public void setHealthChange(int healthChange){
+    this.healthChange = healthChange;
+  }
+
   @Override
   public String toString() {
     return "ATK +" + this.getAttackChange() + "/HP +" + this.getHealthChange();
