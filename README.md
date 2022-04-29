@@ -29,7 +29,7 @@ Ini diisi foto-foto ssan
 
 ### Installation
 
-```
+```bash
 git clone https://github.com/gagaspbahar/turn-based-minecraft.git
 ```
 
@@ -218,6 +218,12 @@ Open the terminal from the root directory of the project and type
                         PlayerTest.java
                         SpellTest.java
 ```
+
+## Screenshots
+
+![opening.png](./img/opening.png)
+![gameplay.png](./img/gameplay.png)
+![drawcards.png](./img/drawcards.png)
 
 ## Credit
 
