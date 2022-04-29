@@ -10,7 +10,7 @@ import com.aetherwars.AetherWars;
 import com.aetherwars.model.type.CardType;
 import com.aetherwars.model.type.SpellType;
 
-public class PotionSpellConfig {
+public class PotionSpellConfig implements BaseConfig, ManaConfig {
   
   private List<String[]> potionSpells;
   private String path;

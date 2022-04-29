@@ -10,7 +10,7 @@ import com.aetherwars.AetherWars;
 import com.aetherwars.model.type.CardType;
 import com.aetherwars.model.type.SpellType;
 
-public class SwapSpellConfig {
+public class SwapSpellConfig implements BaseConfig, ManaConfig {
   
   private List<String[]> swapSpells;
   private String path;

@@ -7,5 +7,5 @@ public interface BaseConfig {
   public String getDescriptionFromID(int id);
   public String getImagePathFromID(int id);
   public CardType getCardTypeFromID(int id);
-  public int getManaFromID(int id);
+
 }

@@ -10,7 +10,7 @@ import com.aetherwars.AetherWars;
 import com.aetherwars.model.type.CardType;
 import com.aetherwars.model.type.CharType;
 
-public class CharacterConfig implements BaseConfig {
+public class CharacterConfig implements BaseConfig, ManaConfig {
   
   private List<String[]> characters;
   private String path;

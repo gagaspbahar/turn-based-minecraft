@@ -10,7 +10,7 @@ import com.aetherwars.AetherWars;
 import com.aetherwars.model.type.CardType;
 import com.aetherwars.model.type.SpellType;
 
-public class HealSpellConfig {
+public class HealSpellConfig implements BaseConfig, ManaConfig {
   
   private List<String[]> healSpells;
   private String path;

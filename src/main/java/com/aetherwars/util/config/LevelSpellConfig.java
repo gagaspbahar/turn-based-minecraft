@@ -10,7 +10,7 @@ import com.aetherwars.AetherWars;
 import com.aetherwars.model.type.CardType;
 import com.aetherwars.model.type.SpellType;
 
-public class LevelSpellConfig {
+public class LevelSpellConfig implements BaseConfig {
 
   private List<String[]> levelSpells;
   private String path;

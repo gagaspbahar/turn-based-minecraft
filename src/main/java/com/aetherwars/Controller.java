@@ -57,11 +57,7 @@ public class Controller implements Initializable {
     private Button proceedButton;
 
     @FXML
-    private Button reduceHP;
-    //
     public static int siapaMenang = 0;
-
-    // asdasdsasda
 
     @FXML
     private Label deckSize;
@@ -3040,24 +3036,6 @@ public class Controller implements Initializable {
             } else {
                 utilityWarningText.setText("Please attack a character first!");
             }
-        }
-    }
-
-    @FXML
-    void clickReduceHP(MouseEvent event) {
-        double width = HPPlayer1.getWidth();
-        System.out.println("width: " + width);
-        if (width > 0) {
-            double hpLama = (width / 302) * 80;
-            System.out.println("hpLama: " + hpLama);
-            double hpBaru = (hpLama - 5);
-            System.out.println("hpBaru: " + hpBaru);
-            double newWidth = (hpBaru / 80) * 302;
-            System.out.println("newWidth: " + newWidth);
-            String hp = String.format("Sebelum = %f, Setelah = %f", width, newWidth);
-            utilityWarningText.setText(hp);
-            AetherWars.p1.setHealth((int)hpBaru);
-            HPPlayer1.setWidth(newWidth);
         }
     }
 
