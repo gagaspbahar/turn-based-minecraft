@@ -281,11 +281,11 @@ class HealSpell extends Spell {
   public void cast(Character c, Player p){
     if(p.getMana() >= this.getMana()){
       int temp = p.getHealth();
-      if(temp + this.getHealth() <= 100){
+      if(temp + this.getHealth() <= 80){
         p.setHealth(temp + this.getHealth());
       }
       else{
-        p.setHealth(100);
+        p.setHealth(80);
       }
       p.setMana(p.getMana() - this.getMana());
     }
