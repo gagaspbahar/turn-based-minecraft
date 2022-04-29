@@ -1,21 +1,35 @@
-# IF2210 Project Template
+# AetherWars
+AetherWars is a GUI-based game made to fulfill our uni Object Oriented Programming course project. This is a turn based card game for 2 players. Players will play alternately on the same screen until the final goal of the game is reached. The goal of the game is to attack the health points (HP) of the enemy until it reaches 0. Please be aware that you may lose when your deck is empty. 
 
-Here is an example of project using gradle as the build tools.
-Try running these commands:
+<!---
+Ini diisi foto-foto ssan
+-->
 
+## Creator
+---
+| |
+| ---  |
+|Gagas Praharsa Bahar  |
+|Ubaidillah Ariq Pratama |
+|Saul Sayers |
+|Patrick Amadeus Irawan |
+|Nelsen Putra |
+|Rania Dwi Fadhilah |
+
+## How to Use
+
+### Dependencies
+- ???
+
+### Installation
+```
+git clone https://github.com/gagaspbahar/turn-based-minecraft.git
+```
+
+### Running the Game
+1. Open the terminal from the root directory of the project and type
 `./gradlew run`
 
-You will notice that it will open a window that display 'Minecraft: Aether Wars'.
-In the command line you can see the data that is being read by `CSVReader.java`
-
-What happen is when you use `./gradlew run`, it will start the main function in your app.
-For this app, the main function lives in `AetherWars.java`.
-
-You can explore more about gradle [here](https://guides.gradle.org/creating-new-gradle-builds/)
-
-## JDK
-
-As of the creation of this template, the assistant team used and tested the JDK 8 installation from OpenJDK and Amazon Corretto (since JavaFX is readily available on those installations). You can easily pick and install your desired JDK version and variant by doing it via an IDE like [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
 ## Credit
 
