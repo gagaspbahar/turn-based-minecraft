@@ -33,7 +33,7 @@ git clone https://github.com/gagaspbahar/turn-based-minecraft.git
 ## Screenshots
 ![opening.png](./img/opening.png)
 ![gameplay.png](./img/gameplay.png)
-![drawcard.png](./img/drawcard.png)
+![drawcards.png](./img/drawcards.png)
 
 ## Credit
 
