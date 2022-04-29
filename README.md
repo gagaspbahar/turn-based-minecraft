@@ -30,6 +30,10 @@ git clone https://github.com/gagaspbahar/turn-based-minecraft.git
 1. Open the terminal from the root directory of the project and type
 `./gradlew run`
 
+## Screenshots
+![opening.png](./img/opening.png)
+![gameplay.png](./img/gameplay.png)
+![drawcard.png](./img/drawcard.png)
 
 ## Credit
 
