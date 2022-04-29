@@ -117,15 +117,12 @@
          <font>
             <Font size="8.0" />
          </font></Label>
-      <Label fx:id="indextest" layoutX="203.0" layoutY="270.0" text="index" />
-      <Label fx:id="namatest" layoutX="125.0" layoutY="270.0" text="nama" />
       <Rectangle fx:id="card1" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="27.0" layoutY="301.0" onMouseClicked="#card1Clicked" onMouseEntered="#card1HoverIn" onMouseExited="#card1HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
       <Rectangle fx:id="card2" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="89.0" layoutY="301.0" onMouseClicked="#card2Clicked" onMouseEntered="#card2HoverIn" onMouseExited="#card2HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
       <Rectangle fx:id="card3" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="151.0" layoutY="301.0" onMouseClicked="#card3Clicked" onMouseEntered="#card3HoverIn" onMouseExited="#card3HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
       <Rectangle fx:id="card4" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="213.0" layoutY="301.0" onMouseClicked="#card4Clicked" onMouseEntered="#card4HoverIn" onMouseExited="#card4HoverOut" stroke="BLACK" strokeType="INSIDE" width="60.0" />
       <Button fx:id="addXPbutton" layoutX="120.0" layoutY="411.0" mnemonicParsing="false" onMouseClicked="#addFieldXP" text="Add XP" />
       <Button fx:id="removeButton" layoutX="50.0" layoutY="411.0" mnemonicParsing="false" onMouseClicked="#removeCard" text="Remove" />
-      <Label fx:id="chosenidx" layoutX="42.0" layoutY="270.0" text="chosen" />
       <Label fx:id="utilityWarningText" layoutX="202.0" layoutY="416.0" textFill="RED" />
       <Label fx:id="field1Attack1" layoutX="115.0" layoutY="93.0" text="?" />
       <ImageView fx:id="field1Image1" fitHeight="35.0" fitWidth="23.0" layoutX="128.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
@@ -258,11 +255,8 @@
       <Rectangle fx:id="field1Card2" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="62.0" layoutX="201.0" layoutY="92.0" onMouseClicked="#clickField1Card2" onMouseEntered="#field1Card2HoverIn" onMouseExited="#field1Card2HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
       <Rectangle fx:id="field1Card5" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="280.0" layoutY="128.0" onMouseClicked="#clickField1Card5" onMouseEntered="#field1Card5HoverIn" onMouseExited="#field1Card5HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
       <Rectangle fx:id="field1Card1" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="62.0" layoutX="109.0" layoutY="91.0" onMouseClicked="#clickField1Card1" onMouseEntered="#field1Card1HoverIn" onMouseExited="#field1Card1HoverOut" stroke="BLACK" strokeType="INSIDE" width="62.0" />
-      <Label fx:id="movefieldtest" layoutX="377.0" layoutY="126.0" text="Label" />
       <Label fx:id="player1text" layoutX="36.0" layoutY="67.0" style="-fx-background-color: #ad2517;" text="Player 1" textFill="WHITE" />
       <Label fx:id="player2text" layoutX="717.0" layoutY="67.0" style="-fx-background-color: #dfdfdf;" text="Player 2" />
       <Button fx:id="reduceHP" layoutX="357.0" layoutY="92.0" mnemonicParsing="false" onMouseClicked="#clickReduceHP" text="Reduce HP" />
-      <Label fx:id="attack1" layoutX="134.0" layoutY="59.0" text="Label" />
-      <Label fx:id="health1" layoutX="176.0" layoutY="59.0" text="Label" />
    </children>
 </AnchorPane>

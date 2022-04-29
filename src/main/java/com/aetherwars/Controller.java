@@ -49,23 +49,7 @@ public class Controller implements Initializable {
 
     /**** SAMPLE ZONE ****/
     @FXML
-    private Label attack1;
-    @FXML
-    private Label health1;
-    @FXML
     private AnchorPane background;
-
-    @FXML
-    private Label chosenidx;
-
-    @FXML
-    private Label namatest;
-
-    @FXML
-    private Label indextest;
-
-    @FXML
-    private Label movefieldtest;
 
     @FXML
     private Button proceedButton;
@@ -474,17 +458,14 @@ public class Controller implements Initializable {
             if (chosenHand == 0) {
                 card1.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
                 chosenHand = 1;
-                chosenidx.setText(String.valueOf(chosenHand));
             } else if (chosenHand == 1) {
                 card1.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
                 chosenHand = 0;
-                chosenidx.setText(String.valueOf(chosenHand));
             } else {
                 List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1, card2, card3, card4, card5));
                 cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
                 card1.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
                 chosenHand = 1;
-                chosenidx.setText(String.valueOf(chosenHand));
             }
             utilityWarningText.setText("");
         } else {
@@ -519,17 +500,14 @@ public class Controller implements Initializable {
             if (chosenHand == 0) {
                 card2.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
                 chosenHand = 2;
-                chosenidx.setText(String.valueOf(chosenHand));
             } else if (chosenHand == 2) {
                 card2.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
                 chosenHand = 0;
-                chosenidx.setText(String.valueOf(chosenHand));
             } else {
                 List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1, card2, card3, card4, card5));
                 cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
                 card2.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
                 chosenHand = 2;
-                chosenidx.setText(String.valueOf(chosenHand));
             }
             utilityWarningText.setText("");
         } else {
@@ -564,17 +542,14 @@ public class Controller implements Initializable {
             if (chosenHand == 0) {
                 card3.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
                 chosenHand = 3;
-                chosenidx.setText(String.valueOf(chosenHand));
             } else if (chosenHand == 3) {
                 card3.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
                 chosenHand = 0;
-                chosenidx.setText(String.valueOf(chosenHand));
             } else {
                 List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1, card2, card3, card4, card5));
                 cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
                 card3.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
                 chosenHand = 3;
-                chosenidx.setText(String.valueOf(chosenHand));
             }
             utilityWarningText.setText("");
         } else {
@@ -609,17 +584,14 @@ public class Controller implements Initializable {
             if (chosenHand == 0) {
                 card4.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
                 chosenHand = 4;
-                chosenidx.setText(String.valueOf(chosenHand));
             } else if (chosenHand == 4) {
                 card4.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
                 chosenHand = 0;
-                chosenidx.setText(String.valueOf(chosenHand));
             } else {
                 List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1, card2, card3, card4, card5));
                 cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
                 card4.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
                 chosenHand = 4;
-                chosenidx.setText(String.valueOf(chosenHand));
             }
             utilityWarningText.setText("");
         } else {
@@ -655,17 +627,14 @@ public class Controller implements Initializable {
             if (chosenHand == 0) {
                 card5.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
                 chosenHand = 5;
-                chosenidx.setText(String.valueOf(chosenHand));
             } else if (chosenHand == 5) {
                 card5.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
                 chosenHand = 0;
-                chosenidx.setText(String.valueOf(chosenHand));
             } else {
                 List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1, card2, card3, card4, card5));
                 cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
                 card5.setStyle("-fx-stroke: orange; -fx-stroke-width: 5;");
                 chosenHand = 5;
-                chosenidx.setText(String.valueOf(chosenHand));
             }
             utilityWarningText.setText("");
         } else {
@@ -883,7 +852,6 @@ public class Controller implements Initializable {
         if (chosenHand != 0) {
             List<Rectangle> cards = new ArrayList<Rectangle>(Arrays.asList(card1, card2, card3, card4, card5));
             cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
-            chosenidx.setText(String.valueOf(chosenHand));
             if (AetherWars.playerTurn) {
                 AetherWars.p1.removeCardFromHand(chosenHand - 1);
             } else {
@@ -1147,14 +1115,12 @@ public class Controller implements Initializable {
         if (chosenField == 1) {
             field1Card1.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
-            movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
         } else if (chosenField == 0) {
             if (chosenHand == 0) {
                 // ATTACK OR REMOVE CARD OR ADD EXP
                 if (AetherWars.p1.getFieldCardStatus()[0]) {
                     chosenField = 1;
-                    movefieldtest.setText(String.valueOf(chosenField));
                     field1Card1.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
                 } else {
                     utilityWarningText.setText("Empty Field!");
@@ -1184,7 +1150,6 @@ public class Controller implements Initializable {
                         AetherWars.p1.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
 
-                        movefieldtest.setText(chosenHand + " ke " + 1);
                         chosenHand = 0;
 
                         AetherWars.p1.getFieldCard()[0] = c;
@@ -1296,7 +1261,6 @@ public class Controller implements Initializable {
                 if (AetherWars.p2.getFieldCardStatus()[source - 6]) {
                     if (AetherWars.p1.getFieldCardStatus()[target]) {
                         chosenField = 1;
-                        movefieldtest.setText(String.valueOf(chosenField));
                         AetherWars.p2.getFieldCard()[source - 6].attackChara(AetherWars.p1.getFieldCard()[target]);
                         field1Health1.setText(String.valueOf(AetherWars.p1.getFieldCard()[target].getHealth()));
                         String text = AetherWars.p2.getFieldCard()[source - 6].getName() + " attack "
@@ -1331,14 +1295,12 @@ public class Controller implements Initializable {
         if (chosenField == 2) {
             field1Card2.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
-            movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
         } else if (chosenField == 0) {
             if (chosenHand == 0) {
                 // ATTACK OR REMOVE CARD OR ADD EXP
                 if (AetherWars.p1.getFieldCardStatus()[1]) {
                     chosenField = 2;
-                    movefieldtest.setText(String.valueOf(chosenField));
                     field1Card2.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
                 } else {
                     utilityWarningText.setText("Empty Field!");
@@ -1368,7 +1330,6 @@ public class Controller implements Initializable {
                         AetherWars.p1.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
 
-                        movefieldtest.setText(chosenHand + " ke " + 2);
                         chosenHand = 0;
 
                         AetherWars.p1.getFieldCard()[1] = c;
@@ -1480,7 +1441,6 @@ public class Controller implements Initializable {
                 if (AetherWars.p2.getFieldCardStatus()[source - 6]) {
                     if (AetherWars.p1.getFieldCardStatus()[target]) {
                         chosenField = 2;
-                        movefieldtest.setText(String.valueOf(chosenField));
                         AetherWars.p2.getFieldCard()[source - 6].attackChara(AetherWars.p1.getFieldCard()[target]);
                         field1Health2.setText(String.valueOf(AetherWars.p1.getFieldCard()[target].getHealth()));
                         String text = AetherWars.p2.getFieldCard()[source - 6].getName() + " attack "
@@ -1515,14 +1475,12 @@ public class Controller implements Initializable {
         if (chosenField == 3) {
             field1Card3.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
-            movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
         } else if (chosenField == 0) {
             if (chosenHand == 0) {
                 // ATTACK OR REMOVE CARD OR ADD EXP
                 if (AetherWars.p1.getFieldCardStatus()[2]) {
                     chosenField = 3;
-                    movefieldtest.setText(String.valueOf(chosenField));
                     field1Card3.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
                 } else {
                     utilityWarningText.setText("Empty Field!");
@@ -1552,7 +1510,6 @@ public class Controller implements Initializable {
                         AetherWars.p1.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
 
-                        movefieldtest.setText(chosenHand + " ke " + 3);
                         chosenHand = 0;
 
                         AetherWars.p1.getFieldCard()[2] = c;
@@ -1664,7 +1621,6 @@ public class Controller implements Initializable {
                 if (AetherWars.p2.getFieldCardStatus()[source - 6]) {
                     if (AetherWars.p1.getFieldCardStatus()[target]) {
                         chosenField = 2;
-                        movefieldtest.setText(String.valueOf(chosenField));
                         AetherWars.p2.getFieldCard()[source - 6].attackChara(AetherWars.p1.getFieldCard()[target]);
                         field1Health3.setText(String.valueOf(AetherWars.p1.getFieldCard()[target].getHealth()));
                         String text = AetherWars.p2.getFieldCard()[source - 6].getName() + " attack "
@@ -1699,14 +1655,12 @@ public class Controller implements Initializable {
         if (chosenField == 4) {
             field1Card4.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
-            movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
         } else if (chosenField == 0) {
             if (chosenHand == 0) {
                 // ATTACK OR REMOVE CARD OR ADD EXP
                 if (AetherWars.p1.getFieldCardStatus()[3]) {
                     chosenField = 4;
-                    movefieldtest.setText(String.valueOf(chosenField));
                     field1Card4.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
                 } else {
                     utilityWarningText.setText("Empty Field!");
@@ -1736,7 +1690,6 @@ public class Controller implements Initializable {
                         AetherWars.p1.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
 
-                        movefieldtest.setText(chosenHand + " ke " + 4);
                         chosenHand = 0;
 
                         AetherWars.p1.getFieldCard()[3] = c;
@@ -1848,7 +1801,6 @@ public class Controller implements Initializable {
                 if (AetherWars.p2.getFieldCardStatus()[source - 6]) {
                     if (AetherWars.p1.getFieldCardStatus()[target]) {
                         chosenField = 4;
-                        movefieldtest.setText(String.valueOf(chosenField));
                         AetherWars.p2.getFieldCard()[source - 6].attackChara(AetherWars.p1.getFieldCard()[target]);
                         field1Health4.setText(String.valueOf(AetherWars.p1.getFieldCard()[target].getHealth()));
                         String text = AetherWars.p2.getFieldCard()[source - 6].getName() + " attack "
@@ -1883,14 +1835,12 @@ public class Controller implements Initializable {
         if (chosenField == 5) {
             field1Card5.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
-            movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
         } else if (chosenField == 0) {
             if (chosenHand == 0) {
                 // ATTACK OR REMOVE CARD OR ADD EXP
                 if (AetherWars.p1.getFieldCardStatus()[4]) {
                     chosenField = 5;
-                    movefieldtest.setText(String.valueOf(chosenField));
                     field1Card5.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
                 } else {
                     utilityWarningText.setText("Empty Field!");
@@ -1920,7 +1870,6 @@ public class Controller implements Initializable {
                         AetherWars.p1.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
 
-                        movefieldtest.setText(chosenHand + " ke " + 1);
                         chosenHand = 0;
 
                         AetherWars.p1.getFieldCard()[4] = c;
@@ -2032,7 +1981,6 @@ public class Controller implements Initializable {
                 if (AetherWars.p2.getFieldCardStatus()[source - 6]) {
                     if (AetherWars.p1.getFieldCardStatus()[target]) {
                         chosenField = 5;
-                        movefieldtest.setText(String.valueOf(chosenField));
                         AetherWars.p2.getFieldCard()[source - 6].attackChara(AetherWars.p1.getFieldCard()[target]);
                         field1Health5.setText(String.valueOf(AetherWars.p1.getFieldCard()[target].getHealth()));
                         String text = AetherWars.p2.getFieldCard()[source - 6].getName() + " attack "
@@ -2067,14 +2015,12 @@ public class Controller implements Initializable {
         if (chosenField == 6) {
             field2Card1.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
-            movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
         } else if (chosenField == 0) {
             if (chosenHand == 0) {
                 // ATTACK OR REMOVE CARD OR ADD EXP
                 if (AetherWars.p2.getFieldCardStatus()[0]) {
                     chosenField = 6;
-                    movefieldtest.setText(String.valueOf(chosenField));
                     field2Card1.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
                 } else {
                     utilityWarningText.setText("Empty Field!");
@@ -2104,7 +2050,6 @@ public class Controller implements Initializable {
                         AetherWars.p2.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
 
-                        movefieldtest.setText(chosenHand + " ke " + 1);
                         chosenHand = 0;
 
                         AetherWars.p2.getFieldCard()[0] = c;
@@ -2216,7 +2161,6 @@ public class Controller implements Initializable {
                 if (AetherWars.p1.getFieldCardStatus()[source - 1]) {
                     if (AetherWars.p2.getFieldCardStatus()[target]) {
                         chosenField = 6;
-                        movefieldtest.setText(String.valueOf(chosenField));
                         AetherWars.p1.getFieldCard()[source - 1].attackChara(AetherWars.p2.getFieldCard()[target]);
                         field2Health1.setText(String.valueOf(AetherWars.p2.getFieldCard()[target].getHealth()));
                         String text = AetherWars.p1.getFieldCard()[source - 1].getName() + " attack "
@@ -2251,14 +2195,12 @@ public class Controller implements Initializable {
         if (chosenField == 7) {
             field2Card2.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
-            movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
         } else if (chosenField == 0) {
             if (chosenHand == 0) {
                 // ATTACK OR REMOVE CARD OR ADD EXP
                 if (AetherWars.p2.getFieldCardStatus()[1]) {
                     chosenField = 7;
-                    movefieldtest.setText(String.valueOf(chosenField));
                     field2Card2.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
                 } else {
                     utilityWarningText.setText("Empty Field!");
@@ -2288,7 +2230,6 @@ public class Controller implements Initializable {
                         AetherWars.p2.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
 
-                        movefieldtest.setText(chosenHand + " ke " + 2);
                         chosenHand = 0;
 
                         AetherWars.p2.getFieldCard()[1] = c;
@@ -2402,7 +2343,6 @@ public class Controller implements Initializable {
                 if (AetherWars.p1.getFieldCardStatus()[source - 1]) {
                     if (AetherWars.p2.getFieldCardStatus()[target]) {
                         chosenField = 7;
-                        movefieldtest.setText(String.valueOf(chosenField));
                         AetherWars.p1.getFieldCard()[source - 1].attackChara(AetherWars.p2.getFieldCard()[target]);
                         field2Health2.setText(String.valueOf(AetherWars.p2.getFieldCard()[target].getHealth()));
                         String text = AetherWars.p1.getFieldCard()[source - 1].getName() + " attack "
@@ -2437,14 +2377,12 @@ public class Controller implements Initializable {
         if (chosenField == 8) {
             field2Card3.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
-            movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
         } else if (chosenField == 0) {
             if (chosenHand == 0) {
                 // ATTACK OR REMOVE CARD OR ADD EXP
                 if (AetherWars.p2.getFieldCardStatus()[2]) {
                     chosenField = 8;
-                    movefieldtest.setText(String.valueOf(chosenField));
                     field2Card3.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
                 } else {
                     utilityWarningText.setText("Empty Field!");
@@ -2474,7 +2412,6 @@ public class Controller implements Initializable {
                         AetherWars.p2.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
 
-                        movefieldtest.setText(chosenHand + " ke " + 3);
                         chosenHand = 0;
 
                         AetherWars.p2.getFieldCard()[2] = c;
@@ -2586,7 +2523,6 @@ public class Controller implements Initializable {
                 if (AetherWars.p1.getFieldCardStatus()[source - 1]) {
                     if (AetherWars.p2.getFieldCardStatus()[target]) {
                         chosenField = 8;
-                        movefieldtest.setText(String.valueOf(chosenField));
                         AetherWars.p1.getFieldCard()[source - 1].attackChara(AetherWars.p2.getFieldCard()[target]);
                         field2Health3.setText(String.valueOf(AetherWars.p2.getFieldCard()[target].getHealth()));
                         String text = AetherWars.p1.getFieldCard()[source - 1].getName() + " attack "
@@ -2621,14 +2557,12 @@ public class Controller implements Initializable {
         if (chosenField == 9) {
             field2Card4.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
-            movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
         } else if (chosenField == 0) {
             if (chosenHand == 0) {
                 // ATTACK OR REMOVE CARD OR ADD EXP
                 if (AetherWars.p2.getFieldCardStatus()[3]) {
                     chosenField = 9;
-                    movefieldtest.setText(String.valueOf(chosenField));
                     field2Card4.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
                 } else {
                     utilityWarningText.setText("Empty Field!");
@@ -2658,7 +2592,6 @@ public class Controller implements Initializable {
                         AetherWars.p2.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
 
-                        movefieldtest.setText(chosenHand + " ke " + 4);
                         chosenHand = 0;
 
                         AetherWars.p2.getFieldCard()[3] = c;
@@ -2770,7 +2703,6 @@ public class Controller implements Initializable {
                 if (AetherWars.p1.getFieldCardStatus()[source - 1]) {
                     if (AetherWars.p2.getFieldCardStatus()[target]) {
                         chosenField = 9;
-                        movefieldtest.setText(String.valueOf(chosenField));
                         AetherWars.p1.getFieldCard()[source - 1].attackChara(AetherWars.p2.getFieldCard()[target]);
                         field2Health4.setText(String.valueOf(AetherWars.p2.getFieldCard()[target].getHealth()));
                         String text = AetherWars.p1.getFieldCard()[source - 1].getName() + " attack "
@@ -2805,14 +2737,12 @@ public class Controller implements Initializable {
         if (chosenField == 10) {
             field2Card5.setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
             chosenField = 0;
-            movefieldtest.setText(String.valueOf(0));
             utilityWarningText.setText("");
         } else if (chosenField == 0) {
             if (chosenHand == 0) {
                 // ATTACK OR REMOVE CARD OR ADD EXP
                 if (AetherWars.p2.getFieldCardStatus()[4]) {
                     chosenField = 10;
-                    movefieldtest.setText(String.valueOf(chosenField));
                     field2Card5.setStyle("-fx-stroke: blue; -fx-stroke-width: 2;");
                 } else {
                     utilityWarningText.setText("Empty Field!");
@@ -2842,7 +2772,6 @@ public class Controller implements Initializable {
                         AetherWars.p2.getHand()[chosenHand - 1] = null;
                         cards.get(chosenHand - 1).setStyle("-fx-stroke: black; -fx-stroke-width: 1;");
 
-                        movefieldtest.setText(chosenHand + " ke " + 5);
                         chosenHand = 0;
 
                         AetherWars.p2.getFieldCard()[4] = c;
@@ -2861,7 +2790,6 @@ public class Controller implements Initializable {
                         utilityWarningText.setText("Can't add spell to Empty Field!");
                     } else if (AetherWars.p2.getMana() < AetherWars.p2.getHand()[chosenHand - 1].getMana()) {
                         utilityWarningText.setText("Not Enough Mana!");
-                        namatest.setText(String.valueOf(AetherWars.p2.getMana()));
                     } else {
                         // Pakein Spell
                         Spell s = (Spell) AetherWars.p2.getHand()[chosenHand - 1];
@@ -2957,7 +2885,6 @@ public class Controller implements Initializable {
                 if (AetherWars.p1.getFieldCardStatus()[source - 1]) {
                     if (AetherWars.p2.getFieldCardStatus()[target]) {
                         chosenField = 10;
-                        movefieldtest.setText(String.valueOf(chosenField));
                         AetherWars.p1.getFieldCard()[source - 1].attackChara(AetherWars.p2.getFieldCard()[target]);
                         field2Health5.setText(String.valueOf(AetherWars.p2.getFieldCard()[target].getHealth()));
                         String text = AetherWars.p1.getFieldCard()[source - 1].getName() + " attack "
