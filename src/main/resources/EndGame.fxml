@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="321.0" prefWidth="414.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aetherwars.Controller6">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="107.0" pickOnBounds="true" preserveRatio="true" />
+      <Text layoutX="113.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: BOLD;" text="GAME OVER !!!! " wrappingWidth="187.58251953125">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Rectangle fx:id="mainlagibox" arcHeight="5.0" arcWidth="5.0" fill="#cde7ff" height="47.0" layoutX="110.0" layoutY="255.0" onMouseClicked="#mainLagiClicked" stroke="BLACK" strokeType="INSIDE" width="188.0" />
+      <Text fx:id="mainlagi" layoutX="138.0" layoutY="284.0" onMouseClicked="#mainLagiClicked" strokeType="OUTSIDE" strokeWidth="10.0" style="-fx-font-weight: BOLD;" text="Main lagi lah ygy" wrappingWidth="137.27606201171875">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="VictoryText" fill="RED" layoutX="74.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="259.676025390625" />
+      <Text layoutX="133.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Do you want to play again?" />
+      <ImageView fitHeight="158.0" fitWidth="158.0" layoutX="126.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com/aetherwars/logo/GWS.jpeg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

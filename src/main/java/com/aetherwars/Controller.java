@@ -57,6 +57,7 @@ public class Controller implements Initializable {
     @FXML
     private Button reduceHP;
     //
+    public static int siapaMenang = 0;
 
     // asdasdsasda
 
@@ -955,7 +956,7 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    void submitClicked(MouseEvent event) {
+    void submitClicked(MouseEvent event) throws Exception{
         if (AetherWars.phase == PhaseType.DRAW) {
             if (hasDrawn) { // ! JANGAN LUPA DIGANTI INI
                 drawRectangle.setFill(Color.valueOf("#dfdfdf"));
@@ -973,51 +974,75 @@ public class Controller implements Initializable {
             endRectangle.setFill(Color.valueOf("#ff8c00"));
             AetherWars.phase = PhaseType.END;
             updateFieldColorEndAttackPhase();
-        } else {
-
+        } else if(AetherWars.phase == PhaseType.END) {
             // TODO: Handle Endgame
-            if (AetherWars.p1.getHealth() <= 0) {
-                utilityWarningText.setText("Player 2 Wins!");
-            } else if (AetherWars.p2.getHealth() <= 0) {
-                utilityWarningText.setText("Player 1 Wins!");
+            if (AetherWars.p1.getHealth() <= 0 || AetherWars.p1.getDeck().size() == 0) {
+                siapaMenang = 2;
+                background.setStyle("-fx-background-color: grey");
+                Stage popupwindow = new Stage();
+                Pane drawcardPane = FXMLLoader.load(AetherWars.class.getClassLoader().getResource("./EndGame.fxml"));
+                popupwindow.initModality(Modality.APPLICATION_MODAL);
+                popupwindow.initStyle(StageStyle.UNDECORATED);
+                popupwindow.setScene(new Scene(drawcardPane));
+                popupwindow.centerOnScreen();
+                popupwindow.showAndWait();
+                // Stage popupwindow2 = (Stage) draw.getScene().getWindow();
+                // Pane throwPane = FXMLLoader.load(AetherWars.class.getClassLoader().getResource("./Opening.fxml"));
+                // popupwindow2.setScene(new Scene(throwPane));
+                // popupwindow2.centerOnScreen();
+            } else if (AetherWars.p2.getHealth() <= 0 ||AetherWars.p2.getDeck().size() == 0) {
+                siapaMenang = 1;
+                background.setStyle("-fx-background-color: grey");
+                Stage popupwindow = new Stage();
+                Pane drawcardPane = FXMLLoader.load(AetherWars.class.getClassLoader().getResource("./EndGame.fxml"));
+                popupwindow.initModality(Modality.APPLICATION_MODAL);
+                popupwindow.initStyle(StageStyle.UNDECORATED);
+                popupwindow.setScene(new Scene(drawcardPane));
+                popupwindow.centerOnScreen();
+                popupwindow.showAndWait();
+                // Stage popupwindow2 = (Stage) draw.getScene().getWindow();
+                // Pane throwPane = FXMLLoader.load(AetherWars.class.getClassLoader().getResource("./Opening.fxml"));
+                // popupwindow2.setScene(new Scene(throwPane));
+                // popupwindow2.centerOnScreen();
+            } else{
+                if (!AetherWars.playerTurn) {
+                    player1text.setStyle("-fx-background-color: #ad2517;");
+                    player1text.setTextFill(Color.WHITE);
+                    player2text.setStyle("-fx-background-color: #dfdfdf;");
+                    player2text.setTextFill(Color.BLACK);
+                    AetherWars.p2.setFieldCardHasAttackedFalse();
+                } else {
+                    player2text.setStyle("-fx-background-color: #ad2517");
+                    player2text.setTextFill(Color.WHITE);
+                    player1text.setStyle("-fx-background-color: #dfdfdf;");
+                    player1text.setTextFill(Color.BLACK);
+                    AetherWars.p1.setFieldCardHasAttackedFalse();
+                }
+                endRectangle.setFill(Color.valueOf("#dfdfdf"));
+                drawRectangle.setFill(Color.valueOf("#ff8c00"));
+                AetherWars.phase = PhaseType.DRAW;
+                AetherWars.playerTurn = !AetherWars.playerTurn;
+                if (AetherWars.playerTurn) {
+                    AetherWars.turn += 1;
+                    for (Character x : AetherWars.p1.getFieldCard()) {
+                        if (x != null) {
+                            x.updateSpellsEffect();
+                        }
+                    }
+                    for (Character x : AetherWars.p2.getFieldCard()) {
+                        if (x != null) {
+                            x.updateSpellsEffect();
+                        }
+                    }
+                    refreshField();
+                }
+                turn.setText("Turn " + String.valueOf(AetherWars.turn));
+                hasDrawn = false;
+                refreshHand();
+                chosenField = 0;
+                resetFieldBorder();
             }
 
-            if (!AetherWars.playerTurn) {
-                player1text.setStyle("-fx-background-color: #ad2517;");
-                player1text.setTextFill(Color.WHITE);
-                player2text.setStyle("-fx-background-color: #dfdfdf;");
-                player2text.setTextFill(Color.BLACK);
-                AetherWars.p2.setFieldCardHasAttackedFalse();
-            } else {
-                player2text.setStyle("-fx-background-color: #ad2517");
-                player2text.setTextFill(Color.WHITE);
-                player1text.setStyle("-fx-background-color: #dfdfdf;");
-                player1text.setTextFill(Color.BLACK);
-                AetherWars.p1.setFieldCardHasAttackedFalse();
-            }
-            endRectangle.setFill(Color.valueOf("#dfdfdf"));
-            drawRectangle.setFill(Color.valueOf("#ff8c00"));
-            AetherWars.phase = PhaseType.DRAW;
-            AetherWars.playerTurn = !AetherWars.playerTurn;
-            if (AetherWars.playerTurn) {
-                AetherWars.turn += 1;
-                for (Character x : AetherWars.p1.getFieldCard()) {
-                    if (x != null) {
-                        x.updateSpellsEffect();
-                    }
-                }
-                for (Character x : AetherWars.p2.getFieldCard()) {
-                    if (x != null) {
-                        x.updateSpellsEffect();
-                    }
-                }
-                refreshField();
-            }
-            turn.setText("Turn " + String.valueOf(AetherWars.turn));
-            hasDrawn = false;
-            refreshHand();
-            chosenField = 0;
-            resetFieldBorder();
         }
     }
 
@@ -3010,6 +3035,7 @@ public class Controller implements Initializable {
             System.out.println("newWidth: " + newWidth);
             String hp = String.format("Sebelum = %f, Setelah = %f", width, newWidth);
             utilityWarningText.setText(hp);
+            AetherWars.p1.setHealth((int)hpBaru);
             HPPlayer1.setWidth(newWidth);
         }
     }
