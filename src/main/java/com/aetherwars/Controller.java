@@ -299,7 +299,7 @@ public class Controller implements Initializable {
 
             if (AetherWars.playerTurn) {
                 AetherWars.p1.resetMana(AetherWars.turn);
-                manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
+                manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.p1.getMana());
 
                 for (int i = 0; i < 5; i++) {
                     if (AetherWars.p1.getHand()[i] != null) {
@@ -317,7 +317,7 @@ public class Controller implements Initializable {
                 // AetherWars.playerTurn = false;
             } else {
                 AetherWars.p2.resetMana(AetherWars.turn);
-                manaSize.setText(AetherWars.p2.getMana() + " / " + AetherWars.turn);
+                manaSize.setText(AetherWars.p2.getMana() + " / " + AetherWars.p2.getMana());
 
                 for (int i = 0; i < 5; i++) {
                     if (AetherWars.p2.getHand()[i] != null) {
@@ -354,8 +354,9 @@ public class Controller implements Initializable {
                 Arrays.asList(cardImage1, cardImage2, cardImage3, cardImage4, cardImage5));
 
         if (AetherWars.playerTurn) {
-            AetherWars.p1.resetMana(AetherWars.turn);
-            manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
+            int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+            AetherWars.p1.resetMana(maxMana);
+            manaSize.setText(AetherWars.p1.getMana() + " / " + maxMana);
 
             for (int i = 0; i < 5; i++) {
                 if (AetherWars.p1.getHand()[i] != null) {
@@ -372,8 +373,9 @@ public class Controller implements Initializable {
             deckSize.setText((AetherWars.p1.getDeck().size()) + " / " + Integer.toString(p1MaxDeckSize));
             // AetherWars.playerTurn = false;
         } else {
-            AetherWars.p2.resetMana(AetherWars.turn);
-            manaSize.setText(AetherWars.p2.getMana() + " / " + AetherWars.turn);
+            int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+            AetherWars.p2.resetMana(maxMana);
+            manaSize.setText(AetherWars.p2.getMana() + " / " + maxMana);
 
             for (int i = 0; i < 5; i++) {
                 if (AetherWars.p2.getHand()[i] != null) {
@@ -896,7 +898,8 @@ public class Controller implements Initializable {
                         .setText(String.valueOf(AetherWars.p1.getFieldCard()[chosenField - 1].getHealth()));
                 levelText.get(chosenField - 1)
                         .setText(String.valueOf(AetherWars.p1.getFieldCard()[chosenField - 1].getExpLevel()));
-                manaSize.setText(String.valueOf(AetherWars.p1.getMana()) + "/" + AetherWars.turn);
+                int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                manaSize.setText(String.valueOf(AetherWars.p1.getMana()) + "/" + maxMana);
             } else {
                 utilityWarningText.setText("Not Enough Mana!");
             }
@@ -912,7 +915,8 @@ public class Controller implements Initializable {
                         .setText(String.valueOf(AetherWars.p2.getFieldCard()[chosenField - 6].getHealth()));
                 levelText.get(chosenField - 1)
                         .setText(String.valueOf(AetherWars.p2.getFieldCard()[chosenField - 6].getExpLevel()));
-                manaSize.setText(String.valueOf(AetherWars.p2.getMana()) + "/" + AetherWars.turn);
+                int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                manaSize.setText(String.valueOf(AetherWars.p2.getMana()) + "/" + maxMana);
             } else {
                 utilityWarningText.setText("Not Enough Mana!");
             }
@@ -937,9 +941,13 @@ public class Controller implements Initializable {
     @FXML
     void submitClicked(MouseEvent event) {
         if (AetherWars.phase == PhaseType.DRAW) {
-            drawRectangle.setFill(Color.valueOf("#dfdfdf"));
-            planRectangle.setFill(Color.valueOf("#ff8c00"));
-            AetherWars.phase = PhaseType.PLAN;
+            if (hasDrawn){ // ! JANGAN LUPA DIGANTI INI
+                drawRectangle.setFill(Color.valueOf("#dfdfdf"));
+                planRectangle.setFill(Color.valueOf("#ff8c00"));
+                AetherWars.phase = PhaseType.PLAN;
+            } else {
+                utilityWarningText.setText("You must draw a card first!");
+            }
         } else if (AetherWars.phase == PhaseType.PLAN) {
             planRectangle.setFill(Color.valueOf("#dfdfdf"));
             attackRectangle.setFill(Color.valueOf("#ff8c00"));
@@ -972,7 +980,9 @@ public class Controller implements Initializable {
             }
             turn.setText("Turn " + String.valueOf(AetherWars.turn));
             hasDrawn = false;
+            System.out.println("Player 1 (before refresh): " + AetherWars.p1.getMana());
             refreshHand();
+            System.out.println("Player 1: " + AetherWars.p1.getMana());
             chosenField = 0;
             resetFieldBorder();
         }
@@ -1119,7 +1129,8 @@ public class Controller implements Initializable {
                         field1Image1.setImage(new Image("./com/aetherwars/" + c.getImagePath()));
                         field1Level1.setText(c.getExpLevel());
                         AetherWars.p1.setMana(AetherWars.p1.getMana() - c.getMana());
-                        manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
+                        int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                        manaSize.setText(AetherWars.p1.getMana() + " / " + maxMana);
                     }
                 } else if (AetherWars.playerTurn
                         && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.SPELL) {
@@ -1147,7 +1158,8 @@ public class Controller implements Initializable {
                             field1Image1.setImage(
                                     new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[0].getImagePath()));
                         }
-                        manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
+                        int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                        manaSize.setText(AetherWars.p1.getMana() + " / " + maxMana);
                         // Hapus Spell dari Hand
                         List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
                         List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
@@ -1181,7 +1193,8 @@ public class Controller implements Initializable {
                             field1Level1.setText(AetherWars.p1.getFieldCard()[0].getExpLevel());
                             field1Image1.setImage(
                                     new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[0].getImagePath()));
-                            manaSize.setText(AetherWars.p2.getMana() + " / " + AetherWars.turn);
+                            int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                            manaSize.setText(AetherWars.p2.getMana() + " / " + maxMana);
 
                             // Hapus Spell dari Hand
                             List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
@@ -1300,7 +1313,8 @@ public class Controller implements Initializable {
                         field1Image2.setImage(new Image("./com/aetherwars/" + c.getImagePath()));
                         field1Level2.setText(c.getExpLevel());
                         AetherWars.p1.setMana(AetherWars.p1.getMana() - c.getMana());
-                        manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
+                        int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                        manaSize.setText(AetherWars.p1.getMana() + " / " + maxMana);
                     }
                 } else if (AetherWars.playerTurn
                         && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.SPELL) {
@@ -1328,7 +1342,8 @@ public class Controller implements Initializable {
                             field1Image2.setImage(
                                     new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[1].getImagePath()));
                         }
-                        manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
+                        int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                        manaSize.setText(AetherWars.p1.getMana() + " / " + maxMana);
                         // Hapus Spell dari Hand
                         List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
                         List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
@@ -1362,7 +1377,8 @@ public class Controller implements Initializable {
                             field1Level2.setText(AetherWars.p1.getFieldCard()[1].getExpLevel());
                             field1Image2.setImage(
                                     new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[1].getImagePath()));
-                            manaSize.setText(AetherWars.p2.getMana() + " / " + AetherWars.turn);
+                            int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                            manaSize.setText(AetherWars.p2.getMana() + " / " + maxMana);
 
                             // Hapus Spell dari Hand
                             List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
@@ -1481,7 +1497,8 @@ public class Controller implements Initializable {
                         field1Image3.setImage(new Image("./com/aetherwars/" + c.getImagePath()));
                         field1Level3.setText(c.getExpLevel());
                         AetherWars.p1.setMana(AetherWars.p1.getMana() - c.getMana());
-                        manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
+                        int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                        manaSize.setText(AetherWars.p1.getMana() + " / " + maxMana);
                     }
                 } else if (AetherWars.playerTurn
                             && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.SPELL) {
@@ -1509,7 +1526,8 @@ public class Controller implements Initializable {
                             field1Image3.setImage(
                                     new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[2].getImagePath()));
                         }
-                        manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
+                        int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                        manaSize.setText(AetherWars.p1.getMana() + " / " + maxMana);
                         // Hapus Spell dari Hand
                         List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
                         List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
@@ -1543,7 +1561,8 @@ public class Controller implements Initializable {
                             field1Level3.setText(AetherWars.p1.getFieldCard()[2].getExpLevel());
                             field1Image3.setImage(
                                     new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[2].getImagePath()));
-                            manaSize.setText(AetherWars.p2.getMana() + " / " + AetherWars.turn);
+                            int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                            manaSize.setText(AetherWars.p2.getMana() + " / " + maxMana);
 
                             // Hapus Spell dari Hand
                             List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
@@ -1662,7 +1681,8 @@ public class Controller implements Initializable {
                         field1Image4.setImage(new Image("./com/aetherwars/" + c.getImagePath()));
                         field1Level4.setText(c.getExpLevel());
                         AetherWars.p1.setMana(AetherWars.p1.getMana() - c.getMana());
-                        manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
+                        int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                        manaSize.setText(AetherWars.p1.getMana() + " / " + maxMana);
                     }
                 }
                 else if (AetherWars.playerTurn
@@ -1691,7 +1711,8 @@ public class Controller implements Initializable {
                             field1Image4.setImage(
                                     new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[3].getImagePath()));
                         }
-                        manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
+                        int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                        manaSize.setText(AetherWars.p1.getMana() + " / " + maxMana);
                         // Hapus Spell dari Hand
                         List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
                         List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
@@ -1725,7 +1746,8 @@ public class Controller implements Initializable {
                             field1Level4.setText(AetherWars.p1.getFieldCard()[3].getExpLevel());
                             field1Image4.setImage(
                                     new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[3].getImagePath()));
-                            manaSize.setText(AetherWars.p2.getMana() + " / " + AetherWars.turn);
+                            int maxMana = AetherWars.p2.getMana() > 10 ? 10 : AetherWars.p2.getMana();
+                            manaSize.setText(AetherWars.p2.getMana() + " / " + maxMana);
 
                             // Hapus Spell dari Hand
                             List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
@@ -1845,7 +1867,8 @@ public class Controller implements Initializable {
                         field1Image5.setImage(new Image("./com/aetherwars/" + c.getImagePath()));
                         field1Level5.setText(c.getExpLevel());
                         AetherWars.p1.setMana(AetherWars.p1.getMana() - c.getMana());
-                        manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
+                        int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                        manaSize.setText(AetherWars.p1.getMana() + " / " + maxMana);
                     }
                 } else if (AetherWars.playerTurn
                         && AetherWars.p1.getHand()[chosenHand - 1].getType() == CardType.SPELL) {
@@ -1873,7 +1896,8 @@ public class Controller implements Initializable {
                             field1Image5.setImage(
                                     new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[4].getImagePath()));
                         }
-                        manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
+                        int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                        manaSize.setText(AetherWars.p1.getMana() + " / " + maxMana);
                         // Hapus Spell dari Hand
                         List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
                         List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
@@ -1907,7 +1931,8 @@ public class Controller implements Initializable {
                             field1Level5.setText(AetherWars.p1.getFieldCard()[4].getExpLevel());
                             field1Image5.setImage(
                                     new Image("./com/aetherwars/" + AetherWars.p1.getFieldCard()[4].getImagePath()));
-                            manaSize.setText(AetherWars.p2.getMana() + " / " + AetherWars.turn);
+                            int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                            manaSize.setText(AetherWars.p2.getMana() + " / " + maxMana);
 
                             // Hapus Spell dari Hand
                             List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
@@ -2026,7 +2051,8 @@ public class Controller implements Initializable {
                         field2Image1.setImage(new Image("./com/aetherwars/" + c.getImagePath()));
                         field2Level1.setText(c.getExpLevel());
                         AetherWars.p2.setMana(AetherWars.p2.getMana() - c.getMana());
-                        manaSize.setText(AetherWars.p2.getMana() + " / " + (AetherWars.turn - 1));
+                        int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                        manaSize.setText(AetherWars.p2.getMana() + " / " + maxMana);
                     }
                 } else if (!AetherWars.playerTurn
                         && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.SPELL) {
@@ -2054,7 +2080,8 @@ public class Controller implements Initializable {
                             field2Image1.setImage(
                                     new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[0].getImagePath()));
                         }
-                        manaSize.setText(AetherWars.p2.getMana() + " / " + AetherWars.turn);
+                        int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                        manaSize.setText(AetherWars.p2.getMana() + " / " + maxMana);
                         // Hapus Spell dari Hand
                         List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
                         List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
@@ -2088,7 +2115,8 @@ public class Controller implements Initializable {
                             field2Level1.setText(AetherWars.p2.getFieldCard()[0].getExpLevel());
                             field2Image1.setImage(
                                     new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[0].getImagePath()));
-                            manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
+                            int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                            manaSize.setText(AetherWars.p1.getMana() + " / " + maxMana);
 
                             // Hapus Spell dari Hand
                             List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
@@ -2207,7 +2235,8 @@ public class Controller implements Initializable {
                         field2Image2.setImage(new Image("./com/aetherwars/" + c.getImagePath()));
                         field2Level2.setText(c.getExpLevel());
                         AetherWars.p2.setMana(AetherWars.p2.getMana() - c.getMana());
-                        manaSize.setText(AetherWars.p2.getMana() + " / " + (AetherWars.turn - 1));
+                        int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                        manaSize.setText(AetherWars.p2.getMana() + " / " + maxMana);
                     }
                 } 
                 else if (!AetherWars.playerTurn
@@ -2236,7 +2265,8 @@ public class Controller implements Initializable {
                             field2Image2.setImage(
                                     new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[1].getImagePath()));
                         }
-                        manaSize.setText(AetherWars.p2.getMana() + " / " + AetherWars.turn);
+                        int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                        manaSize.setText(AetherWars.p2.getMana() + " / " + maxMana);
                         // Hapus Spell dari Hand
                         List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
                         List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
@@ -2270,7 +2300,8 @@ public class Controller implements Initializable {
                             field2Level2.setText(AetherWars.p2.getFieldCard()[1].getExpLevel());
                             field2Image2.setImage(
                                     new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[1].getImagePath()));
-                            manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
+                            int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                            manaSize.setText(AetherWars.p1.getMana() + " / " + maxMana);
 
                             // Hapus Spell dari Hand
                             List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
@@ -2391,7 +2422,8 @@ public class Controller implements Initializable {
                         field2Image3.setImage(new Image("./com/aetherwars/" + c.getImagePath()));
                         field2Level3.setText(c.getExpLevel());
                         AetherWars.p2.setMana(AetherWars.p2.getMana() - c.getMana());
-                        manaSize.setText(AetherWars.p2.getMana() + " / " + (AetherWars.turn - 1));
+                        int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                        manaSize.setText(AetherWars.p2.getMana() + " / " + maxMana);
                     }
                 } 
                 else if (!AetherWars.playerTurn
@@ -2420,7 +2452,8 @@ public class Controller implements Initializable {
                             field2Image3.setImage(
                                     new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[2].getImagePath()));
                         }
-                        manaSize.setText(AetherWars.p2.getMana() + " / " + AetherWars.turn);
+                        int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                        manaSize.setText(AetherWars.p2.getMana() + " / " + maxMana);
                         // Hapus Spell dari Hand
                         List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
                         List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
@@ -2454,7 +2487,8 @@ public class Controller implements Initializable {
                             field2Level3.setText(AetherWars.p2.getFieldCard()[2].getExpLevel());
                             field2Image3.setImage(
                                     new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[2].getImagePath()));
-                            manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
+                            int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                            manaSize.setText(AetherWars.p1.getMana() + " / " + maxMana);
 
                             // Hapus Spell dari Hand
                             List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
@@ -2573,7 +2607,8 @@ public class Controller implements Initializable {
                         field2Image4.setImage(new Image("./com/aetherwars/" + c.getImagePath()));
                         field2Level4.setText(c.getExpLevel());
                         AetherWars.p2.setMana(AetherWars.p2.getMana() - c.getMana());
-                        manaSize.setText(AetherWars.p2.getMana() + " / " + (AetherWars.turn - 1));
+                        int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                        manaSize.setText(AetherWars.p2.getMana() + " / " + maxMana);
                     }
                 } else if (!AetherWars.playerTurn
                         && AetherWars.p2.getHand()[chosenHand - 1].getType() == CardType.SPELL) {
@@ -2601,7 +2636,8 @@ public class Controller implements Initializable {
                             field2Image4.setImage(
                                     new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[3].getImagePath()));
                         }
-                        manaSize.setText(AetherWars.p2.getMana() + " / " + AetherWars.turn);
+                        int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                        manaSize.setText(AetherWars.p2.getMana() + " / " + maxMana);
                         // Hapus Spell dari Hand
                         List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
                         List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
@@ -2635,7 +2671,8 @@ public class Controller implements Initializable {
                             field2Level4.setText(AetherWars.p2.getFieldCard()[3].getExpLevel());
                             field2Image4.setImage(
                                     new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[3].getImagePath()));
-                            manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
+                            int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                            manaSize.setText(AetherWars.p1.getMana() + " / " + maxMana);
 
                             // Hapus Spell dari Hand
                             List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
@@ -2754,7 +2791,8 @@ public class Controller implements Initializable {
                         field2Image5.setImage(new Image("./com/aetherwars/" + c.getImagePath()));
                         field2Level5.setText(c.getExpLevel());
                         AetherWars.p2.setMana(AetherWars.p2.getMana() - c.getMana());
-                        manaSize.setText(AetherWars.p2.getMana() + " / " + (AetherWars.turn - 1));
+                        int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                        manaSize.setText(AetherWars.p2.getMana() + " / " + maxMana);
                     }
                 } 
                 else if (!AetherWars.playerTurn
@@ -2784,7 +2822,8 @@ public class Controller implements Initializable {
                             field2Image5.setImage(
                                     new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[4].getImagePath()));
                         }
-                        manaSize.setText(AetherWars.p2.getMana() + " / " + AetherWars.turn);
+                        int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                        manaSize.setText(AetherWars.p2.getMana() + " / " + maxMana);
                         // Hapus Spell dari Hand
                         List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
                         List<Label> mana = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
@@ -2818,7 +2857,8 @@ public class Controller implements Initializable {
                             field2Level5.setText(AetherWars.p2.getFieldCard()[4].getExpLevel());
                             field2Image5.setImage(
                                     new Image("./com/aetherwars/" + AetherWars.p2.getFieldCard()[4].getImagePath()));
-                            manaSize.setText(AetherWars.p1.getMana() + " / " + AetherWars.turn);
+                            int maxMana = AetherWars.turn > 10 ? 10 : AetherWars.turn;
+                            manaSize.setText(AetherWars.p1.getMana() + " / " + maxMana);
 
                             // Hapus Spell dari Hand
                             List<Label> hand = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));

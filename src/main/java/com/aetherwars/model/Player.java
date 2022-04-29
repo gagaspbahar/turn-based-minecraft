@@ -114,7 +114,7 @@ public class Player {
         // Di awal permainan (giliran 1), jumlah mana yang dimiliki pemain adalah 1.
         // Mana akan
         // meningkat sebesar 1 setiap gilirannya dan terbatas pada 10.
-        if (this.mana <= 10) {
+        if (giliran <= 10) {
             this.mana = giliran;
         } else {
             this.mana = 10;
