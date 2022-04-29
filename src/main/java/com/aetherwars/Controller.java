@@ -1,6 +1,7 @@
 package com.aetherwars;
 
 import java.io.IOException;
+import java.lang.Math;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,7 @@ import javafx.scene.paint.Color;
 import java.net.URL;
 import com.aetherwars.model.Spell;
 import com.aetherwars.model.Character;
+import com.aetherwars.model.Player;
 import com.aetherwars.model.type.CardType;
 import com.aetherwars.model.type.CharType;
 import com.aetherwars.model.type.PhaseType;
@@ -265,6 +267,14 @@ public class Controller implements Initializable {
 
     @FXML
     void drawCard(MouseEvent event) throws Exception {
+        if (AetherWars.playerTurn && AetherWars.p1.getDeck().size() == 0){
+            utilityWarningText.setText("No more cards to draw!");
+            return;
+        }
+        if (!AetherWars.playerTurn && AetherWars.p2.getDeck().size() == 0){
+            utilityWarningText.setText("No more cards to draw!");
+            return;
+        }
         if (AetherWars.phase == PhaseType.DRAW && !hasDrawn) {
             List<Label> handText = new ArrayList<Label>(Arrays.asList(hand1, hand2, hand3, hand4, hand5));
             List<Label> manaText = new ArrayList<Label>(Arrays.asList(mana1, mana2, mana3, mana4, mana5));
@@ -958,12 +968,23 @@ public class Controller implements Initializable {
     @FXML
     void submitClicked(MouseEvent event) throws Exception{
         if (AetherWars.phase == PhaseType.DRAW) {
+            if (utilityWarningText.getText().equals("No more cards to draw!")){
+                utilityWarningText.setText("");
+            }
             if (hasDrawn) { // ! JANGAN LUPA DIGANTI INI
                 drawRectangle.setFill(Color.valueOf("#dfdfdf"));
                 planRectangle.setFill(Color.valueOf("#ff8c00"));
                 AetherWars.phase = PhaseType.PLAN;
             } else {
-                utilityWarningText.setText("You must draw a card first!");
+                if ((!AetherWars.playerTurn && AetherWars.p2.getDeck().size() == 0) ||
+                        (AetherWars.playerTurn && AetherWars.p1.getDeck().size() == 0)) {
+                    drawRectangle.setFill(Color.valueOf("#dfdfdf"));
+                    planRectangle.setFill(Color.valueOf("#ff8c00"));
+                    AetherWars.phase = PhaseType.PLAN;
+                }
+                else {
+                    utilityWarningText.setText("You must draw a card first!");
+                }
             }
         } else if (AetherWars.phase == PhaseType.PLAN) {
             planRectangle.setFill(Color.valueOf("#dfdfdf"));
@@ -976,7 +997,7 @@ public class Controller implements Initializable {
             updateFieldColorEndAttackPhase();
         } else if(AetherWars.phase == PhaseType.END) {
             // TODO: Handle Endgame
-            if (AetherWars.p1.getHealth() <= 0 || AetherWars.p1.getDeck().size() == 0) {
+            if (AetherWars.playerTurn && (AetherWars.p1.getHealth() <= 0 || AetherWars.p1.getDeck().size() == 0)) {
                 siapaMenang = 2;
                 background.setStyle("-fx-background-color: grey");
                 Stage popupwindow = new Stage();
@@ -986,11 +1007,11 @@ public class Controller implements Initializable {
                 popupwindow.setScene(new Scene(drawcardPane));
                 popupwindow.centerOnScreen();
                 popupwindow.showAndWait();
-                // Stage popupwindow2 = (Stage) draw.getScene().getWindow();
-                // Pane throwPane = FXMLLoader.load(AetherWars.class.getClassLoader().getResource("./Opening.fxml"));
-                // popupwindow2.setScene(new Scene(throwPane));
-                // popupwindow2.centerOnScreen();
-            } else if (AetherWars.p2.getHealth() <= 0 ||AetherWars.p2.getDeck().size() == 0) {
+                Stage popupwindow2 = (Stage) manaSize.getScene().getWindow();
+                Pane throwPane = FXMLLoader.load(AetherWars.class.getClassLoader().getResource("./Opening.fxml"));
+                popupwindow2.setScene(new Scene(throwPane));
+                popupwindow2.centerOnScreen();
+            } else if (!AetherWars.playerTurn && (AetherWars.p2.getHealth() <= 0 ||AetherWars.p2.getDeck().size() == 0)) {
                 siapaMenang = 1;
                 background.setStyle("-fx-background-color: grey");
                 Stage popupwindow = new Stage();
@@ -1000,10 +1021,10 @@ public class Controller implements Initializable {
                 popupwindow.setScene(new Scene(drawcardPane));
                 popupwindow.centerOnScreen();
                 popupwindow.showAndWait();
-                // Stage popupwindow2 = (Stage) draw.getScene().getWindow();
-                // Pane throwPane = FXMLLoader.load(AetherWars.class.getClassLoader().getResource("./Opening.fxml"));
-                // popupwindow2.setScene(new Scene(throwPane));
-                // popupwindow2.centerOnScreen();
+                Stage popupwindow2 = (Stage) manaSize.getScene().getWindow();
+                Pane throwPane = FXMLLoader.load(AetherWars.class.getClassLoader().getResource("./Opening.fxml"));
+                popupwindow2.setScene(new Scene(throwPane));
+                popupwindow2.centerOnScreen();
             } else{
                 if (!AetherWars.playerTurn) {
                     player1text.setStyle("-fx-background-color: #ad2517;");
@@ -3057,8 +3078,25 @@ public class Controller implements Initializable {
     }
 
     public void initialize(URL location, ResourceBundle resources) {
+        this.chosenHand = 0;
+        this.chosenField = 0;
+        this.chosenPlayer = 0;
+        this.hasDrawn = false;
+        AetherWars.phase = PhaseType.DRAW;
         p1MaxDeckSize = AetherWars.p1.getDeck().size();
         p2MaxDeckSize = AetherWars.p2.getDeck().size();
+        int temp;
+        for (int i = 0; i < Math.min(p1MaxDeckSize,3) ; i++){
+            temp = AetherWars.p1.firstEmptyHand();
+            AetherWars.p1.getHand()[temp] = AetherWars.p1.getDeck().get(0);
+            AetherWars.p1.getDeck().remove(0);
+        }
+        for (int i = 0; i < Math.min(p2MaxDeckSize,3) ; i++){
+            temp = AetherWars.p2.firstEmptyHand();
+            AetherWars.p2.getHand()[temp] = AetherWars.p2.getDeck().get(0);
+            AetherWars.p2.getDeck().remove(0);
+        }
         deckSize.setText((AetherWars.p1.getDeck().size()) + " / " + Integer.toString(p1MaxDeckSize));
+        refreshHand();
     }
 }

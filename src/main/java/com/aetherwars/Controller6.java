@@ -29,10 +29,6 @@ public class Controller6 {
         AetherWars.p2 = new Player();
         Stage popupwindow = (Stage) mainlagibox.getScene().getWindow();
         popupwindow.close();
-        Stage popupwindow2 = (Stage) mainlagibox.getScene().getWindow();
-        Pane throwPane = FXMLLoader.load(AetherWars.class.getClassLoader().getResource("./Opening.fxml"));
-        popupwindow2.setScene(new Scene(throwPane));
-        popupwindow2.centerOnScreen();
     }
 
 public void initialize(URL location, ResourceBundle resources) {
